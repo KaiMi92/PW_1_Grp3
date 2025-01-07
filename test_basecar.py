@@ -1,4 +1,4 @@
-from basecar2 import *
+from basecar import *
 
 # initial value 90 -> straight ahead
 bc = basecar(90)
