@@ -33,5 +33,5 @@ bc.speed = 0
 bc.speed = 100
 time.sleep(1)
 #101
-bc.speed = 0
+bc.stop()
 print(f"speed = {bc.speed}")
