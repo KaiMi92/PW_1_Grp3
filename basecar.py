@@ -20,4 +20,3 @@ class basecar():
 
     ''' steering angle of the car pi '''
     steering_angle = property(get_steering_angle, set_steering_angle)
-        
