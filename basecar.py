@@ -4,6 +4,7 @@ class Auto:
     def __init__(self):
         self._fw = FrontWheels()        
         self._bw = BackWheels()
+        self._bw.stop()
         self._steering_angle = 90
         self._speed = 0
         self._direction = 0
@@ -44,33 +45,34 @@ class Auto:
         if new_speed > 0 and new_speed <= 100:
             self._speed = new_speed
             print("Vorwärtsfahrt")
-        
+
+        if self._speed <0:
+            self._direction = -1
+        elif self._speed >0:
+            self._direction = 1
+        else:
+            self._direction = 0
+
+
         self._bw.speed = abs(self._speed)
         return self._speed
     
     @property
     def direction(self):
-        if self._speed <0:
-            return -1
-        if self._speed >0:
-            return 1
-        else:
-            return 0
+        return self._direction
 
-    def drive(self, steering_angle, speed, direction):
-        if steering_angle is None:
-            self._steering_angle = 90
-        if speed is None:
-            self._speed = 0
-        if direction is None:
-            self._direction = 0
-        else:
-            self._steering_angle = steering_angle
-            self._speed = speed
-            self._direction = direction
+    def drive(self, steering_angle=None, speed=None):
+        if not steering_angle is None:
+            self.steering_angle = steering_angle
+        if not speed is None:
+            self.speed = speed
+
         if self.direction == 1:
             self._bw.forward()
-        if self.direction == -1:
+        elif self.direction == -1:
             self._bw.backward()
-        if self.direction == 0:
+        else:
             self._bw.stop()
+
+    def stop(self):
+        self._bw.stop()
