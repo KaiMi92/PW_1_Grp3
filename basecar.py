@@ -75,4 +75,5 @@ class Auto:
             self._bw.stop()
 
     def stop(self):
+        self._steering_angle = 90
         self._bw.stop()
