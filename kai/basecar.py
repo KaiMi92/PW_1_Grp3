@@ -4,6 +4,7 @@ class Auto:
     def __init__(self):
         self._steering_angle = 0
         self._speed = 0
+        self._direction = 0
 
     @property
     def steering_angle(self):
@@ -42,18 +43,31 @@ class Auto:
 
         else :
             self._speed = 0
-            print("Stop")
+            print("Stop")      
+        self._speed = abs(self._speed)
         return self._speed
 
+    @property
+    def direction(self):
+        if self._speed <0:
+            return -1
+        if self._speed >0:
+            return 1
+        else:
+            return 0
 
-    def drive(self, steering_angle, speed):
+    def drive(self, steering_angle, speed, direction):
         if steering_angle is None:
             steering_angle = 90
             return steering_angle
         if speed is None:
             speed = 0
             return speed
+        if direction is None:
+            direction = 0
+            return direction
         else:
             steering_angle = steering_angle
             speed = speed
+            direction = direction
             return steering_angle, speed
