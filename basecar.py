@@ -74,7 +74,3 @@ class Auto:
             self._bw.backward()
         if self.direction == 0:
             self._bw.stop()
-
-    def stop(self):
-        self.drive(0)
-        
