@@ -21,8 +21,8 @@ bc.steering_angle = 90
 print(f"current angle = {bc.steering_angle}")
 
 
-# -1
-bc.speed = -1
+# -10
+bc.speed = -10
 # 0
 bc.speed = 0
 # 50
