@@ -1,44 +1,72 @@
 from software.basisklassen import *
 
-class basecar:
-    def __init__(self, angle):
-        self._steering_angle = angle
+class Auto:
+    def __init__(self):
+        self._steering_angle = 0
+        self._speed = 0
+        self._direction = 0
 
-    ''' getter-method of steering angle'''
-    def get_steering_angle(self):
+    @property
+    def steering_angle(self):
         return self._steering_angle
     
-    ''' setter-method of steering angle'''
-    def set_steering_angle(self, angle):
-        print(f'set angle to {angle}')
+    @steering_angle.setter
+    def steering_angle(self, new_angle):
+        if new_angle < 45 and new_angle > 135:
+            print ("Du kannst das Lenkrad nicht weiter drehen")
 
-        fw = FrontWheels()        
-        set_angle = fw.turn(angle)
+        if new_angle < 45:
+            print("Setze den Lenkwinkel auf 45")
+            self._steering_angle = 45 
 
-        print(f'angle was set to {set_angle}')
-        self._steering_angle = set_angle
-        
-        time.sleep(1)
+        if new_angle > 135:
+            print("Setze den Lenkwinkel auf 135")
+            self._steering_angle = 135
+        else:
+            self._steering_angle = new_angle
+        return self._steering_angle
 
-    ''' steering angle of the car pi '''
-    steering_angle = property(get_steering_angle, set_steering_angle)
 
-    ''' getter-method of speed'''
-    def get_speed(self):
+    @property
+    def speed(self):
         return self._speed
     
-    ''' setter-method of speed'''
-    def set_speed(self, speed):
-        print(f'speed to {speed}')
-        if speed < 0:
-            speed = 0
-        if speed > 100:
-            speed = 100
-        bw = BackWheels()
+    @speed.setter
+    def speed(self, new_speed):
+        if new_speed < 0 and new_speed >= -100:
+            self._speed = new_speed
+            print("Rückwärtsfahrt")
 
-        bw.speed = speed
-        self._speed = speed
-        #return self._speed
+        if new_speed > 0 and new_speed <= 100:
+            self._speed = new_speed
+            print("Vorwärtsfahrt")
 
-    ''' speed of the car pi '''
-    speed = property(get_speed, set_speed)
+        else :
+            self._speed = 0
+            print("Stop")      
+        self._speed = abs(self._speed)
+        return self._speed
+
+    @property
+    def direction(self):
+        if self._speed <0:
+            return -1
+        if self._speed >0:
+            return 1
+        else:
+            return 0
+
+    def drive(self, steering_angle, speed, direction):
+        if steering_angle is None:
+            self._steering_angle = 90
+        if speed is None:
+            self._speed = 0
+        if direction is None:
+            self._direction = 0
+        else:
+            self._steering_angle = steering_angle
+            self._speed = speed
+            self._direction = direction
+
+
+        
