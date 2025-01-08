@@ -41,10 +41,6 @@ class Auto:
             self._speed = new_speed
             print("Vorwärtsfahrt")
 
-        else :
-            self._speed = 0
-            print("Stop")      
-        self._speed = abs(self._speed)
         return self._speed
 
     @property
