@@ -1,10 +1,15 @@
 from software.basisklassen import *
 
-class basecar:
+UNDEFINED = -1000
+
+class BaseCar:
+
     def __init__(self):
         self._steering_angle = 90
         self._speed = 0
         #self._direction = 0
+        self._fw = FrontWheels()        
+        self._bw = BackWheels()
 
     ''' getter-method of steering angle'''
     def get_steering_angle(self):
@@ -14,8 +19,7 @@ class basecar:
     def set_steering_angle(self, angle):
         print(f'set angle to {angle}')
 
-        fw = FrontWheels()        
-        set_angle = fw.turn(angle)
+        set_angle = self._fw.turn(angle)
 
         print(f'angle was set to {set_angle}')
         self._steering_angle = set_angle
@@ -57,4 +61,15 @@ class basecar:
         else: 
             return 0
 
-    
+    def drive(self, speed = UNDEFINED, steering_angle = UNDEFINED):
+        # set steering angle before start driving
+        if steering_angle != UNDEFINED:
+            self._steering_angle = steering_angle
+
+        # set speed and start driving
+        if speed != UNDEFINED:
+            self._speed = speed
+
+    def stop(self):
+        self.drive(0,90)
+
