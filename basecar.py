@@ -2,6 +2,8 @@ from software.basisklassen import *
 
 class Auto:
     def __init__(self):
+        self._fw = FrontWheels()        
+        self._bw = BackWheels()
         self._steering_angle = 90
         self._speed = 0
         self._direction = 0
@@ -24,6 +26,8 @@ class Auto:
             self._steering_angle = 135
         else:
             self._steering_angle = new_angle
+        
+        self._fw.turn(self._steering_angle)
         return self._steering_angle
 
 
@@ -40,9 +44,10 @@ class Auto:
         if new_speed > 0 and new_speed <= 100:
             self._speed = new_speed
             print("Vorwärtsfahrt")
-
+        
+        self._bw.speed = abs(self._speed)
         return self._speed
-
+    
     @property
     def direction(self):
         if self._speed <0:
@@ -63,6 +68,13 @@ class Auto:
             self._steering_angle = steering_angle
             self._speed = speed
             self._direction = direction
+        if self.direction == 1:
+            self._bw.forward()
+        if self.direction == -1:
+            self._bw.backward()
+        if self.direction == 0:
+            self._bw.stop()
 
-
+    def stop(self):
+        self.drive(0)
         
