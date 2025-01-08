@@ -30,10 +30,12 @@ class basecar:
     ''' setter-method of speed'''
     def set_speed(self, speed):
         print(f'speed to {speed}')
-        if speed < 0:
-            speed = 0
+        if speed < -100:
+            speed = -100
+            print(f'speed was set to {speed}')
         if speed > 100:
             speed = 100
+            print(f'speed was set to {speed}')
         #bw = BackWheels()
 
         #bw.speed = speed
