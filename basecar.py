@@ -2,7 +2,7 @@ from software.basisklassen import *
 
 class Auto:
     def __init__(self):
-        self._steering_angle = 0
+        self._steering_angle = 90
         self._speed = 0
         self._direction = 0
 
