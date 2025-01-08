@@ -2,7 +2,7 @@ from basecar import *
 
 if __name__ == "__main__":
     auto = Auto()
-    setspeed = 50
+    setspeed = -50
     turnangle = 90
 
     
@@ -11,7 +11,7 @@ if __name__ == "__main__":
         print(f"Lenkwinkel: {turnangle}, Speed: {setspeed}")
 
         time.sleep(3)
-        
+
     finally:
         print("Fertig")
         auto.stop()
