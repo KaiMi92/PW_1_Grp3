@@ -62,7 +62,7 @@ class Auto:
         if speed is None:
             self._speed = 0
         if direction is None:
-            self.direction = 0
+            self._direction = 0
         else:
             self._steering_angle = steering_angle
             self._speed = speed
