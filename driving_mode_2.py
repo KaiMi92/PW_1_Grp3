@@ -3,12 +3,12 @@ from basecar import *
 # initial value from basecar 
 bc = BaseCar()
 my_speed = 30
-my_angle
+#my_angle
 
 try:
     print(f'Start driving - set only speed')
     #bc.drive(speed = my_speed)
-    bc.drive(speed my_speed, steering_angle = 90)
+    bc.drive(speed = my_speed, steering_angle = 90)
     time.sleep(1)
 
     print(f'Stop driving')
@@ -16,7 +16,7 @@ try:
     time.sleep(1)
 
     print(f'Start driving - set only speed')
-    bc.drive(speed my_speed, steering_angle = 135)
+    bc.drive(speed = my_speed, steering_angle = 135)
     time.sleep(8)
 
 except Exception as e:
