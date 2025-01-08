@@ -2,7 +2,7 @@ from basecar import *
 
 # initial value from basecar 
 bc = BaseCar()
-my_speed = 30
+my_speed = 60
 #my_angle
 
 try:
