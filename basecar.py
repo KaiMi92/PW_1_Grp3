@@ -34,9 +34,9 @@ class basecar:
             speed = 0
         if speed > 100:
             speed = 100
-        bw = BackWheels()
+        #bw = BackWheels()
 
-        bw.speed = speed
+        #bw.speed = speed
         self._speed = speed
         #return self._speed
 
