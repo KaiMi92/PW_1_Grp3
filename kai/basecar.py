@@ -70,4 +70,4 @@ class Auto:
             steering_angle = steering_angle
             speed = speed
             direction = direction
-            return steering_angle, speed
+            return steering_angle, speed, direction
