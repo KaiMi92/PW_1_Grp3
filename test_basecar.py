@@ -1,7 +1,7 @@
 from basecar import *
 
-# initial value 90 -> straight ahead
-bc = basecar(90)
+# initial value from basecar 
+bc = basecar()
 print(f"current angle = {bc.steering_angle}")
 
 # invalid value, expecting 45 (limit to the left)
@@ -23,15 +23,19 @@ print(f"current angle = {bc.steering_angle}")
 
 # -120
 bc.speed = -120
+print(f'direction = {bc.direction}')
 # 0
 bc.speed = 0
 # 50
 bc.speed = 50
 # 0
 bc.speed = 0
+print(f'direction = {bc.direction}')
 # 120
 bc.speed = 120
+print(f'direction = {bc.direction}')
 time.sleep(1)
 #101
 bc.speed = 0
 print(f"speed = {bc.speed}")
+print(f'direction = {bc.direction}')

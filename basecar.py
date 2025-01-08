@@ -1,8 +1,10 @@
 from software.basisklassen import *
 
 class basecar:
-    def __init__(self, angle):
-        self._steering_angle = angle
+    def __init__(self):
+        self._steering_angle = 90
+        self._speed = 0
+        #self._direction = 0
 
     ''' getter-method of steering angle'''
     def get_steering_angle(self):
@@ -44,3 +46,15 @@ class basecar:
 
     ''' speed of the car pi '''
     speed = property(get_speed, set_speed)
+
+    ''' getter-method of direction'''
+    @property   
+    def direction(self):
+        if self._speed < 0:
+            return -1
+        elif self._speed > 0:
+            return 1
+        else: 
+            return 0
+
+    
