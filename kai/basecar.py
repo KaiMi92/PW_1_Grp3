@@ -58,16 +58,15 @@ class Auto:
 
     def drive(self, steering_angle, speed, direction):
         if steering_angle is None:
-            steering_angle = 90
-            return steering_angle
+            self._steering_angle = 90
         if speed is None:
-            speed = 0
-            return speed
+            self._speed = 0
         if direction is None:
-            direction = 0
-            return direction
+            self.direction = 0
         else:
-            steering_angle = steering_angle
-            speed = speed
-            direction = direction
-            return steering_angle, speed, direction
+            self._steering_angle = steering_angle
+            self._speed = speed
+            self._direction = direction
+
+
+        
