@@ -4,12 +4,13 @@ import os
 class BaseCar:
 
     def __init__(self):
-        cwd = os.getcwd()
+        dirname = os.path.dirname(__file__)
+        filename = os.path.join(dirname, 'software/config.json')
         turning_offset = 0
         forward_A = 0
         forward_B = 0
         try:
-            with open(cwd + "/software/config.json", "r") as config_file:
+            with open(filename, "r") as config_file:
                 json_data = json.load(config_file)
                 turning_offset = json_data["turning_offset"]
                 forward_A = json_data["forward_A"]
