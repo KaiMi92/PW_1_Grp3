@@ -11,8 +11,11 @@ if __name__ == "__main__":
         auto.drive(turnangle, setspeed)
 
         while True:
-            s = sonic.
-
+            s = sonic.get_sonic()
+            if s < 20 and s > 0:
+                auto.stop()
+                print("Hindernis")
+                break
 
     except:
         print("error")
