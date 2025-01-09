@@ -2,7 +2,7 @@ from soniccar import *
 sc = SonicCar()
 
 try:        
-    d= sc.get_distance()
+    d = sc.get_distance()
     print(f'd = {d}')
 
 except Exception as e:
