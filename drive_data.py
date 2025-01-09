@@ -7,7 +7,10 @@ if __name__ == "__main__":
     so = SonicCar()
     drivedata = {}
 
-    x = so.get_sonic()
-    drivedata = {bc.steering_angle, bc.speed, x}
+    a = so.get_sonic()
+    b = bc.direction
+    c = bc.speed
+    d = bc.steering_angle
+    drivedata = {"Sonic":[a], "Direction":[b], "Speed":[c], "Steering":[d] }
 
     print(drivedata)
