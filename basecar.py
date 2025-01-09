@@ -1,10 +1,25 @@
 from software.basisklassen import *
+import os
 
 class BaseCar:
 
     def __init__(self):
-        self._fw = FrontWheels()        
-        self._bw = BackWheels()
+        cwd = os.getcwd()
+        turning_offset = 0
+        forward_A = 0
+        forward_B = 0
+        try:
+            with open(cwd + "/software/config.json", "r") as config_file:
+                json_data = json.load(config_file)
+                turning_offset = json_data["turning_offset"]
+                forward_A = json_data["forward_A"]
+                forward_B = json_data["forward_B"]
+                print(f"Using car params: turning_offset = {turning_offset}, forward_A = {forward_A}, forward_B = {forward_B}")
+        except Exception as e:
+            print("Error reading config file: ", e)
+
+        self._fw = FrontWheels(turning_offset=turning_offset)       
+        self._bw = BackWheels(forward_A=forward_A, forward_B=forward_B)
         self._bw.stop()
         self.steering_angle = 90
         self.speed = 0
