@@ -9,10 +9,9 @@ class SonicCar(Auto):
 
     def get_sonic(self):
         s = self._us.distance()
-        print(s)
         return s
 
 
-    def save_data(self, s):
-        sonic_Dict = {}
-        sonic_Dict.update(s)
+    #def save_data(self, s):
+    #    sonic_Dict = {}
+    #    sonic_Dict.update(s)
