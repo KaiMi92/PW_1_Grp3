@@ -7,7 +7,7 @@ if __name__ == "__main__":
     so = SonicCar()
     drivedata = {}
 
-    fill = {bc.steering_angle, bc.speed, so.get_sonic}
-    drivedata.update(fill)
+    x = so.get_sonic()
+    drivedata = {bc.steering_angle, bc.speed, x}
 
     print(drivedata)
