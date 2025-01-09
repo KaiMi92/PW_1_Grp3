@@ -2,10 +2,11 @@ from basecar import *
 
 if __name__ == "__main__":
     auto = Auto()
-    setspeed = 50
+    setspeed = 30
+    setspeed2 = -30
     turnangle = 90
-    turnangle2 = 135
-    turnangle3 = 45
+    turnangle2 = 120
+    turnangle3 = 60
 
     
     try:
@@ -14,27 +15,19 @@ if __name__ == "__main__":
 
         time.sleep(1)
 
-        auto.stop()
-
-        time.sleep(1)
-
         auto.drive(turnangle2, setspeed)
 
         time.sleep(8)
 
-        auto.stop()
+        auto.drive(turnangle2, setspeed2)
 
-        auto.drive(turnangle2, -abs(setspeed))
-
-        auto.stop()
+        time.sleep(8)
 
         auto.drive(turnangle3, setspeed)
 
         time.sleep(8)
 
-        auto.stop()
-
-        auto.drive(turnangle3, -abs(setspeed)) 
+        auto.drive(turnangle3, setspeed2) 
 
         time.sleep(8)
 
