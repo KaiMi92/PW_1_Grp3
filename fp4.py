@@ -1,5 +1,6 @@
 from basecar import *
 from sonic import *
+from drive_data import *
 
 if __name__ == "__main__":
     auto = Auto()
@@ -18,11 +19,14 @@ if __name__ == "__main__":
                     auto.stop()
                     print("Hindernis")
                     break
-            
+            save_data()
             auto.drive(135, -setspeed)
             time.sleep(2)
             auto.drive(turnangle, setspeed)
             trys +=1             
+
+        auto.stop()
+        print("5x versucht, Hindernis immer noch da")
 
     except:
         print("error")
