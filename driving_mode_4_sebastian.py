@@ -20,7 +20,7 @@ def get_speed_by_distance(dist):
 
 
 # try to get distance for max 5 seconds
-def get_first_distance():
+def get_distance_with_timeout():
   t_end = time.time() + 5
   d = sc.get_distance()
   while d < 0 and time.time() < t_end:
@@ -33,7 +33,7 @@ def get_first_distance():
 def drive_to_the_obstacle():
   last_time_with_pos_dist = time.time()
   while True:
-    d = sc.get_distance()
+    d = get_distance_with_timeout()
     if d > 0 and d < MIN_DISTANCE:
       sc.stop()
       last_time_with_pos_dist = time.time()
