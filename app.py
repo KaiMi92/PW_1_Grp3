@@ -5,6 +5,9 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 import csv
 
+csvdf = pd.read_csv('drivedata.csv')
+print(csvdf)
+
 app = Dash(__name__)
 
 x = list(range(30))
