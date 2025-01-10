@@ -11,11 +11,11 @@ MAX_TURN_RIGHT = 135
 # get the cars speed depending on the distance to an obstacle
 def get_speed_by_distance(dist):
   if dist > 100:
-    speed = 50
+    speed = 80
   elif dist < 0:
     speed = 0
   else:
-    speed = max (18, dist // 2)
+    speed = max (25, dist // 2)
   return speed
 
 
@@ -31,20 +31,20 @@ def get_distance_with_timeout():
 
 # drive and stop before crash with an obstacle
 def drive_to_the_obstacle():
-  last_time_with_pos_dist = time.time()
   while True:
     d = get_distance_with_timeout()
     if d > 0 and d < MIN_DISTANCE:
       sc.stop()
-      last_time_with_pos_dist = time.time()
       time.sleep(0.1)
       break
 
     # if the car is get stuck -> break
-    if last_time_with_pos_dist + 5 < time.time():
+    if d < 0:
+      print("get stuck , turn over")
       break
 
     sc.drive(speed = get_speed_by_distance(d), steering_angle = STRAIGHT_FORWARD)
+    time.sleep(0.5)
   time.sleep(1)
 
 
@@ -69,7 +69,6 @@ def main():
     while True:
       drive_to_the_obstacle()
       drive_back_and_turn()
-
   except Exception as e:
     print(f"An exception occurred: {e}")
     sc.stop()
