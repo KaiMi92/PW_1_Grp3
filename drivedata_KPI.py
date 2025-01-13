@@ -1,7 +1,6 @@
 import pandas as pd 
 
 drive_data = pd.read_csv('drivedata.csv')
-#print(drive_data)
 data_speed = drive_data["Speed"]
 data_time = drive_data['Time']
 sum_time = data_time.sum()
@@ -18,3 +17,5 @@ print(f'Average speed:', average_speed)
 #distance traveled
 distance_traveled = data_speed.mean()/sum_time
 print(f'Distance traveled:', distance_traveled)
+#total time
+print(f'Total time:', sum_time)
