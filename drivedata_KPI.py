@@ -1,6 +1,6 @@
 import pandas as pd 
 
-drive_data = pd.read_csv('drivedata.csv')
+drive_data = pd.read_csv('driving_data/driving_data.csv')
 data_speed = drive_data["Speed"]
 data_time = drive_data['Time']
 sum_time = data_time.sum()
