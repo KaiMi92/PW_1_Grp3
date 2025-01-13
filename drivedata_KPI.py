@@ -15,7 +15,8 @@ print(f'Min speed:',min_speed)
 average_speed = data_speed.mean()
 print(f'Average speed:', average_speed)
 #distance traveled
-distance_traveled = data_speed.mean()/sum_time
+#distance_traveled = data_speed.mean()/sum_time
+distance_traveled = (data_speed * data_time).sum()
 print(f'Distance traveled:', distance_traveled)
 #total time
 print(f'Total time:', sum_time)
