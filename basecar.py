@@ -23,8 +23,8 @@ class BaseCar:
         self._bw = BackWheels(forward_A=forward_A, forward_B=forward_B)
         self._bw.stop()
         self._direction = 0
-        self.steering_angle = 90
-        self.speed = 0
+        self._steering_angle = 90
+        self._speed = 0
 
     # def __setattr__(self, name, value):
     #     print(f"--> BaseCar setattr: set {name} to {value}")
@@ -38,6 +38,9 @@ class BaseCar:
     ''' setter-method of steering angle'''
     @steering_angle.setter
     def steering_angle(self, angle):
+        if self._steering_angle == angle:
+            return
+        
         set_angle = self._fw.turn(angle)
         self._steering_angle = set_angle        
         time.sleep(0.1)
@@ -50,6 +53,9 @@ class BaseCar:
     ''' setter-method of speed'''
     @speed.setter
     def speed(self, speed):
+        if self._speed == speed:
+            return
+        
         # Limit parameter values
         if speed < -100:
             self._speed = -100
@@ -61,10 +67,12 @@ class BaseCar:
             self._speed = speed
 
         # calculate direction
-        if self._speed < 0 and self._direction != -1:
-            self._direction = -1
-        elif self._speed > 0 and self._direction != 1:
-            self._direction = 1
+        if self._speed < 0:
+            if self._direction != -1:
+                self._direction = -1
+        elif self._speed > 0:
+            if self._direction != 1:
+                self._direction = 1
         else:
             if self._direction != 0:
                 self._direction = 0
@@ -78,9 +86,11 @@ class BaseCar:
 
     def drive(self, speed=None, steering_angle=None):
         if self._speed == speed and self._steering_angle == steering_angle:
-            # needed valies already set
+            # needed values already set
             # nothing to do
             return
+        
+        drctn = self._direction
         
         # set steering angle before start driving        
         if not steering_angle is None:
@@ -90,15 +100,16 @@ class BaseCar:
         if not speed is None:
             self.speed = speed
 
-        if self.direction == 1:
-            print(f'Drive Forward with speed {self._speed}')
-            self._bw.forward()
-        elif self.direction == -1:
-            print(f'Drive Backward with speed {self._speed}')
-            self._bw.backward()
-        else:
-            print(f'Stop Driving with speed {self._speed}')
-            self._bw.stop()
+        if drctn != self._direction:
+            if self.direction == 1:
+                print(f'Drive Forward with speed {self._speed}')
+                self._bw.forward()
+            elif self.direction == -1:
+                print(f'Drive Backward with speed {self._speed}')
+                self._bw.backward()
+            else:
+                print(f'Stop Driving with speed {self._speed}')
+                self._bw.stop()
 
     def stop(self):
         self.drive(0,90)
