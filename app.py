@@ -1,12 +1,13 @@
-from dash import Dash, html, dcc, Input, Output, State
+from dash import Dash, html, dcc, Input, Output, State, ctx, callback
 import pandas as pd
 import plotly.express as px
 #from basecar import Auto
 import dash_bootstrap_components as dbc
 import csv
+from drivedata_KPI import *
 
 csv_df = pd.read_csv('driving_data/driving_data.csv')
-print(csv_df)
+#print(csv_df)
 
 app = Dash(__name__)
 
@@ -15,13 +16,30 @@ app.layout = html.Div(
         html.H1(["Drive Data Dashboard"], id="my-header"),
         dcc.Dropdown(["Distance", "Direction", "Speed", "Steering"], value="Distance", id="my-dd"),
         dbc.Col(dcc.Graph(id="my-graph")),
+        html.Button('Show KPIs', id='btn-1', n_clicks=0),
+        html.Div(id='container-button-timestamp')
     ]
 )
+
 
 @app.callback(Output("my-graph", "figure"), Input("my-dd", "value"))
 def update_line_plot(dd_value):
     fig = px.line(csv_df, x="Time", y=dd_value)
     return fig
+
+@app.callback(Output('container-button-timestamp', 'children'),Input('btn-1', 'n_clicks'))
+def displayClick(btn1):
+    msg = "Empty"
+    if "btn-1" == ctx.triggered_id:
+        msg = ("Max Speed :",round(max_speed, 2), ' | ' ,               # \n for new Row doesnt work...
+               "Min Speed :",round(min_speed, 2), ' | ' ,
+               "Average Speed :", round(average_speed, 2), ' | ' ,
+               "Distance Traveled :",round(distance_traveled, 2), ' | ' ,
+               "Total Time :", round(sum_time,2)
+               )                 
+    return msg
+
+
 
 if __name__ == "__main__":
     app.run_server(debug=True, host="localhost", port=1234)
