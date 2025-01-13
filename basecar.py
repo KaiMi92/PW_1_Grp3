@@ -22,9 +22,14 @@ class BaseCar:
         self._fw = FrontWheels(turning_offset=turning_offset)       
         self._bw = BackWheels(forward_A=forward_A, forward_B=forward_B)
         self._bw.stop()
+        self._direction = 0
         self.steering_angle = 90
         self.speed = 0
 
+    # def __setattr__(self, name, value):
+    #     print(f"--> BaseCar setattr: set {name} to {value}")
+    #     object.__setattr__(self, name, value)
+        
     ''' getter-method of steering angle'''
     @property
     def steering_angle(self):
@@ -33,14 +38,9 @@ class BaseCar:
     ''' setter-method of steering angle'''
     @steering_angle.setter
     def steering_angle(self, angle):
-        print(f'set angle to {angle}')
-
         set_angle = self._fw.turn(angle)
-
-        print(f'angle was set to {set_angle}')
-        self._steering_angle = set_angle
-        
-        time.sleep(1)
+        self._steering_angle = set_angle        
+        time.sleep(0.1)
 
     ''' getter-method of speed'''
     @property
@@ -50,8 +50,6 @@ class BaseCar:
     ''' setter-method of speed'''
     @speed.setter
     def speed(self, speed):
-        print(f'speed to {speed}')
-
         # Limit parameter values
         if speed < -100:
             self._speed = -100
@@ -63,12 +61,13 @@ class BaseCar:
             self._speed = speed
 
         # calculate direction
-        if self._speed < 0:
+        if self._speed < 0 and self._direction != -1:
             self._direction = -1
-        elif self._speed > 0:
+        elif self._speed > 0 and self._direction != 1:
             self._direction = 1
         else:
-            self._direction = 0
+            if self._direction != 0:
+                self._direction = 0
 
         self._bw.speed = abs(self._speed)
 
@@ -78,7 +77,12 @@ class BaseCar:
         return self._direction
 
     def drive(self, speed=None, steering_angle=None):
-        # set steering angle before start driving
+        if self._speed == speed and self._steering_angle == steering_angle:
+            # needed valies already set
+            # nothing to do
+            return
+        
+        # set steering angle before start driving        
         if not steering_angle is None:
             self.steering_angle = steering_angle
 
