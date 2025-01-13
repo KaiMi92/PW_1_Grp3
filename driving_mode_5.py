@@ -1,9 +1,12 @@
+# aus der Klasse Sensorcar werden Methoden übernommen
 from sensorcar import *
+# Python Modul Zeit wird als Grundfunktion aufgerufen um später einen Zeitstempel für die gemessen Daten zu erhalten 
 import time
+# Python Modul Statistik wird als Grundfunktion aufgerufen um statistische Werte wie Median oder Durchschnitt ermitteln zu können 
 import statistics
 
 sc = SensorCar()
-
+# Setzen der Konstantwerte für Geschwindigkeit und Lenkwinkel Geradeaus, maximal Links und maximal rechts
 SPEED = 30
 STRAIGHT_FORWARD = 90
 MAX_TURN_LEFT = 45
@@ -37,7 +40,7 @@ def get_steering_angle_by_ir_values(ir_values):
   # calculate the mean of all positions of the minimum
   min_pos = statistics.mean(min_val_idxs)
   print(f"{ir_values} -> min_pos = {min_pos}")
-
+# hier wird ermittelt welcher der Infrarotsensoren den niedrigensten Wert hat bzw. auf den Klebestreifen schaut und entsprechen ein Winkel eingeschlagen um das Fahrzeug in der Mitte des Streifens zu halten
   if min_pos < 1:
     steering_angle = MAX_TURN_LEFT
   elif min_pos <= 2:
@@ -51,7 +54,7 @@ def get_steering_angle_by_ir_values(ir_values):
 
   return steering_angle
 
-
+# Methode main wird definiert und beschrieben
 def main():
   # check ir sensor
   # while True:
@@ -63,19 +66,19 @@ def main():
   # start driving (and steering)
   try:  
     sc.drive(speed = SPEED, steering_angle = STRAIGHT_FORWARD)      
-  
+  # Schleife wenn alle InfrarotSensoren dunkel sind stopt das Auto der Wert in v wird abgeglichen
     while True:
       v = sc.analog_values
 
       if is_end_of_road(v):
         sc.stop()
         break
-
+      # wenn der Wert über 100 geht in v wird eine Sekunde zurückgefahren und dann wieder weiter. 
       if is_curve_too_tight(v):
         sc.drive(speed = -SPEED, steering_angle = STRAIGHT_FORWARD)
         time.sleep(1.0)      
         sc.drive(speed = SPEED, steering_angle = STRAIGHT_FORWARD)      
-    
+    # hier wird über die Bedingungen in Zeile 43 bis 53 der Lenkwinkel ermittelt und eingeschlagen alle 0.1 Sekunden
       angle = get_steering_angle_by_ir_values(v)
       sc.steering_angle = angle
 
