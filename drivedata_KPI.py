@@ -1,6 +1,6 @@
 import pandas as pd 
-
-drive_data = pd.read_csv('drivedata.csv')
+path = "/home/pi/Desktop/git/camp2code/repository/PW_1_Grp3/driving_data/driving_data.csv"
+drive_data = pd.read_csv(path)
 data_speed = drive_data["Speed"]
 data_time = drive_data['Time']
 sum_time = data_time.sum()
