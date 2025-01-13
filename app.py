@@ -5,7 +5,7 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 import csv
 
-csv_df = pd.read_csv('drivedata.csv')
+csv_df = pd.read_csv('driving_data/driving_data.csv')
 print(csv_df)
 
 app = Dash(__name__)
