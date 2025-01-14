@@ -49,20 +49,20 @@ def displayClick(btn1):
 
 @app.callback(Output("mode-container", "children"), Input("b-stop", "n_clicks"), Input("b-dm1", "n_clicks"), Input("b-dm2", "n_clicks"), Input("b-dm3", "n_clicks"), Input("b-dm4", "n_clicks"), Input("b-dm5", "n_clicks"))
 def run_drive_modes(btnstop, btn1, btn2, btn3, btn4, btn5):
-    msg_dm = "No Driving Mode has been selected yet"
+    msg_dm = "Please select a Driving Mode"
     if "b-stop" == ctx.triggered_id:
         msg_dm = "Car Stops"
     elif "b-dm1" == ctx.triggered_id:
-        msg_dm = "Running Driving Mode 1"  
+        msg_dm = "Ran Driving Mode 1"  
         dm1()  
     elif "b-dm2" == ctx.triggered_id:
-        msg_dm = "Running Driving Mode 2"
+        msg_dm = "Ran Driving Mode 2"
     elif "b-dm3" == ctx.triggered_id:
-        msg_dm = "Running Driving Mode 3"
+        msg_dm = "Ran Driving Mode 3"
     elif "b-dm4" == ctx.triggered_id:
-        msg_dm = "Running Driving Mode 4"
+        msg_dm = "Ran Driving Mode 4"
     elif "b-dm5" == ctx.triggered_id:
-        msg_dm = "Running Driving Mode 5"
+        msg_dm = "Ran Driving Mode 5"
     return msg_dm
 
 
