@@ -5,6 +5,7 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 import csv
 from drivedata_KPI import *
+from driving_mode_1 import *
 
 csv_df = pd.read_csv('driving_data/driving_data.csv')
 #print(csv_df)
@@ -17,7 +18,14 @@ app.layout = html.Div(
         dcc.Dropdown(["Distance", "Direction", "Speed", "Steering"], value="Distance", id="my-dd"),
         dbc.Col(dcc.Graph(id="my-graph")),
         html.Button('Show KPIs', id='btn-1', n_clicks=0),
-        html.Div(id='container-button-timestamp')
+        html.Div(id='container-button-timestamp'),
+        html.Button('Stop Car', id='b-stop', n_clicks=0),
+        html.Button('Driving Mode 1', id='b-dm1', n_clicks=0),
+        html.Button('Driving Mode 2', id='b-dm2', n_clicks=0),
+        html.Button('Driving Mode 3', id='b-dm3', n_clicks=0),
+        html.Button('Driving Mode 4', id='b-dm4', n_clicks=0),
+        html.Button('Driving Mode 5', id='b-dm5', n_clicks=0),
+        html.Div(id='mode-container')
     ]
 )
 
@@ -38,6 +46,25 @@ def displayClick(btn1):
                "Total Time :", round(sum_time,2)
                )                 
     return msg
+
+@app.callback(Output("mode-container", "children"), Input("b-stop", "n_clicks"), Input("b-dm1", "n_clicks"), Input("b-dm2", "n_clicks"), Input("b-dm3", "n_clicks"), Input("b-dm4", "n_clicks"), Input("b-dm5", "n_clicks"))
+def run_drive_modes(btnstop, btn1, btn2, btn3, btn4, btn5):
+    msg_dm = "No Driving Mode has been selected yet"
+    if "b-stop" == ctx.triggered_id:
+        msg_dm = "Car Stops"
+    elif "b-dm1" == ctx.triggered_id:
+        msg_dm = "Running Driving Mode 1"  
+        dm1()  
+    elif "b-dm2" == ctx.triggered_id:
+        msg_dm = "Running Driving Mode 2"
+    elif "b-dm3" == ctx.triggered_id:
+        msg_dm = "Running Driving Mode 3"
+    elif "b-dm4" == ctx.triggered_id:
+        msg_dm = "Running Driving Mode 4"
+    elif "b-dm5" == ctx.triggered_id:
+        msg_dm = "Running Driving Mode 5"
+    return msg_dm
+
 
 
 
