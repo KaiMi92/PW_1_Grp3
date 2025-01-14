@@ -2,9 +2,6 @@ from basecar import *
 from software.basisklassen import *
 import csv
 
-fieldnames = ['Time','Distance','Direction','Speed','Steering','IR-v1','IR-v2','IR-v3','IR-v4','IR-v5']
-setter_of_fieldnames = ['-','_distance','_direction','_speed','_steering_angle', '_ir_values']
-
 class SonicCar(BaseCar):
 
     def __init__(self):

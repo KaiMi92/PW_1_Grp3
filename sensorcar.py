@@ -1,4 +1,7 @@
-from soniccar import * 
+from soniccar import *
+
+fieldnames = ['Time','Distance','Direction','Speed','Steering','IR-v1','IR-v2','IR-v3','IR-v4','IR-v5']
+setter_of_fieldnames = ['-','_distance','_direction','_speed','_steering_angle', '_ir_values']
 
 # Diese Klasse verwendet den IR-Sensor
 class SensorCar(SonicCar):
