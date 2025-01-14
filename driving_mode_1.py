@@ -4,6 +4,7 @@ def dm_1():
   bc = BaseCar()
   my_speed = 20
 
+def dm1():
   try:
       print(f'Start driving - set only speed')
       bc.drive(speed = my_speed)
@@ -24,5 +25,6 @@ def dm_1():
   finally:
     print("Everything ok!") 
     bc.stop()
+
 if __name__ == "__main__":
-  dm_1()
+  dm1()
