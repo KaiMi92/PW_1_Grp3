@@ -88,8 +88,6 @@ def dm4():
       print("Everything ok!")
       sc.stop()
 
-  if __name__ == "__main__":
-    main()
 if __name__ == "__main__":
   dm4()
 
