@@ -1,8 +1,8 @@
 from basecar import *
-def dm1():
+
 # initial value from basecar 
-  bc = BaseCar()
-  my_speed = 20
+bc = BaseCar()
+my_speed = 20
 
 def dm1():
   try:
