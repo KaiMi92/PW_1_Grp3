@@ -89,8 +89,6 @@ def dm5():
     finally:
       print("Everything ok!")
       sc.stop()
-
-  if __name__ == "__main__":
-    main()
+  main()
 if __name__ == "__main__":
   dm5()
