@@ -1,9 +1,48 @@
+"""BaseCar implementation
+ 
+implements the requirements of Code2Camp project phase 1
+
+author: Team 3 / Gen 8
+"""
 from software.basisklassen import *
 import os
 
 class BaseCar:
+    """
+    A class to represent a car with basic attribute like speed or steering_angle.
+
+    Attributes
+    ----------
+    speed : int
+        speed of the car in percent
+            valid values are 0 .. 100
+    steering_angle : int
+        steering angle of the car in degrees.
+            90 degrees means straight forward
+            max. left steering angle is 135
+            max. right steering angle is 45
+    direction : int
+        direction of the car with the following values
+            0: no direction because car is not moving
+            1: car is moving forward
+            -1: car is moving backward
+
+    Methods
+    -------
+    drive(speed=None, steering_angle=None):
+        start moving the car with the given parameters
+        if the values of a paramter is empty the internal values will be used
+    stop():
+        start moving the car with the given parameters
+    """
 
     def __init__(self):
+        """Constructor method.
+
+        The Contructor reads the config file to set individual car parameters for the 
+        instantiation of the classes for the front- and the backwheels.
+        Also default values are set for all attributes.
+        """
         dirname = os.path.dirname(__file__)
         filename = os.path.join(dirname, 'software/config.json')
         turning_offset = 0
@@ -33,11 +72,21 @@ class BaseCar:
     ''' getter-method of steering angle'''
     @property
     def steering_angle(self):
+        """ Property for steering angle
+
+        Return:
+            int: steering angle of the car in degrees in range [45..135]
+        """
         return self._steering_angle
     
     ''' setter-method of steering angle'''
     @steering_angle.setter
     def steering_angle(self, angle):
+        """ Setter for the property steering angle
+
+        Parameters:
+            int: steering angle of the car in degrees in range [45..135]
+        """
         if self._steering_angle == angle:
             return
         
@@ -48,11 +97,21 @@ class BaseCar:
     ''' getter-method of speed'''
     @property
     def speed(self):
+        """ Property for the speed of the car
+
+        Return:
+            int: speed of the car in degrees in range [0..100]
+        """
         return self._speed
     
     ''' setter-method of speed'''
     @speed.setter
     def speed(self, speed):
+        """ Setter for the speed of the car
+
+        Parameters:
+            int: speed of the car in degrees in range [0..100]
+        """
         if self._speed == speed:
             return
         
@@ -82,9 +141,27 @@ class BaseCar:
     ''' getter-method of direction'''
     @property   
     def direction(self):
+        """ Property for the direction of the car
+
+        Return:
+            int: direction of the car. Possible values:
+                0: no direction because car is not moving
+                1: car is moving forward
+                -1: car is moving backward
+        """
         return self._direction
 
     def drive(self, speed=None, steering_angle=None):
+        """" Start moving the car 
+        
+        ...with the given parameters. 
+        If the values of a paramter is empty the internal values will be used.
+
+        Parameters:
+            speed int(): speed of the car in range [45..135]
+            steering_angle int(): steering angle of the car in degrees in range [45..135]
+        
+        """
         if self._speed == speed and self._steering_angle == steering_angle:
             # needed values already set
             # nothing to do
@@ -112,4 +189,9 @@ class BaseCar:
                 self._bw.stop()
 
     def stop(self):
+        """" Stop moving the car 
+        
+        Stops the car as set the steering angle to 90 degrees.
+        
+        """
         self.drive(0,90)
