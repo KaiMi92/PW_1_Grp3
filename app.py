@@ -64,7 +64,7 @@ def run_drive_modes(btnstop, btn1, btn2, btn3, btn4, btn5):
         dm2()
     elif "b-dm3" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 3"
-        dm3
+        dm3()
     elif "b-dm4" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 4"
         dm4()
@@ -72,8 +72,6 @@ def run_drive_modes(btnstop, btn1, btn2, btn3, btn4, btn5):
         msg_dm = "Ran Driving Mode 5"
         dm5()
     return msg_dm
-
-
 
 
 if __name__ == "__main__":
