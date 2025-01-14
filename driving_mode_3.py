@@ -1,5 +1,5 @@
 from soniccar import *
-def dm_3():
+def dm3():
   sc = SonicCar()
   my_speed = 40
   my_angle = 90
@@ -27,5 +27,5 @@ def dm_3():
     print("Everything ok!") 
     sc.stop()
 if __name__ == ("__main__"):
-  dm_3()
+  dm3()
   

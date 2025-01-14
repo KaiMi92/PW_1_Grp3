@@ -4,7 +4,7 @@ from sensorcar import *
 import time
 # Python Modul Statistik wird als Grundfunktion aufgerufen um statistische Werte wie Median oder Durchschnitt ermitteln zu können 
 import statistics
-def dm_5():
+def dm5():
   sc = SensorCar()
   # Setzen der Konstantwerte für Geschwindigkeit und Lenkwinkel Geradeaus, maximal Links und maximal rechts
   SPEED = 30
@@ -93,4 +93,4 @@ def dm_5():
   if __name__ == "__main__":
     main()
 if __name__ == "__main__":
-  dm_5()
+  dm5()

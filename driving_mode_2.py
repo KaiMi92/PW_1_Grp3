@@ -1,5 +1,5 @@
 from basecar import *
-def dm_2():
+def dm2():
 # initial value from basecar 
   bc = BaseCar()
   my_speed = 60
@@ -51,4 +51,4 @@ def dm_2():
     print("Everything ok!") 
     bc.stop()
 if __name__ == "__main__":
-   dm_2()
+   dm2()

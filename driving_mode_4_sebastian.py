@@ -1,6 +1,6 @@
 from soniccar import *
 import time
-def dm_4():
+def dm4():
   sc = SonicCar()
 
   STRAIGHT_FORWARD = 90
@@ -91,4 +91,4 @@ def dm_4():
   if __name__ == "__main__":
     main()
 if __name__ == "__main__":
-  dm_4()
+  dm4()

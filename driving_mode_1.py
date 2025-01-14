@@ -1,5 +1,5 @@
 from basecar import *
-def dm_1():
+def dm1():
 # initial value from basecar 
   bc = BaseCar()
   my_speed = 20
