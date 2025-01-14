@@ -6,6 +6,10 @@ import dash_bootstrap_components as dbc
 import csv
 from drivedata_KPI import *
 from driving_mode_1 import *
+from driving_mode_2 import *
+from driving_mode_3 import *
+from driving_mode_4_sebastian import *
+from driving_mode_5 import *
 
 csv_df = pd.read_csv('driving_data/driving_data.csv')
 #print(csv_df)
@@ -57,12 +61,16 @@ def run_drive_modes(btnstop, btn1, btn2, btn3, btn4, btn5):
         dm1()  
     elif "b-dm2" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 2"
+        dm2()
     elif "b-dm3" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 3"
+        dm3
     elif "b-dm4" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 4"
+        dm4()
     elif "b-dm5" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 5"
+        dm5()
     return msg_dm
 
 
