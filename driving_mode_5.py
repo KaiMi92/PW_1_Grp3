@@ -82,14 +82,16 @@ def dm5():
       angle = get_steering_angle_by_ir_values(v)
       sc.steering_angle = angle
 
-      time.sleep(0.1)
-  except Exception as e:
-    print(f"An exception occurred: {e}")
-    sc.stop()
-  finally:
-    print("Everything ok!")
-    sc.stop()
+        time.sleep(0.1)
+    except Exception as e:
+      print(f"An exception occurred: {e}")
+      sc.stop()
+    finally:
+      print("Everything ok!")
+      sc.stop()
 
+  if __name__ == "__main__":
+    main()
 if __name__ == "__main__":
   dm5()
 
