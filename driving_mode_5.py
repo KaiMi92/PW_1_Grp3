@@ -1,22 +1,43 @@
-# aus der Klasse Sensorcar werden Methoden übernommen
+""" implementation of driving mode 5
+
+implements the requirements of Code2Camp project phase 1
+
+author: Team 3 / Gen 8
+"""
 from sensorcar import *
+
 # Python Modul Zeit wird als Grundfunktion aufgerufen um später einen Zeitstempel für die gemessen Daten zu erhalten 
 import time
+
 # Python Modul Statistik wird als Grundfunktion aufgerufen um statistische Werte wie Median oder Durchschnitt ermitteln zu können 
 import statistics
 
 sc = SensorCar()
+
 # Setzen der Konstantwerte für Geschwindigkeit und Lenkwinkel Geradeaus, maximal Links und maximal rechts
 SPEED = 30
 STRAIGHT_FORWARD = 90
 MAX_TURN_LEFT = 45
 MAX_TURN_RIGHT = 135
 
-# checks if end of road is reached
-# end of roads is detected, when a black line 
-# of all sub-sensors or none of the sub-sensors
-# is detected
-def is_end_of_road(ir_values):
+# 
+# 
+def is_end_of_road(ir_values):  
+  """
+  checks if end of road is reached
+
+  end of roads is detected, when a black line 
+  of all sub-sensors or none of the sub-sensors
+  is detected
+
+  Parameters:
+      ir_values: list
+        value list of the ir-sensors
+      
+  Returns:
+      boolean: True if end of road is reached, False elsewhere
+
+  """
   eor = statistics.mean(ir_values) < 80
   if eor:
     print(f"End of road detected: {ir_values}")
@@ -24,14 +45,44 @@ def is_end_of_road(ir_values):
 
 # check if curve is too tight
 def is_curve_too_tight(ir_values):
+  """
+  Checks whether a curve is too tight.
+
+  If this is the case, a full steering lock is not enough and the vehicle must reverse.
+  A too tight curve is recognized no black line is detected. So the functions checks
+  if the minimun sensor value is bright enough.
+
+  Parameters:
+      ir_values: list
+        value list of the ir-sensors
+      
+  Returns:
+      boolean: True if curve is too tight, False elsewhere
+
+  """
   ctt = min(ir_values) > 100
   if ctt:
     print(f"Curve is too tight: {ir_values}")
   return ctt
 
 
-# get the cars speed depending on the distance to an obstacle
 def get_steering_angle_by_ir_values(ir_values):
+  """
+  Get the cars speed depending on the values of the IR sensors.
+
+  To calculate the steering angle the functions finds the mean of the indexes
+  of the minimum of the analog IR values.
+  Depending on the position the steering angle is returned.
+
+  Parameters:
+      ir_values: list
+        value list of the ir-sensors
+      
+  Returns:
+      steering_angle: int
+        steering_angle in degrees
+
+  """
   # we got a list of 5 values
   steering_angle = STRAIGHT_FORWARD
 
@@ -56,6 +107,21 @@ def get_steering_angle_by_ir_values(ir_values):
 
 # Methode main wird definiert und beschrieben
 def dm5():
+  """
+  Implements the driving mode 5 and driving mode 6.
+
+  The cars is driving in loop while not end of road is detected.
+  While driving the car is following a black line on the ground also in curves.
+  If the curve is too tight the car drives back for a short while and 
+  start driving again.
+
+  Parameters:
+      None
+      
+  Returns:
+      None
+
+  """  
   # check ir sensor
   # while True:
   #   v = sc.analog_values
