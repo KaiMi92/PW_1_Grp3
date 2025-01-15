@@ -1,8 +1,19 @@
 from basecar import *
 
-# initial value from basecar 
+'''
+initial value from basecar
+''' 
 bc = BaseCar()
 my_speed = 20
+
+'''
+try block let us try different speeds 
+  time.sleep: The command is used to set the time to be traveled
+  speed:  sets the speed between -100 and 100, with the positive
+          the positive values for driving forwards and the negative values
+          for driving backwards
+  bc.drive: imports the drive function from the basecar class
+'''
 
 try:
     print(f'Start driving - set only speed')
