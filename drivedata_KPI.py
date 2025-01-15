@@ -3,6 +3,7 @@ path = "driving_data/driving_data.csv"
 skip_var = 0
 try:
     drive_data = pd.read_csv(path)
+    skip_var = 0
 except pd.errors.EmptyDataError:
     print("CSV File empty")
     skip_var = 1
