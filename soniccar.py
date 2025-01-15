@@ -1,3 +1,11 @@
+"""Implementation in the Soniccar file
+
+The aim of this class is to complement the Sonsorcar class with the functions of distance sensors. 
+Soniccar should be available as a class later for other driving modes from projectphase 1 
+and make the other classes usable, e.g. Basecar.
+
+author: Team 3 / Gen 8
+"""
 from basecar import *
 from software.basisklassen import *
 import csv

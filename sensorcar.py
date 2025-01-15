@@ -1,8 +1,19 @@
 from soniccar import *
+"""Implementation in the Sensorcar file
+
+The aim of this class is to complement the Sensorcar class with the functions of infrared sensors. 
+Sensorcar should be available as a class later for other driving modes from projectphase 1 
+and make the other classes usable, e.g. Basecar and Sensorcar.
+
+author: Team 3 / Gen 8
+"""
 
 fieldnames = ['Time','Distance','Direction','Speed','Steering','IR-v1','IR-v2','IR-v3','IR-v4','IR-v5']
 setter_of_fieldnames = ['-','_distance','_direction','_speed','_steering_angle', '_ir_values']
 
+"""here the columns are set for time, distance, direction, speed, steering angle and values of the 5 infrared sensors.
+Then the setter is used to determine which values should be entered in which column
+"""
 # Diese Klasse verwendet den IR-Sensor
 class SensorCar(SonicCar):
     def __init__(self) -> None:
@@ -16,6 +27,13 @@ class SensorCar(SonicCar):
 
         self._ir_values = (300,300,300,300,300)
         super().__init__()
+        """ it is determined what the reference values of the IR sensors are with 300 each. 
+        A relative path is selected to call up the csv file in which the start time is 
+        to be written as the first value with the corresponding values from the sensors, 
+        steering angle and speed. 
+        with super().__init__() you want to get the distance sensors from the other class Soniccar
+        or indirectly the information from basiscar .
+        """
 
     def lists_have_same_values(self, l1, l2):
         if len(l1) != len(l2):
@@ -26,13 +44,15 @@ class SensorCar(SonicCar):
                 return False
             
         return True
+        """Not understood, a comparison is carried out but why?
+        """
 
 
     @property
     def analog_values(self):
         """
-        Getter- um die gemessenen IR-Werte in Form einer Liste auszulesen
-        Return: Liste von gemessen IR-Werten der Sensoren
+        Getter to read out the measured IR values in the form of a list
+        Return: List of measured IR values of the sensors
         """
         values = self.ir.read_analog()
 
@@ -44,8 +64,8 @@ class SensorCar(SonicCar):
     @property
     def digital_values(self):
         """
-        Getter- um die gemessenen IR-Werte in Form einer Liste auszulesen
-        Return: Liste von gemessen IR-Werten der Sensoren
+        Getter to read out the measured IR values in the form of a list
+        Return: List of measured IR values of the sensors
         """
         return self.ir.read_digital()
 
@@ -62,3 +82,7 @@ class SensorCar(SonicCar):
                 print(f"Write CSV: {data}")
         except Exception as e:
             print(f"{__name__}: An exception occurred: {e}")
+            """here the information per row, i.e. measurement time, 
+            is written to the previously defined columns in the defined CSV file. Time, Distance, 
+            Direction, Speed, Steering and the 5 IR-values
+            """
