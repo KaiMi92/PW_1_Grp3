@@ -1,4 +1,5 @@
 import pandas as pd 
+
 path = "driving_data/driving_data.csv"
 skip_var = 0
 try:
@@ -30,6 +31,7 @@ while skip_var == 0:
     print(f'Distance traveled:', distance_traveled)
     #total time
     print(f'Total time:', sum_time)
+    skip_var = 1
 
 else:
     print ("No KPI can be written")
