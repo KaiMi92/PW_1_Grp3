@@ -3,7 +3,11 @@
 ## Projekt Phase 1
 ---
 <details open>
-<summary>### Inhalt:</summary>
+<summary>
+
+### Inhalt:
+
+</summary>
 <br>
 #### Setup
 __1. Prämissen im Projekt__
