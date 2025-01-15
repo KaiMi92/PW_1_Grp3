@@ -23,6 +23,17 @@ __1. Prämissen im Projekt__
     - geteste Stände werden in das GitHub hoch geladen
     - es arbeitet immer nur eine Person an einer Datei 
 
+__2. Wichtige Befehele für die Arbeit mit VSCode und SSH Zugriff__
+    - _ssh pi@"IP-Addresse meist 192...."_ wird genutzt um den SSH-Tunnel mit VSCode das Fahrzeug zu verbinden 
+    - _git config --global user.name "NAME"_ wird benötigt damit das GIT mit dem VSCode sich richtig verbinden kann und bei Änderungen wird dieser Name angezogen
+    - _git config --global user.email "Mail für GIT-Account"_ wird benötigt damit das GIT mit dem VSCode sich richtig verbinden kann hier wird auf den Accountnamen verwiesen damit die Authentifizierung mit PW und Autorisierung über berechtigen des Main abgeglichen werden kann
+
+__3. Wir organisieren uns über das Teams-Kanban__
+    - Link zum [Teams-Kanban](https://teams.microsoft.com/l/channel/19%3AR2OxSjsLTG9wIejrneUWpBNBbmG9E2e_ixA5MWbNAPI1%40thread.tacv2/Projektphase1?groupId=53ca0eee-511b-444e-a137-5bb7c44cd11c "hier gehts zum TeamsKanal")
+    - täglicher Teamsaustausch mit [TeamsCall Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDA3OTYxNGItMWUwNy00NmQ4LTg1Y2QtM2IyZjg4NDA1ZTlk%40thread.v2/0?context=%7b%22Tid%22%3a%222882be50-2012-4d88-ac86-544124e120c8%22%2c%22Oid%22%3a%22b7920877-af64-4cf2-a78f-b53a06804c87%22%7d)
+    
+ 
+
 
 
 </details>
