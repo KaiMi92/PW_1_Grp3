@@ -41,7 +41,6 @@ def is_end_of_road(ir_values):
   eor = statistics.mean(ir_values) < 80
   if eor:
     print(f"End of road detected: {ir_values}")
-  return False
   return eor
 
 # check if curve is too tight

@@ -9,7 +9,7 @@ from driving_mode_1 import *
 from driving_mode_2 import *
 from driving_mode_3 import *
 from driving_mode_4 import *
-from driving_mode_5 import *
+from driving_mode_5 import dm5
 from basecar import BaseCar
 
 app = Dash(__name__)
@@ -35,9 +35,10 @@ app.layout = html.Div(
 @app.callback(Output("my-graph", "figure"), Input("my-dd", "value"), prevent_initial_call=True)
 def update_line_plot(dd_value):
     try:
-        csv_df = pd.read_csv('driving_data/driving_data.csv')
-        fig = px.line(csv_df, x="Time", y=dd_value)
-        return fig
+        if False:
+            csv_df = pd.read_csv('driving_data/driving_data.csv')
+            fig = px.line(csv_df, x="Time", y=dd_value)
+            return fig
     except pd.errors.EmptyDataError:
         print("CSV File empty")
     fig = px.line(csv_df, x="Time", y=dd_value)
@@ -80,8 +81,9 @@ def run_drive_modes(btnstop, bdm1, bdm2, bdm3, bdm4, bdm5):
     elif "b-dm5" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 5"
         BaseCar.finished = False
-        script_path = 'driving_mode_5.py'
-        exec(open(script_path).read())
+        dm5()
+        # script_path = 'driving_mode_5.py'
+        # exec(open(script_path).read())
     return msg_dm
 
 
