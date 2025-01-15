@@ -2,7 +2,9 @@
 ---
 ## Projekt Phase 1
 ---
-### Inhalt:
+<details open>
+<summary>### Inhalt:</summary>
+<br>
 #### Setup
 __1. Prämissen im Projekt__
     - es wird nur im VScode programmiert
@@ -10,6 +12,7 @@ __1. Prämissen im Projekt__
     - es wird mit SSH-Zugriff auf dem RasberryPi vom VSCode programmiert und getestet
     - geteste Stände werden in das GitHub hoch geladen
     - es arbeitet immer nur eine Person an einer Datei 
+</details>
 
 #### Umsetzungen
 |Anforderung | Link |
