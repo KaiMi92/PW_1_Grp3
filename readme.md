@@ -4,7 +4,7 @@
 ---
 ### Inhalt:
 #### Setup
-1. __Prämissen im Projekt_
+1. __Prämissen im Projekt__
     - es wird nur im VScode programmiert
     - die Umsetzung wird in [GITHUB] (https://github.com/KaiMi92/PW_1_Grp3) der Gruppe3 abgelegt
     - es wird mit SSH-Zugriff auf dem RasberryPi vom VSCode programmiert und getestet
