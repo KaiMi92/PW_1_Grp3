@@ -13,11 +13,6 @@ from driving_mode_5 import *
 
 app = Dash(__name__)
 
-try:
-    csv_df = pd.read_csv('driving_data/driving_data.csv')
-except pd.errors.EmptyDataError:
-    print("CSV File empty")
-
 app.layout = html.Div(
     [
         html.H1(["Drive Data Dashboard"], id="my-header"),
@@ -36,12 +31,18 @@ app.layout = html.Div(
 )
 
 
-@app.callback(Output("my-graph", "figure"), Input("my-dd", "value"))
+@app.callback(Output("my-graph", "figure"), Input("my-dd", "value"), prevent_initial_call=True)
 def update_line_plot(dd_value):
+    try:
+        csv_df = pd.read_csv('driving_data/driving_data.csv')
+        fig = px.line(csv_df, x="Time", y=dd_value)
+        return fig
+    except pd.errors.EmptyDataError:
+        print("CSV File empty")
     fig = px.line(csv_df, x="Time", y=dd_value)
     return fig
 
-@app.callback(Output('container-button-timestamp', 'children'),Input('btn-1', 'n_clicks'))
+@app.callback(Output('container-button-timestamp', 'children'),Input('btn-1', 'n_clicks'), prevent_initial_call=False)
 def displayClick(btn1):
     msg = "Empty"
     if "btn-1" == ctx.triggered_id:
@@ -53,8 +54,8 @@ def displayClick(btn1):
                )                 
     return msg
 
-@app.callback(Output("mode-container", "children"), Input("b-stop", "n_clicks"), Input("b-dm1", "n_clicks"), Input("b-dm2", "n_clicks"), Input("b-dm3", "n_clicks"), Input("b-dm4", "n_clicks"), Input("b-dm5", "n_clicks"))
-def run_drive_modes(btnstop, btn1, btn2, btn3, btn4, btn5):
+@app.callback(Output("mode-container", "children"), Input("b-stop", "n_clicks"), Input("b-dm1", "n_clicks"), Input("b-dm2", "n_clicks"), Input("b-dm3", "n_clicks"), Input("b-dm4", "n_clicks"), Input("b-dm5", "n_clicks"), prevent_initial_call=True)
+def run_drive_modes(btnstop, bdm1, bdm2, bdm3, bdm4, bdm5):
     msg_dm = "Please select a Driving Mode"
     if "b-stop" == ctx.triggered_id:
         msg_dm = "Car Stops"
@@ -72,7 +73,8 @@ def run_drive_modes(btnstop, btn1, btn2, btn3, btn4, btn5):
         dm4()
     elif "b-dm5" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 5"
-        dm5()
+        script_path = 'driving_mode_5.py'
+        exec(open(script_path).read())
     return msg_dm
 
 
