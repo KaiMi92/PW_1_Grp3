@@ -64,7 +64,7 @@ def drive_back_and_turn():
   sc.steering_angle = STRAIGHT_FORWARD
 
 
-def main():
+def dm4():
   # check ultrasonic sensor
   # while True:
   #   print(sc.get_distance())
@@ -74,20 +74,20 @@ def main():
   # d = get_first_distance()
   # my_speed = get_speed_by_distance(d)
 
-  # start driving
-  try:  
-    # sc.drive(speed = my_speed, steering_angle = STRAIGHT_FORWARD)      
-  
-    while True:
-      drive_to_the_obstacle()
-      drive_back_and_turn()
-  except Exception as e:
-    print(f"An exception occurred: {e}")
-    sc.stop()
-  finally:
-    print("Everything ok!")
-    sc.stop()
+    # start driving
+    try:  
+      # sc.drive(speed = my_speed, steering_angle = STRAIGHT_FORWARD)      
+    
+      while True:
+        drive_to_the_obstacle()
+        drive_back_and_turn()
+    except Exception as e:
+      print(f"An exception occurred: {e}")
+      sc.stop()
+    finally:
+      print("Everything ok!")
+      sc.stop()
 
 if __name__ == "__main__":
-  main()
+  dm4()
 

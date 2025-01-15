@@ -2,9 +2,10 @@
 **/config.json
 
 # Byte-compiled / optimized / DLL files
-__pycache__/
+**__pycache__/
 *.py[cod]
 *$py.class
+**.pyc
 
 # C extensions
 *.so
@@ -174,3 +175,5 @@ cython_debug/
 .pypirc
 
 .vscode
+software/__pycache__/basisklassen.cpython-37.pyc
+__pycache__/basecar.cpython-37.pyc
