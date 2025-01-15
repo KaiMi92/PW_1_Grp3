@@ -11,10 +11,9 @@ from driving_mode_3 import *
 from driving_mode_4_sebastian import *
 from driving_mode_5 import *
 
-csv_df = pd.read_csv('driving_data/driving_data.csv')
-#print(csv_df)
-stop_var = 0
 app = Dash(__name__)
+
+csv_df = pd.read_csv('driving_data/driving_data.csv')
 
 app.layout = html.Div(
     [
