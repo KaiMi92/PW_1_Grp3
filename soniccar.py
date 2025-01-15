@@ -12,11 +12,14 @@ import csv
 
 class SonicCar(BaseCar):
 
+    BaseCar.fieldnames_to_log = BaseCar.fieldnames_to_log + ["distance"]
+    BaseCar.csv_col_name_of_fieldnames = BaseCar.csv_col_name_of_fieldnames + ["Distance"]
+
     def __init__(self):
+        super().__init__()
         self._us = Ultrasonic() 
         self._distance = 0
-        self._distance = self.get_distance()
-        super().__init__()
+        self.distance = self.get_distance()
 
     ''' getter-method of distance'''
     @property   

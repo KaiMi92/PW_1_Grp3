@@ -6,6 +6,7 @@ author: Team 3 / Gen 8
 """
 from software.basisklassen import *
 import os
+import csv
 
 class BaseCar:
     """
@@ -41,15 +42,43 @@ class BaseCar:
     """
         class variable to stop the car
     """
+    
+    fieldnames_to_log = ['direction','speed','steering_angle']
+    """
+        class attribute: name of all setters which values should logged to file
+    """
 
-    def __init__(self):
+    csv_col_name_of_fieldnames = ['Direction','Speed','Steering']
+    """
+        class attribute: name of the csv-columns of all setters which values should logged to file
+    """
+
+    def __init__(self, log_filename="car_log.csv"):
         """Constructor method.
 
         The Contructor reads the config file to set individual car parameters for the 
         instantiation of the classes for the front- and the backwheels.
         Also default values are set for all attributes.
         """
+
+        # Interne Attribute direkt setzen, ohne wieder __setattr__ aufzurufen,
+        # damit wir keine Endlosschleife bekommen.
+        # object.__setattr__(self, name, value) ruft direkt das Standardverhalten von Python 
+        # zum Setzen eines Attributs auf, ohne das eigene __setattr__ noch einmal auszulösen. 
+        # Dadurch vermeidet man eine Endlosschleife, wenn man selbst __setattr__ überschrieben hat.
+        
+        # if not os.path.exists(self._log_filename):
+
         dirname = os.path.dirname(__file__)
+        filename = os.path.join(dirname, 'driving_data/driving_data.csv')      
+
+        object.__setattr__(self, "_start_time", time.time())
+        object.__setattr__(self, "_log_filename", filename)
+
+        with open(self._log_filename, mode="w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(['Time']+BaseCar.csv_col_name_of_fieldnames)
+
         filename = os.path.join(dirname, 'software/config.json')
         turning_offset = 0
         forward_A = 0
@@ -67,9 +96,60 @@ class BaseCar:
         self._fw = FrontWheels(turning_offset=turning_offset)       
         self._bw = BackWheels(forward_A=forward_A, forward_B=forward_B)
         self._bw.stop()
-        self._direction = 0
+
         self._steering_angle = 90
         self._speed = 0
+        self._direction = 0
+
+        # Jetzt "öffentliche" Attribute setzen
+        # (ruft  __setattr__ auf und schreibt damit in die CSV)
+        self.steering_angle = 90
+        self.speed = 0
+
+
+    def __setattr__(self, name, value):
+        """
+        Überschreiben von __setattr__:
+        - Loggt alle Zuweisungen an "öffentliche" Attribute (ohne führenden Unterstrich)
+          in eine CSV-Datei zusammen mit Zeitstempel.
+        - Verhindert Endlosschleifen durch Aufruf von object.__setattr__.
+        """
+
+        # Tatsächliches Setzen des Attributs
+        object.__setattr__(self, name, value)
+
+        # Prüfen, ob wir das Loggen wollen:
+        # Nicht loggen, wenn es sich um ein "privates" Attribut handelt
+        # oder speziell get_log / _log_filename / _log etc.
+        if not name.startswith("_"):
+            # print(f"__setattr__ called with {name}, {value}")
+            t = round(time.time() - self._start_time, 2)
+
+            current_values = []
+            for prop in self.fieldnames_to_log:
+                try:
+                    v = getattr(self, str.lower(prop))
+
+                    if isinstance(v, list):
+                        for x in v:
+                            current_values.append(x)
+                    else:
+                        current_values.append(v)
+                    # print(f"t = {t}, Prop = {prop}, CurrentValues = {current_values}")
+                except AttributeError:
+                    # Falls _speed etc. noch nicht existiert, None anhängen                    
+                    current_values.append(None)
+                    # abort logging if not all values are set
+                    return
+
+            row = [t] + current_values
+
+            # In CSV-Datei anhängen
+            with open(self._log_filename, mode="a", newline="", encoding="utf-8") as f:
+                writer = csv.writer(f)
+                writer.writerow(row)
+
+
 
     # def __setattr__(self, name, value):
     #     print(f"--> BaseCar setattr: set {name} to {value}")
@@ -201,4 +281,3 @@ class BaseCar:
         
         """
         self.drive(0,90)
-        BaseCar.finished = True

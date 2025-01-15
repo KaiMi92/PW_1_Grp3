@@ -44,7 +44,12 @@ class SensorCar(SonicCar):
 
     author: Team 3 / Gen 8
     """    
+
+    BaseCar.fieldnames_to_log = BaseCar.fieldnames_to_log + ["analog_values"]
+    BaseCar.csv_col_name_of_fieldnames = BaseCar.csv_col_name_of_fieldnames + ['IR-v1','IR-v2','IR-v3','IR-v4','IR-v5']
+
     def __init__(self) -> None:
+        super().__init__()
         self.ir = Infrared()
         self._start_time = time.time()
         dirname = os.path.dirname(__file__)
@@ -54,7 +59,6 @@ class SensorCar(SonicCar):
         self._writer.writeheader()  
 
         self._ir_values = (300,300,300,300,300)
-        super().__init__()
         """ it is determined what the reference values of the IR sensors are with 300 each. 
         A relative path is selected to call up the csv file in which the start time is 
         to be written as the first value with the corresponding values from the sensors, 
@@ -110,29 +114,29 @@ class SensorCar(SonicCar):
         return self.ir.read_digital()
 
     
-    def __setattr__(self, name, value):
-        """
-        __setattr__ is one magic function which is called every time a setter is called
+    # def __setattr__(self, name, value):
+    #     """
+    #     __setattr__ is one magic function which is called every time a setter is called
 
-        With this implementation the standard function is overwritten to write every call
-        of a setter function in the driving log file. Therefore this function checks if the 
-        name of the variable is a part of setter_of_fieldnames
+    #     With this implementation the standard function is overwritten to write every call
+    #     of a setter function in the driving log file. Therefore this function checks if the 
+    #     name of the variable is a part of setter_of_fieldnames
 
-        Parameters:
-            name: name of the variable to set
-            value: value which should be set
-        """
-        try:
-            object.__setattr__(self, name, value)
+    #     Parameters:
+    #         name: name of the variable to set
+    #         value: value which should be set
+    #     """
+    #     try:
+    #         object.__setattr__(self, name, value)
 
-            if name in setter_of_fieldnames:
-                t = round(time.time() - self._start_time, 2)
-                data = [{'Time': t, 'Distance': self._distance, 'Direction': self._direction, 'Speed': self._speed, 'Steering': self._steering_angle, 'IR-v1': self._ir_values[0], 'IR-v2': self._ir_values[1], 'IR-v3': self._ir_values[2], 'IR-v4': self._ir_values[3], 'IR-v5': self._ir_values[4]}]
-                self._writer.writerows(data)
-                print(f"Write CSV: {data}")
-        except Exception as e:
-            print(f"{__name__}: An exception occurred: {e}")
-            """here the information per row, i.e. measurement time, 
-            is written to the previously defined columns in the defined CSV file. Time, Distance, 
-            Direction, Speed, Steering and the 5 IR-values
-            """
+    #         if name in setter_of_fieldnames:
+    #             t = round(time.time() - self._start_time, 2)
+    #             data = [{'Time': t, 'Distance': self._distance, 'Direction': self._direction, 'Speed': self._speed, 'Steering': self._steering_angle, 'IR-v1': self._ir_values[0], 'IR-v2': self._ir_values[1], 'IR-v3': self._ir_values[2], 'IR-v4': self._ir_values[3], 'IR-v5': self._ir_values[4]}]
+    #             self._writer.writerows(data)
+    #             print(f"Write CSV: {data}")
+    #     except Exception as e:
+    #         print(f"{__name__}: An exception occurred: {e}")
+    #         """here the information per row, i.e. measurement time, 
+    #         is written to the previously defined columns in the defined CSV file. Time, Distance, 
+    #         Direction, Speed, Steering and the 5 IR-values
+    #         """
