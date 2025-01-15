@@ -109,12 +109,12 @@ def drive_back_and_turn():
 
 
 def dm4():
-    """
-    Fahrmodus 4: Autonom Hindernisvermeiden
-
-    Das Auto wechselt zwischen or und rückwärts fahren und stoppen um hindernisse zu umgehen.
-    Nach einem erkannten hinderniss stoppt das auto und fährt rückwärts, um dann die fahrt vorwärts fotzusetzen.
-    Dies ist ein endlos modus der mauell unterbrochen werden muss, oder bis ein fehler auftritt.
+    """   
+    Driving Mode 4: Autonomous obstacle avoidance.
+    
+    The car alternates between driving forward and stopping at obstacles, 
+    followed by a reversing and turning maneuver to avoid obstacles.
+    This driving loop continues until manually interrupted or an exception occurs.
     """
   # check ultrasonic sensor
   # while True:
