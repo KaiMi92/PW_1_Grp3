@@ -2,13 +2,13 @@
 ---
 ## Projekt Phase 1
 ---
-<details open>
-<summary>
+
 
 ### Inhalt:
 
-</summary>
-<br>
+
+<details open>
+<summary>
 
 #### Setup
 __1. Prämissen im Projekt__
@@ -18,6 +18,9 @@ __1. Prämissen im Projekt__
     - geteste Stände werden in das GitHub hoch geladen
     - es arbeitet immer nur eine Person an einer Datei 
 
+</summary>
+<br>
+</details>
 
 #### Umsetzungen
 |Anforderung | Link |
@@ -26,5 +29,5 @@ __1. Prämissen im Projekt__
 #### Arbeitsweise
 #### Erkenntnisse
 
-</details>
+
 
