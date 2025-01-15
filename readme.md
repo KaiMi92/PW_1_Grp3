@@ -17,3 +17,8 @@ __1. Prämissen im Projekt__
 |Fahrmodus1  |[Link](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250108_Fahrmodus1.mp4?csf=1&web=1&e=MLjlMT)|
 #### Arbeitsweise
 #### Erkenntnisse
+<details open>
+<summary>Want to ruin the surprise?</summary>
+<br>
+Well, you asked for it!
+</details>
