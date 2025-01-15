@@ -129,7 +129,7 @@ def dm4():
     try:  
       # sc.drive(speed = my_speed, steering_angle = STRAIGHT_FORWARD)      
     
-      while True:
+      while not BaseCar.finished:
         drive_to_the_obstacle()
         drive_back_and_turn()
     except Exception as e:

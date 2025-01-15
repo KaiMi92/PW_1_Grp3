@@ -41,6 +41,7 @@ def is_end_of_road(ir_values):
   eor = statistics.mean(ir_values) < 80
   if eor:
     print(f"End of road detected: {ir_values}")
+  return False
   return eor
 
 # check if curve is too tight
@@ -133,7 +134,7 @@ def dm5():
   try:  
     sc.drive(speed = SPEED, steering_angle = STRAIGHT_FORWARD)      
   # Schleife wenn alle InfrarotSensoren dunkel sind stopt das Auto der Wert in v wird abgeglichen
-    while True:
+    while not BaseCar.finished:
       v = sc.analog_values
 
       if is_end_of_road(v):

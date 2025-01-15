@@ -25,7 +25,7 @@ def dm3():
     sc.drive(speed = my_speed, steering_angle = STRAIGHT_FORWARD)      
     
     
-    while True:
+    while not BaseCar.finished:
       d = sc.get_distance()
       if d < MIN_DISTANCE and d > 0:
         sc.stop()

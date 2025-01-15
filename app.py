@@ -10,6 +10,7 @@ from driving_mode_2 import *
 from driving_mode_3 import *
 from driving_mode_4 import *
 from driving_mode_5 import *
+from basecar import BaseCar
 
 app = Dash(__name__)
 
@@ -59,20 +60,26 @@ def run_drive_modes(btnstop, bdm1, bdm2, bdm3, bdm4, bdm5):
     msg_dm = "Please select a Driving Mode"
     if "b-stop" == ctx.triggered_id:
         msg_dm = "Car Stops"
+        BaseCar.finished = True
     elif "b-dm1" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 1" 
+        BaseCar.finished = False
         dm1()  
     elif "b-dm2" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 2"
+        BaseCar.finished = False
         dm2()
     elif "b-dm3" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 3"
+        BaseCar.finished = False
         dm3()
     elif "b-dm4" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 4"
+        BaseCar.finished = False
         dm4()
     elif "b-dm5" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 5"
+        BaseCar.finished = False
         script_path = 'driving_mode_5.py'
         exec(open(script_path).read())
     return msg_dm

@@ -36,6 +36,12 @@ class BaseCar:
         start moving the car with the given parameters
     """
 
+    
+    finished = False
+    """
+        class variable to stop the car
+    """
+
     def __init__(self):
         """Constructor method.
 
@@ -195,3 +201,4 @@ class BaseCar:
         
         """
         self.drive(0,90)
+        BaseCar.finished = True
