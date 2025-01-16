@@ -61,7 +61,7 @@ __3. Wir organisieren uns über das Teams-Kanban__
 
 __Strecken Aufbau__
 
-![Bildbeschreibung](https://ibb.co/mRnmM9J)
+![Bildbeschreibung](https://i.ibb.co/Pr2Rfcx/Fliesenfahrstrecke-Frank.jpg)
 
 ![Bildbeschreibung](https://ibb.co/vdV6J3M)
 
