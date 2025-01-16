@@ -14,8 +14,6 @@ import statistics
 
 import random
 
-sc = SensorCar()
-
 # Setzen der Konstantwerte für Geschwindigkeit und Lenkwinkel Geradeaus, maximal Links und maximal rechts
 SPEED = 30
 STRAIGHT_FORWARD = 90
@@ -193,6 +191,8 @@ def dm5():
       None
 
   """  
+  sc = SensorCar()
+
   # check ir sensor
   # while True:
   #   v = sc.analog_values

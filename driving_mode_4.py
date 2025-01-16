@@ -7,9 +7,6 @@ author: Tema 3 / Gen 8
 from soniccar import *
 import time
 
-
-sc = SonicCar()
-
 STRAIGHT_FORWARD = 90
 MIN_DISTANCE = 20
 MAX_TURN_LEFT = 45
@@ -42,7 +39,7 @@ def get_speed_by_distance(dist):
 
 
 # try to get distance for max 5 seconds
-def get_distance_with_timeout():
+def get_distance_with_timeout(sc):
   """
   Measuring the distance to the obstacle using the ultrasonic sensor.
 
@@ -69,7 +66,7 @@ def get_distance_with_timeout():
 
 
 # drive and stop before crash with an obstacle
-def drive_to_the_obstacle():
+def drive_to_the_obstacle(sc):
 
   """
   The Car drives forward until an obstacle is detected within the minimum distance
@@ -79,7 +76,7 @@ def drive_to_the_obstacle():
   """
   # sc.drive(speed = get_speed_by_distance(get_distance_with_timeout()), steering_angle = STRAIGHT_FORWARD)
   while True:
-    d = get_distance_with_timeout()
+    d = get_distance_with_timeout(sc)
     if d > 0 and d < MIN_DISTANCE:
       sc.stop()
       time.sleep(0.1)
@@ -96,7 +93,7 @@ def drive_to_the_obstacle():
 
 
 # drive back for # seconds with steering MAX_TURN_LEFT
-def drive_back_and_turn():
+def drive_back_and_turn(sc):
 
   """
   Executes a reversing maneuver followed by a turn.
@@ -119,6 +116,9 @@ def dm4():
     followed by a reversing and turning maneuver to avoid obstacles.
     This driving loop continues until manually interrupted or an exception occurs.
     """
+
+    sc = SonicCar()
+
   # check ultrasonic sensor
   # while True:
   #   print(sc.get_distance())
@@ -133,8 +133,8 @@ def dm4():
       # sc.drive(speed = my_speed, steering_angle = STRAIGHT_FORWARD)      
     
       while not BaseCar.finished:
-        drive_to_the_obstacle()
-        drive_back_and_turn()
+        drive_to_the_obstacle(sc)
+        drive_back_and_turn(sc)
     except Exception as e:
       print(f"An exception occurred: {e}")
       sc.stop()
