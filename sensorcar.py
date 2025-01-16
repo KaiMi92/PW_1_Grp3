@@ -55,6 +55,7 @@ class SensorCar(SonicCar):
     def __init__(self) -> None:
         super().__init__()
         self.ir = Infrared()
+        self.cali_ir()
         self._start_time = time.time()
         dirname = os.path.dirname(__file__)
         filename = os.path.join(dirname, 'driving_data/driving_data.csv')        
@@ -62,7 +63,7 @@ class SensorCar(SonicCar):
         self._writer = csv.DictWriter( self._csv_file, fieldnames=fieldnames)
         self._writer.writeheader()  
 
-        self._ir_values = (300,300,300,300,300)
+        # self._ir_values = (300,300,300,300,300)
         #print('Test', _ir_values)
         """ it is determined what the reference values of the IR sensors are with 300 each. 
         A relative path is selected to call up the csv file in which the start time is 
@@ -131,9 +132,8 @@ class SensorCar(SonicCar):
         max_ir = max(ir_measurement)
         average_ir = (min_ir + max_ir) / 2
         new_list_ir = [average_ir] * 5
-        self._ir_values = new_list_ir
-       
-        
+        self.ir.set_references(new_list_ir)
+        print(f"Calibrated values: {self.ir._references}")
 
     
     # def __setattr__(self, name, value):
