@@ -46,10 +46,12 @@ class SensorCar(SonicCar):
     author: Team 3 / Gen 8
     """    
 
-    BaseCar.fieldnames_to_log = BaseCar.fieldnames_to_log + ["analog_values"]
-    BaseCar.csv_col_name_of_fieldnames = BaseCar.csv_col_name_of_fieldnames + ['IR-v1','IR-v2','IR-v3','IR-v4','IR-v5']
+    fieldnames_to_log = BaseCar.fieldnames_to_log + ["analog_values"]
+    csv_col_name_of_fieldnames = BaseCar.csv_col_name_of_fieldnames + ['IR-v1','IR-v2','IR-v3','IR-v4','IR-v5']
 
     def __init__(self) -> None:
+        #BaseCar.fieldnames_to_log = BaseCar.fieldnames_to_log + ["analog_values"]
+        #BaseCar.csv_col_name_of_fieldnames = BaseCar.csv_col_name_of_fieldnames + ['IR-v1','IR-v2','IR-v3','IR-v4','IR-v5']
         super().__init__()
         self.ir = Infrared()
         self.cali_ir()

@@ -77,7 +77,7 @@ class BaseCar:
 
         with open(self._log_filename, mode="w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow(['Time']+BaseCar.csv_col_name_of_fieldnames)
+            writer.writerow(['Time']+self.csv_col_name_of_fieldnames)
 
         filename = os.path.join(dirname, 'software/config.json')
         turning_offset = 0

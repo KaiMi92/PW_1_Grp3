@@ -12,10 +12,12 @@ import csv
 
 class SonicCar(BaseCar):
 
-    BaseCar.fieldnames_to_log = BaseCar.fieldnames_to_log + ["distance"]
-    BaseCar.csv_col_name_of_fieldnames = BaseCar.csv_col_name_of_fieldnames + ["Distance"]
+    fieldnames_to_log = BaseCar.fieldnames_to_log + ["distance"]
+    csv_col_name_of_fieldnames = BaseCar.csv_col_name_of_fieldnames + ["Distance"]
 
     def __init__(self):
+        #BaseCar.fieldnames_to_log = BaseCar.fieldnames_to_log + ["distance"]
+        #BaseCar.csv_col_name_of_fieldnames = BaseCar.csv_col_name_of_fieldnames + ["Distance"]
         super().__init__()
         self._us = Ultrasonic() 
         self._distance = 0
