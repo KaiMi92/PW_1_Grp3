@@ -61,15 +61,23 @@ __3. Wir organisieren uns über das Teams-Kanban__
 
 __Strecken Aufbau__
 
-![Bildbeschreibung](https://i.ibb.co/Pr2Rfcx/Fliesenfahrstrecke-Frank.jpg)
 
-![Bildbeschreibung](https://ibb.co/vdV6J3M)
 
-<image src="https://www.generali.de/resource/image/18270/landscape_ratio3x2/576/384/2027b47327d0430f4e6437d290a205ac/2757B5EBD9B63A3994BF5F0504A347E3/bild-herostage-rechtsschutzversicherung.jpg" alt="Franks Strecke">
 
 #### Arbeitsweise
 
 #### Erkenntnisse
+
+__Stabile Heligkeitsverhältnisse könnten durch eine dauerhafte und konstante Beleuchtung erreicht werden. Hier einmal eine Lösungsvorschläg like Macgyver ;)__
+
+![Bildbeschreibung](https://i.ibb.co/QHp36Px/Licht-auf-Fahrzeug.jpg)
+
+__Strecken mit dunklen Strichen beispielsweise Fliesen führen zu Problemen da die Fugen als dunkle Fahrbahn erkannt werden__
+
+![Bildbeschreibung](https://i.ibb.co/Pr2Rfcx/Fliesenfahrstrecke-Frank.jpg)
+
+[Fahrmodi6 auf Fliesen](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6_Fliesen_geht_nicht.mp4?csf=1&web=1&e=uv3Nol)
+
 
 
 
