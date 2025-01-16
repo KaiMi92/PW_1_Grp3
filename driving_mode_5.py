@@ -151,7 +151,6 @@ def get_steering_angle_by_digital_ir_values(ir_values):
   max_val_idxs = [ x for x in range(len(ir_values)) if ir_values[x] == max(ir_values)]
   # calculate the mean of all positions of the minimum
   max_pos = get_average(max_val_idxs)
-  print(f"{ir_values} -> max_pos = {max_pos}")
   # hier wird ermittelt welcher der Infrarotsensoren den höchste Wert hat bzw. auf den Klebestreifen schaut und entsprechen ein Winkel eingeschlagen um das Fahrzeug in der Mitte des Streifens zu halten
 
   #  max_pos = 4 --> 45 (MAX_TURN_LEFT)
@@ -169,7 +168,7 @@ def get_steering_angle_by_digital_ir_values(ir_values):
     new_speed = SPEED  
 
   # print(f"{ir_values} -> max_pos = {max_pos}, turn to {steering_angle}")
-  print(f"{ir_values} -> max_pos = {max_pos}, percentage to {percentage}, turn to {steering_angle}")
+  print(f"{ir_values}, max_pos = {max_pos}, % = {percentage}, angle = {steering_angle}, speed = {new_speed}")
   return steering_angle, new_speed
 
 
