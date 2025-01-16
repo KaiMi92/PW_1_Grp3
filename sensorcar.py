@@ -11,6 +11,10 @@ Attributes:
 author: Team 3 / Gen 8
 """
 from soniccar import *
+from software.basisklassen import *
+import pandas as pd 
+import numpy as np
+import statistics
 """Implementation in the Sensorcar file
 
 The aim of this class is to complement the Sensorcar class with the functions of infrared sensors. 
@@ -59,6 +63,7 @@ class SensorCar(SonicCar):
         self._writer.writeheader()  
 
         self._ir_values = (300,300,300,300,300)
+        #print('Test', _ir_values)
         """ it is determined what the reference values of the IR sensors are with 300 each. 
         A relative path is selected to call up the csv file in which the start time is 
         to be written as the first value with the corresponding values from the sensors, 
@@ -112,6 +117,23 @@ class SensorCar(SonicCar):
         Return: List of measured IR values of the sensors
         """
         return self.ir.read_digital()
+
+    def cali_ir(self):
+        '''
+        Method for calibrating the infrared sensors
+        After 100 measurements, we look for the minimum and maximum
+        values of the individual infrared sensors and form an average value from the values
+        average value which is displayed as a list. With this list
+        we overwrite the start values.
+        '''
+        ir_measurement = self.ir.get_average(100)
+        min_ir = min(ir_measurement)
+        max_ir = max(ir_measurement)
+        average_ir = (min_ir + max_ir) / 2
+        new_list_ir = [average_ir] * 5
+        self._ir_values = new_list_ir
+       
+        
 
     
     # def __setattr__(self, name, value):
