@@ -70,6 +70,7 @@ def get_distance_with_timeout():
 
 # drive and stop before crash with an obstacle
 def drive_to_the_obstacle():
+
   """
   The Car drives forward until an obstacle is detected within the minimum distance
   
@@ -96,6 +97,7 @@ def drive_to_the_obstacle():
 
 # drive back for # seconds with steering MAX_TURN_LEFT
 def drive_back_and_turn():
+
   """
   Executes a reversing maneuver followed by a turn.
 

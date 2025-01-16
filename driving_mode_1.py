@@ -1,5 +1,5 @@
 from basecar import *
-
+import time
 '''
 try block let us try different speeds 
   time.sleep: The command is used to set the time to be traveled
@@ -17,7 +17,6 @@ def dm1():
 
   bc = BaseCar()
   my_speed = 20
-
 
   try:
       print(f'Start driving - set only speed')

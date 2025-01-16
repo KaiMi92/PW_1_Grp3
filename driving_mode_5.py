@@ -68,6 +68,8 @@ def is_curve_too_tight(ir_values):
 
 
 def get_steering_angle_by_ir_values(ir_values):
+
+
   """
   Get the cars speed depending on the values of the IR sensors.
 
@@ -108,6 +110,7 @@ def get_steering_angle_by_ir_values(ir_values):
 
 # Methode main wird definiert und beschrieben
 def dm5():
+
   """
   Implements the driving mode 5 and driving mode 6.
 

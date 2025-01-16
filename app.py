@@ -3,13 +3,14 @@ import pandas as pd
 import plotly.express as px
 import dash_bootstrap_components as dbc
 import csv
+import time
+import statistics
+from soniccar import *
+#from sensorcar import *
 #from drivedata_KPI import *
-from driving_mode_1 import dm1
-from driving_mode_2 import dm2
-from driving_mode_3 import dm3
-from driving_mode_4 import dm4
-from driving_mode_5 import dm5
 from basecar import BaseCar
+from driving_mode_4 import get_speed_by_distance,get_distance_with_timeout,drive_to_the_obstacle,drive_back_and_turn
+#from driving_mode_5 import get_steering_angle_by_ir_values,is_curve_too_tight,is_end_of_road
 
 app = Dash(__name__)
 
@@ -31,28 +32,28 @@ app.layout = html.Div(
 )
 
 
-@app.callback(Output("my-graph", "figure"), Input("my-dd", "value"), prevent_initial_callbacks=True)
-def update_line_plot(dd_value):
-    try:
-        csv_df = pd.read_csv('driving_data/driving_data.csv')
-        fig = px.line(csv_df, x="Time", y=dd_value)
-        return fig
-    except pd.errors.EmptyDataError:
-        print("CSV File empty")
-    fig = px.line(csv_df, x="Time", y=dd_value)
-    return fig
+# @app.callback(Output("my-graph", "figure"), Input("my-dd", "value"), prevent_initial_callbacks=True)
+# def update_line_plot(dd_value):
+#     try:
+#         csv_df = pd.read_csv('driving_data/driving_data.csv')
+#         fig = px.line(csv_df, x="Time", y=dd_value)
+#         return fig
+#     except pd.errors.EmptyDataError:
+#         print("CSV File empty")
+#     fig = px.line(csv_df, x="Time", y=dd_value)
+#     return fig
 
-@app.callback(Output('container-button-timestamp', 'children'),Input('btn-1', 'n_clicks'), prevent_initial_callbacks=True)
-def displayClick(btn1):
-    msg = "Empty"
-    if "btn-1" == ctx.triggered_id:
-        msg = ("Max Speed :",round(max_speed, 2), ' | ' ,               # \n for new Row doesnt work...
-               "Min Speed :",round(min_speed, 2), ' | ' ,
-               "Average Speed :", round(average_speed, 2), ' | ' ,
-               "Distance Traveled :",round(distance_traveled, 2), ' | ' ,
-               "Total Time :", round(sum_time,2)
-               )                 
-    return msg
+# @app.callback(Output('container-button-timestamp', 'children'),Input('btn-1', 'n_clicks'), prevent_initial_callbacks=True)
+# def displayClick(btn1):
+#     msg = "Empty"
+#     if "btn-1" == ctx.triggered_id:
+#         msg = ("Max Speed :",round(max_speed, 2), ' | ' ,               # \n for new Row doesnt work...
+#                "Min Speed :",round(min_speed, 2), ' | ' ,
+#                "Average Speed :", round(average_speed, 2), ' | ' ,
+#                "Distance Traveled :",round(distance_traveled, 2), ' | ' ,
+#                "Total Time :", round(sum_time,2)
+#                )                 
+#     return msg
 
 @app.callback(Output("mode-container", "children"), Input("b-stop", "n_clicks"), Input("b-dm1", "n_clicks"), Input("b-dm2", "n_clicks"), Input("b-dm3", "n_clicks"), Input("b-dm4", "n_clicks"), Input("b-dm5", "n_clicks"), prevent_initial_callbacks=True)
 def run_drive_modes(btnstop, bdm1, bdm2, bdm3, bdm4, bdm5):
@@ -63,23 +64,28 @@ def run_drive_modes(btnstop, bdm1, bdm2, bdm3, bdm4, bdm5):
     elif "b-dm1" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 1" 
         BaseCar.finished = False
-        dm1()
+        script_path = 'driving_mode_1.py'
+        exec(open(script_path).read())  
     elif "b-dm2" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 2"
         BaseCar.finished = False
-        dm2()
+        script_path = 'driving_mode_2.py'
+        exec(open(script_path).read())
     elif "b-dm3" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 3"
         BaseCar.finished = False
-        dm3()
+        script_path = 'driving_mode_3.py'
+        exec(open(script_path).read())
     elif "b-dm4" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 4"
         BaseCar.finished = False
-        dm4()
+        script_path = 'driving_mode_4.py'
+        exec(open(script_path).read())
     elif "b-dm5" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 5"
         BaseCar.finished = False
-        dm5()
+        script_path = 'driving_mode_5.py'
+        exec(open(script_path).read())
     return msg_dm
 
 
