@@ -1,13 +1,6 @@
 from basecar import *
 
 '''
-initial value from basecar
-''' 
-bc = BaseCar()
-my_speed = 60
-my_angle = 135
-
-'''
 try block let us try different speeds 
   bc.drive: imports the driving and steering functions from the basecar class
   steering_angle:   45 degrees -> maximum steering angle to the left
@@ -16,6 +9,16 @@ try block let us try different speeds
                     
 '''
 def dm2():
+  
+  '''
+  initial value from basecar
+  ''' 
+
+  bc = BaseCar()
+  my_speed = 60
+  my_angle = 135
+
+
   try:
     
     if not BaseCar.finished:

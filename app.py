@@ -5,10 +5,10 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 import csv
 from drivedata_KPI import *
-from driving_mode_1 import *
-from driving_mode_2 import *
-from driving_mode_3 import *
-from driving_mode_4 import *
+from driving_mode_1 import dm1
+from driving_mode_2 import dm2
+from driving_mode_3 import dm3
+from driving_mode_4 import dm4
 from driving_mode_5 import dm5
 from basecar import BaseCar
 
@@ -35,10 +35,9 @@ app.layout = html.Div(
 @app.callback(Output("my-graph", "figure"), Input("my-dd", "value"), prevent_initial_call=True)
 def update_line_plot(dd_value):
     try:
-        if False:
-            csv_df = pd.read_csv('driving_data/driving_data.csv')
-            fig = px.line(csv_df, x="Time", y=dd_value)
-            return fig
+        csv_df = pd.read_csv('driving_data/driving_data.csv')
+        fig = px.line(csv_df, x="Time", y=dd_value)
+        return fig
     except pd.errors.EmptyDataError:
         print("CSV File empty")
     fig = px.line(csv_df, x="Time", y=dd_value)
@@ -65,25 +64,28 @@ def run_drive_modes(btnstop, bdm1, bdm2, bdm3, bdm4, bdm5):
     elif "b-dm1" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 1" 
         BaseCar.finished = False
-        dm1()  
+        script_path = 'driving_mode_1.py'
+        exec(open(script_path).read())  
     elif "b-dm2" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 2"
         BaseCar.finished = False
-        dm2()
+        script_path = 'driving_mode_2.py'
+        exec(open(script_path).read())
     elif "b-dm3" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 3"
         BaseCar.finished = False
-        dm3()
+        script_path = 'driving_mode_3.py'
+        exec(open(script_path).read())
     elif "b-dm4" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 4"
         BaseCar.finished = False
-        dm4()
+        script_path = 'driving_mode_4.py'
+        exec(open(script_path).read())
     elif "b-dm5" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 5"
         BaseCar.finished = False
-        dm5()
-        # script_path = 'driving_mode_5.py'
-        # exec(open(script_path).read())
+        script_path = 'driving_mode_5.py'
+        exec(open(script_path).read())
     return msg_dm
 
 
