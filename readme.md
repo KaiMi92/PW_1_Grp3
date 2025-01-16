@@ -68,13 +68,13 @@ __Strecken Aufbau__
 
 #### Erkenntnisse
 
-__Stabile Heligkeitsverhältnisse könnten durch eine dauerhafte und konstante Beleuchtung erreicht werden. Hier einmal eine Lösungsvorschläg like Macgyver ;)__
+__1. Stabile Heligkeitsverhältnisse könnten durch eine dauerhafte und konstante Beleuchtung erreicht werden. Hier einmal eine Lösungsvorschläg like Macgyver ;)__
 
 ![Bildbeschreibung](https://i.ibb.co/QHp36Px/Licht-auf-Fahrzeug.jpg)
 
 ![Bildbeschreibung](https://img-9gag-fun.9cache.com/photo/anjxO30_460s.jpg)
 
-__Strecken mit dunklen Strichen beispielsweise Fliesen führen zu Problemen da die Fugen als dunkle Fahrbahn erkannt werden__
+__2. Strecken mit dunklen Strichen beispielsweise Fliesen führen zu Problemen da die Fugen als dunkle Fahrbahn erkannt werden__
 
 ![Bildbeschreibung](https://i.ibb.co/Pr2Rfcx/Fliesenfahrstrecke-Frank.jpg)
 
