@@ -61,7 +61,9 @@ __3. Wir organisieren uns über das Teams-Kanban__
 
 __Strecken Aufbau__
 
-![Bildbeschreibung](https://volkswagengroup.sharepoint.com/:i:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Bilder/Fliesenfahrstrecke_Frank.jpg?csf=1&web=1&e=39d34q)
+![Bildbeschreibung](https://ibb.co/mRnmM9J)
+
+![Bildbeschreibung](https://ibb.co/vdV6J3M)
 
 <image src="https://www.generali.de/resource/image/18270/landscape_ratio3x2/576/384/2027b47327d0430f4e6437d290a205ac/2757B5EBD9B63A3994BF5F0504A347E3/bild-herostage-rechtsschutzversicherung.jpg" alt="Franks Strecke">
 
