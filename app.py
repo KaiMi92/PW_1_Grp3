@@ -1,10 +1,9 @@
 from dash import Dash, html, dcc, Input, Output, State, ctx, callback
 import pandas as pd
 import plotly.express as px
-#from basecar import Auto
 import dash_bootstrap_components as dbc
 import csv
-from drivedata_KPI import *
+#from drivedata_KPI import *
 from driving_mode_1 import dm1
 from driving_mode_2 import dm2
 from driving_mode_3 import dm3
@@ -32,7 +31,7 @@ app.layout = html.Div(
 )
 
 
-@app.callback(Output("my-graph", "figure"), Input("my-dd", "value"), prevent_initial_call=True)
+@app.callback(Output("my-graph", "figure"), Input("my-dd", "value"), prevent_initial_callbacks=True)
 def update_line_plot(dd_value):
     try:
         csv_df = pd.read_csv('driving_data/driving_data.csv')
@@ -43,7 +42,7 @@ def update_line_plot(dd_value):
     fig = px.line(csv_df, x="Time", y=dd_value)
     return fig
 
-@app.callback(Output('container-button-timestamp', 'children'),Input('btn-1', 'n_clicks'), prevent_initial_call=False)
+@app.callback(Output('container-button-timestamp', 'children'),Input('btn-1', 'n_clicks'), prevent_initial_callbacks=True)
 def displayClick(btn1):
     msg = "Empty"
     if "btn-1" == ctx.triggered_id:
@@ -55,7 +54,7 @@ def displayClick(btn1):
                )                 
     return msg
 
-@app.callback(Output("mode-container", "children"), Input("b-stop", "n_clicks"), Input("b-dm1", "n_clicks"), Input("b-dm2", "n_clicks"), Input("b-dm3", "n_clicks"), Input("b-dm4", "n_clicks"), Input("b-dm5", "n_clicks"), prevent_initial_call=True)
+@app.callback(Output("mode-container", "children"), Input("b-stop", "n_clicks"), Input("b-dm1", "n_clicks"), Input("b-dm2", "n_clicks"), Input("b-dm3", "n_clicks"), Input("b-dm4", "n_clicks"), Input("b-dm5", "n_clicks"), prevent_initial_callbacks=True)
 def run_drive_modes(btnstop, bdm1, bdm2, bdm3, bdm4, bdm5):
     msg_dm = "Please select a Driving Mode"
     if "b-stop" == ctx.triggered_id:
@@ -64,28 +63,23 @@ def run_drive_modes(btnstop, bdm1, bdm2, bdm3, bdm4, bdm5):
     elif "b-dm1" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 1" 
         BaseCar.finished = False
-        script_path = 'driving_mode_1.py'
-        exec(open(script_path).read())  
+        dm1()
     elif "b-dm2" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 2"
         BaseCar.finished = False
-        script_path = 'driving_mode_2.py'
-        exec(open(script_path).read())
+        dm2()
     elif "b-dm3" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 3"
         BaseCar.finished = False
-        script_path = 'driving_mode_3.py'
-        exec(open(script_path).read())
+        dm3()
     elif "b-dm4" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 4"
         BaseCar.finished = False
-        script_path = 'driving_mode_4.py'
-        exec(open(script_path).read())
+        dm4()
     elif "b-dm5" == ctx.triggered_id:
         msg_dm = "Ran Driving Mode 5"
         BaseCar.finished = False
-        script_path = 'driving_mode_5.py'
-        exec(open(script_path).read())
+        dm5()
     return msg_dm
 
 
