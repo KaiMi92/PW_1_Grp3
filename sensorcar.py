@@ -10,11 +10,11 @@ Attributes:
 
 author: Team 3 / Gen 8
 """
+from basecar import *
 from soniccar import *
 from software.basisklassen import *
 import pandas as pd 
 import numpy as np
-import statistics
 """Implementation in the Sensorcar file
 
 The aim of this class is to complement the Sensorcar class with the functions of infrared sensors. 
@@ -23,9 +23,6 @@ and make the other classes usable, e.g. Basecar and Sensorcar.
 
 author: Team 3 / Gen 8
 """
-
-fieldnames = ['Time','Distance','Direction','Speed','Steering','IR-v1','IR-v2','IR-v3','IR-v4','IR-v5']
-setter_of_fieldnames = ['-','_distance','_direction','_speed','_steering_angle', '_ir_values']
 
 class SensorCar(SonicCar):
     """SensorCar implementation
@@ -56,15 +53,8 @@ class SensorCar(SonicCar):
         super().__init__()
         self.ir = Infrared()
         self.cali_ir()
-        self._start_time = time.time()
-        dirname = os.path.dirname(__file__)
-        filename = os.path.join(dirname, 'driving_data/driving_data.csv')        
-        self._csv_file = open(filename, 'w', newline='')
-        self._writer = csv.DictWriter( self._csv_file, fieldnames=fieldnames)
-        self._writer.writeheader()  
+        self._ir_values = (300,300,300,300,300)
 
-        # self._ir_values = (300,300,300,300,300)
-        #print('Test', _ir_values)
         """ it is determined what the reference values of the IR sensors are with 300 each. 
         A relative path is selected to call up the csv file in which the start time is 
         to be written as the first value with the corresponding values from the sensors, 
@@ -117,6 +107,11 @@ class SensorCar(SonicCar):
         Getter to read out the measured IR values in the form of a list
         Return: List of measured IR values of the sensors
         """
+        values = self.ir.read_digital()
+
+        if not self.lists_have_same_values(self._ir_values, values):
+            self._ir_values = values
+
         return self.ir.read_digital()
 
     def cali_ir(self):
