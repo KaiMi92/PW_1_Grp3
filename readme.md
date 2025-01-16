@@ -57,7 +57,10 @@ __3. Wir organisieren uns über das Teams-Kanban__
 |Fahrmodus3  |[Video3](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250110_Fahrmodus3.mp4?csf=1&web=1&e=sfGf63)|
 |Fahrmodus4  |[Video4](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250110_Fahrmodus4_Sebastian.mp4?csf=1&web=1&e=UEeFVN)|
 |Fahrmodus5  |[Video5](...)|
-|Fahrmodus6  |[Video6](...)|
+|Fahrmodus6  |[Video6](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6.mp4?csf=1&web=1&e=lfPfzi)|
+
+__Strecken Aufbau__
+![Bildbeschreibung](https://volkswagengroup.sharepoint.com/:i:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Bilder/Fliesenfahrstrecke_Frank.jpg?csf=1&web=1&e=39d34q)
 
 #### Arbeitsweise
 
