@@ -63,6 +63,7 @@ __Strecken Aufbau__
 
 ![Bildbeschreibung](https://volkswagengroup.sharepoint.com/:i:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Bilder/Fliesenfahrstrecke_Frank.jpg?csf=1&web=1&e=39d34q)
 
+<image src="https://volkswagengroup.sharepoint.com/:i:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Bilder/Fliesenfahrstrecke_Frank.jpg?csf=1&web=1&e=39d34q" alt="Franks Strecke">
 #### Arbeitsweise
 
 #### Erkenntnisse
