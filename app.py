@@ -24,7 +24,7 @@ app.layout = html.Div(
         html.Button('Driving Mode 4', id='b-dm4', n_clicks=0),
         html.Button('Driving Mode 5', id='b-dm5', n_clicks=0),
         html.Div(id='mode-container'),
-        html.H4('Simple stock plot with adjustable axis'),
+        html.H4('Simple stock plot'),
         html.P("Change figure width:"),
         dcc.Slider(id='slider', min=200, max=500, step=25, value=300,marks={x: str(x) for x in [200, 300, 400, 500]}),
         dcc.Graph(id="graph"),
@@ -87,7 +87,7 @@ def run_drive_modes(btnstop, bdm1, bdm2, bdm3, bdm4, bdm5):
         exec(open(script_path).read())
     return msg_dm
 
-@app.callback(Output("graph", "figure"),Input('slider', 'value'))
+@app.callback(Output("graph", "figure"),Input('slider', 'value'), prevent_initial_callbacks=True)
 def resize_figure(width):
     df = read_data()
     fig = px.line(df, x='x', y='y')  
