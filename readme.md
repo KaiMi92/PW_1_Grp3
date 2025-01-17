@@ -83,7 +83,7 @@ __3. Wir organisieren uns über das Teams-Kanban__
 </summary>
 <br>
 
-![Zusammenarbeit](https://i.ibb.co/xCVJbFc/Zusammenarbeit-Gruppe3.png)
+![Zusammenarbeit](https://i.ibb.co/YWrkd9F/Zusammenarbeit-Gruppe3.png)
 
 ---
 
