@@ -60,13 +60,14 @@ __3. Wir organisieren uns über das Teams-Kanban__
 </summary>
 <br>
 
+![Schemenhafte Darstellung der Umsetzung](https://i.ibb.co/XCQnPKc/Folie1.jpg)
+
 |Anforderung | Link |
 |------------|:----:|
 |Fahrmodus1  |[Video1](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250108_Fahrmodus1.mp4?csf=1&web=1&e=MLjlMT)|
 |Fahrmodus2  |[Video2](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250108_Fahrmodus2.mp4?csf=1&web=1&e=4FvyUe)|
 |Fahrmodus3  |[Video3](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250110_Fahrmodus3.mp4?csf=1&web=1&e=sfGf63)|
 |Fahrmodus4  |[Video4](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250110_Fahrmodus4_Sebastian.mp4?csf=1&web=1&e=UEeFVN)|
-|Fahrmodus5  |[Video5](...)|
 |Fahrmodus6  |[Video6](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6.mp4?csf=1&web=1&e=lfPfzi)|
 
 ---
