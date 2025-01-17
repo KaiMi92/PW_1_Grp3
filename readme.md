@@ -31,15 +31,15 @@ __1. Prämissen im Projekt__
 
 __2. Wichtige Befehele für die Arbeit mit VSCode und SSH Zugriff__
 
-    - ssh pi@"IP-Addresse meist 192...." wird genutzt um den SSH-Tunnel mit VSCode das Fahrzeug zu verbinden 
+   - ssh pi@"IP-Addresse meist 192...." wird genutzt um den SSH-Tunnel mit VSCode das Fahrzeug zu verbinden 
 
-    - git config --global user.name "NAME" wird benötigt damit das GIT mit dem VSCode sich richtig verbinden kann und bei Änderungen wird dieser Name angezogen
+   - git config --global user.name "NAME" wird benötigt damit das GIT mit dem VSCode sich richtig verbinden kann und bei Änderungen wird dieser Name angezogen
 
-    - git config --global user.email "Mail für GIT-Account" wird benötigt damit das GIT mit dem VSCode sich richtig verbinden kann hier wird auf den Accountnamen verwiesen damit die Authentifizierung mit PW und Autorisierung über berechtigen des Main abgeglichen werden kann
+   - git config --global user.email "Mail für GIT-Account" wird benötigt damit das GIT mit dem VSCode sich richtig verbinden kann hier wird auf den Accountnamen verwiesen damit die Authentifizierung mit PW und Autorisierung über berechtigen des Main abgeglichen werden kann
 
-    - git Graph als wichtiges PlugIn in VSCode installieren, um Änderungen im GIT nachzuvollziehen
+   - git Graph als wichtiges PlugIn in VSCode installieren, um Änderungen im GIT nachzuvollziehen
 
-    - git Blame als wichtiges PlugIn in VSCode um zu sehen wer die letzten Änderungen durchgeführt hat
+   - git Blame als wichtiges PlugIn in VSCode um zu sehen wer die letzten Änderungen durchgeführt hat
 
 __3. Wir organisieren uns über das Teams-Kanban__
     - Link zum [TeamsKanban](https://teams.microsoft.com/l/channel/19%3AR2OxSjsLTG9wIejrneUWpBNBbmG9E2e_ixA5MWbNAPI1%40thread.tacv2/Projektphase1?groupId=53ca0eee-511b-444e-a137-5bb7c44cd11c "hier gehts zum TeamsKanal")
