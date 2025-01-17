@@ -116,7 +116,7 @@ __DashAPP der Gruppe3__
 <details close>
 
 <summary>
-<h1>Besonderheiten in Projektphase 1 - Gruppe 3 / Gen 8</h1>
+<h2>Besonderheiten in Projektphase 1 - Gruppe 3 / Gen 8</h2>
 
 </summary>
 <br>
@@ -128,19 +128,19 @@ __DashAPP der Gruppe3__
 * unterschiedliche Sicht des Zusammenarbeitsmodells wurde geklärt
 * gemeinsames Programmieren vor Ort ist geplant
 
-<h2>Hardware</h2>
+<h3>Hardware</h3>
 
 * tolle Hardware zum Lernen, wenn sie denn funktioniert
 * 2tes Paar Akku wäre toll
 * manchmal schlechte Unterscheidung des IR-Sensors zwischen Linie und Hintergrund
 
-<h2>Besonderheiten bei Umsetzung von Mode 6</h2>
+<h3>Besonderheiten bei Umsetzung von Mode 6</h3>
 
 * Automatische Sensorkalibrierung zu Beginn
 * Berechnung des Lenkwinkels über stetige Funktion
 * manchmal schlechte Unterscheidung des IR-Sensors zwischen Linie und Hintergrund
 
-<h2>weitere Erkenntnisse</h2>
+<h3>weitere Erkenntnisse</h3>
 
 __1. Stabile Heligkeitsverhältnisse könnten durch eine dauerhafte und konstante Beleuchtung erreicht werden. Hier einmal eine Lösungsvorschläg like Macgyver ;)__
 
