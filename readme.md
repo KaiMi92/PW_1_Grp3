@@ -2,7 +2,7 @@
 ---
 ## Projekt Phase 1
 ---
-
+[Link zum Download](https://downloads.fida.de/data-science/02-C2C/ "PW: fida")
 
 ### Inhalt:
 
@@ -19,7 +19,8 @@
 
 __1. Prämissen im Projekt__
 
-    - es wird nur im VScode programmiert [Link zum Download](https://downloads.fida.de/data-science/02-C2C/ "PW: fida")
+   - es wird nur im VScode programmiert [Link zum Download](https://downloads.fida.de/data-science/02-C2C/ "PW: fida")
+
 
     - die Umsetzung wird in [GITHUB](https://github.com/KaiMi92/PW_1_Grp3 "hier kommst du zum GIT der Gruppe3") der Gruppe3 abgelegt
 
