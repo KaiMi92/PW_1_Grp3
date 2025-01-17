@@ -55,6 +55,21 @@ __3. Wir organisieren uns über das Teams-Kanban__
 
 <summary>
 
+#### Arbeitsweise 
+---
+</summary>
+<br>
+
+![Zusammenarbeit](https://i.ibb.co/YWrkd9F/Zusammenarbeit-Gruppe3.png)
+
+---
+
+</details>
+
+<details close>
+
+<summary>
+
 #### Umsetzungen 
 ---
 </summary>
@@ -72,20 +87,7 @@ __3. Wir organisieren uns über das Teams-Kanban__
 |Fahrmodus6  |[Video6](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6.mp4?csf=1&web=1&e=lfPfzi)|
 
 ---
-
-</details>
-
-
-<details close>
-
-<summary>
-
-#### Arbeitsweise 
----
-</summary>
-<br>
-
-![Zusammenarbeit](https://i.ibb.co/YWrkd9F/Zusammenarbeit-Gruppe3.png)
+__Fahrmodus6 mit automatischer Lenkwinkelanpassung__
 
 ---
 
@@ -100,19 +102,6 @@ __3. Wir organisieren uns über das Teams-Kanban__
 </summary>
 <br>
 
-__1. Stabile Heligkeitsverhältnisse könnten durch eine dauerhafte und konstante Beleuchtung erreicht werden. Hier einmal eine Lösungsvorschläg like Macgyver ;)__
-
-![Bildbeschreibung](https://i.ibb.co/QHp36Px/Licht-auf-Fahrzeug.jpg)
-
-![Bildbeschreibung](https://img-9gag-fun.9cache.com/photo/anjxO30_460s.jpg)
-
-__2. Strecken mit dunklen Strichen beispielsweise Fliesen führen zu Problemen da die Fugen als dunkle Fahrbahn erkannt werden__
-
-![Bildbeschreibung](https://i.ibb.co/Pr2Rfcx/Fliesenfahrstrecke-Frank.jpg)
-
-[Fahrmodi6 auf Fliesen](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6_Fliesen_geht_nicht.mp4?csf=1&web=1&e=uv3Nol)
-
----
 
 </details>
 
@@ -142,5 +131,21 @@ __2. Strecken mit dunklen Strichen beispielsweise Fliesen führen zu Problemen d
 * Automatische Sensorkalibrierung zu Beginn
 * Berechnung des Lenkwinkels über stetige Funktion
 * manchmal schlechte Unterscheidung des IR-Sensors zwischen Linie und Hintergrund
+
+<h2>weitere Erkenntnisse</h2>
+
+__1. Stabile Heligkeitsverhältnisse könnten durch eine dauerhafte und konstante Beleuchtung erreicht werden. Hier einmal eine Lösungsvorschläg like Macgyver ;)__
+
+![Bildbeschreibung](https://i.ibb.co/QHp36Px/Licht-auf-Fahrzeug.jpg)
+
+![Bildbeschreibung](https://img-9gag-fun.9cache.com/photo/anjxO30_460s.jpg)
+
+__2. Strecken mit dunklen Strichen beispielsweise Fliesen führen zu Problemen da die Fugen als dunkle Fahrbahn erkannt werden__
+
+![Bildbeschreibung](https://i.ibb.co/Pr2Rfcx/Fliesenfahrstrecke-Frank.jpg)
+
+[Fahrmodi6 auf Fliesen](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6_Fliesen_geht_nicht.mp4?csf=1&web=1&e=uv3Nol)
+
+---
 
 </details>
