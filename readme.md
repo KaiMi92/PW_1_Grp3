@@ -43,9 +43,9 @@ __2. Wichtige Befehele für die Arbeit mit VSCode und SSH Zugriff__
 
 __3. Wir organisieren uns über das Teams-Kanban__
 
-    - Link zum [TeamsKanban](https://teams.microsoft.com/l/channel/19%3AR2OxSjsLTG9wIejrneUWpBNBbmG9E2e_ixA5MWbNAPI1%40thread.tacv2/Projektphase1?groupId=53ca0eee-511b-444e-a137-5bb7c44cd11c "hier gehts zum TeamsKanal")
-    
-    - täglicher Teamsaustausch mit [TeamsCall Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDA3OTYxNGItMWUwNy00NmQ4LTg1Y2QtM2IyZjg4NDA1ZTlk%40thread.v2/0?context=%7b%22Tid%22%3a%222882be50-2012-4d88-ac86-544124e120c8%22%2c%22Oid%22%3a%22b7920877-af64-4cf2-a78f-b53a06804c87%22%7d)
+- Link zum [TeamsKanban](https://teams.microsoft.com/l/channel/19%3AR2OxSjsLTG9wIejrneUWpBNBbmG9E2e_ixA5MWbNAPI1%40thread.tacv2/Projektphase1?groupId=53ca0eee-511b-444e-a137-5bb7c44cd11c "hier gehts zum TeamsKanal")
+
+- täglicher Teamsaustausch mit [TeamsCall Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDA3OTYxNGItMWUwNy00NmQ4LTg1Y2QtM2IyZjg4NDA1ZTlk%40thread.v2/0?context=%7b%22Tid%22%3a%222882be50-2012-4d88-ac86-544124e120c8%22%2c%22Oid%22%3a%22b7920877-af64-4cf2-a78f-b53a06804c87%22%7d)
 
 </details>
 
