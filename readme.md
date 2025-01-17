@@ -7,7 +7,7 @@
 ### Inhalt:
 
 
-<details open>
+<details close>
 
 <summary>
 
@@ -19,7 +19,7 @@
 
 __1. Prämissen im Projekt__
 
-    - es wird nur im VScode programmiert
+    - es wird nur im VScode programmiert [Link zum Download](https://downloads.fida.de/data-science/02-C2C/ "PW: fida")
 
     - die Umsetzung wird in [GITHUB](https://github.com/KaiMi92/PW_1_Grp3 "hier kommst du zum GIT der Gruppe3") der Gruppe3 abgelegt
 
