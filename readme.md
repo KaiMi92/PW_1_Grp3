@@ -2,7 +2,6 @@
 ---
 ## Projekt Phase 1
 ---
-[Link zum Download](https://downloads.fida.de/data-science/02-C2C/ "PW: fida")
 
 ### Inhalt:
 
@@ -12,7 +11,7 @@
 <summary>
 
 #### Setup
-
+---
 </summary>
 
 <br>
@@ -53,7 +52,9 @@ __3. Wir organisieren uns über das Teams-Kanban__
 
 <summary>
 
-#### Umsetzungen </summary>
+#### Umsetzungen 
+---
+</summary>
 <br>
 
 |Anforderung | Link |
@@ -72,7 +73,9 @@ __3. Wir organisieren uns über das Teams-Kanban__
 
 <summary>
 
-#### Arbeitsweise </summary>
+#### Arbeitsweise 
+---
+</summary>
 <br>
 
 </details>
@@ -81,7 +84,9 @@ __3. Wir organisieren uns über das Teams-Kanban__
 
 <summary>
 
-#### Erkenntnisse </summary>
+#### Erkenntnisse
+--- 
+</summary>
 <br>
 
 __1. Stabile Heligkeitsverhältnisse könnten durch eine dauerhafte und konstante Beleuchtung erreicht werden. Hier einmal eine Lösungsvorschläg like Macgyver ;)__
