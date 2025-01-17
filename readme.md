@@ -47,8 +47,12 @@ __3. Wir organisieren uns über das Teams-Kanban__
 
 </details>
 
+<details close>
 
-#### Umsetzungen
+<summary>
+
+#### Umsetzungen </summary>
+<br>
 
 |Anforderung | Link |
 |------------|:----:|
@@ -59,8 +63,7 @@ __3. Wir organisieren uns über das Teams-Kanban__
 |Fahrmodus5  |[Video5](...)|
 |Fahrmodus6  |[Video6](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6.mp4?csf=1&web=1&e=lfPfzi)|
 
-__Strecken Aufbau__
-
+</details>
 
 
 
