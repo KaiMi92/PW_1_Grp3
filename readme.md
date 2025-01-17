@@ -47,6 +47,8 @@ __3. Wir organisieren uns über das Teams-Kanban__
 
 - täglicher Teamsaustausch mit [TeamsCall Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDA3OTYxNGItMWUwNy00NmQ4LTg1Y2QtM2IyZjg4NDA1ZTlk%40thread.v2/0?context=%7b%22Tid%22%3a%222882be50-2012-4d88-ac86-544124e120c8%22%2c%22Oid%22%3a%22b7920877-af64-4cf2-a78f-b53a06804c87%22%7d)
 
+---
+
 </details>
 
 <details close>
