@@ -2,17 +2,17 @@
 ---
 ## Projekt Phase 1
 ---
-[Link zum Download](https://downloads.fida.de/data-science/02-C2C/ "PW: fida")
 
 ### Inhalt:
-
+---
+---
 
 <details close>
 
 <summary>
 
 #### Setup
-
+---
 </summary>
 
 <br>
@@ -42,8 +42,10 @@ __2. Wichtige Befehele für die Arbeit mit VSCode und SSH Zugriff__
    - git Blame als wichtiges PlugIn in VSCode um zu sehen wer die letzten Änderungen durchgeführt hat
 
 __3. Wir organisieren uns über das Teams-Kanban__
-    - Link zum [TeamsKanban](https://teams.microsoft.com/l/channel/19%3AR2OxSjsLTG9wIejrneUWpBNBbmG9E2e_ixA5MWbNAPI1%40thread.tacv2/Projektphase1?groupId=53ca0eee-511b-444e-a137-5bb7c44cd11c "hier gehts zum TeamsKanal")
-    - täglicher Teamsaustausch mit [TeamsCall Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDA3OTYxNGItMWUwNy00NmQ4LTg1Y2QtM2IyZjg4NDA1ZTlk%40thread.v2/0?context=%7b%22Tid%22%3a%222882be50-2012-4d88-ac86-544124e120c8%22%2c%22Oid%22%3a%22b7920877-af64-4cf2-a78f-b53a06804c87%22%7d)
+
+- Link zum [TeamsKanban](https://teams.microsoft.com/l/channel/19%3AR2OxSjsLTG9wIejrneUWpBNBbmG9E2e_ixA5MWbNAPI1%40thread.tacv2/Projektphase1?groupId=53ca0eee-511b-444e-a137-5bb7c44cd11c "hier gehts zum TeamsKanal")
+
+- täglicher Teamsaustausch mit [TeamsCall Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MDA3OTYxNGItMWUwNy00NmQ4LTg1Y2QtM2IyZjg4NDA1ZTlk%40thread.v2/0?context=%7b%22Tid%22%3a%222882be50-2012-4d88-ac86-544124e120c8%22%2c%22Oid%22%3a%22b7920877-af64-4cf2-a78f-b53a06804c87%22%7d)
 
 </details>
 
@@ -51,7 +53,9 @@ __3. Wir organisieren uns über das Teams-Kanban__
 
 <summary>
 
-#### Umsetzungen </summary>
+#### Umsetzungen 
+---
+</summary>
 <br>
 
 |Anforderung | Link |
@@ -66,10 +70,25 @@ __3. Wir organisieren uns über das Teams-Kanban__
 </details>
 
 
+<details close>
 
-#### Arbeitsweise
+<summary>
+
+#### Arbeitsweise 
+---
+</summary>
+<br>
+
+</details>
+
+<details close>
+
+<summary>
 
 #### Erkenntnisse
+--- 
+</summary>
+<br>
 
 __1. Stabile Heligkeitsverhältnisse könnten durch eine dauerhafte und konstante Beleuchtung erreicht werden. Hier einmal eine Lösungsvorschläg like Macgyver ;)__
 
@@ -83,6 +102,33 @@ __2. Strecken mit dunklen Strichen beispielsweise Fliesen führen zu Problemen d
 
 [Fahrmodi6 auf Fliesen](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6_Fliesen_geht_nicht.mp4?csf=1&web=1&e=uv3Nol)
 
+</details>
 
+<details close>
 
+<summary>
+<h1>Besonderheiten in Projektphase 1 - Gruppe 3 / Gen 8</h1>
 
+</summary>
+<br>
+
+<h2>Allgemeines</h2>
+
+* Heterogenes Team mit unterschiedlichen Programmierskills
+* daher an den ersten Tagen eher gemeinsames Programmieren
+* unterschiedliche Sicht des Zusammenarbeitsmodells wurde geklärt
+* gemeinsames Programmieren vor Ort ist geplant
+
+<h2>Hardware</h2>
+
+* tolle Hardware zum Lernen, wenn sie denn funktioniert
+* 2tes Paar Akku wäre toll
+* manchmal schlechte Unterscheidung des IR-Sensors zwischen Linie und Hintergrund
+
+<h2>Besonderheiten bei Umsetzung von Mode 6</h2>
+
+* Automatische Sensorkalibrierung zu Beginn
+* Berechnung des Lenkwinkels über stetige Funktion
+* manchmal schlechte Unterscheidung des IR-Sensors zwischen Linie und Hintergrund
+
+</details>
