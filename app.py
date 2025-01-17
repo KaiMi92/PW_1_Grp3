@@ -1,19 +1,14 @@
-from dash import Dash, html, dcc, Input, Output, State, ctx, callback
+from dash import Dash, html, dcc, Input, Output, ctx, callback
 import pandas as pd
 import plotly.express as px
 import dash_bootstrap_components as dbc
-import csv
-import time
-import statistics
-#from soniccar import SonicCar
-#from sensorcar import SensorCar
 from drivedata_KPI import *
 from basecar import BaseCar
 from driving_mode_4 import *
 from driving_mode_5 import * 
 import math
 
-app = Dash(__name__)
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = html.Div(
     [
@@ -117,11 +112,10 @@ def read_data():
     df.loc[0] = [x, y]
  
     for i in range(1, len(drive_data)):
-        # v = s/t --> s = v * t
+
         t = data_time[i] - data_time[i-1]
         v = data_speed[i-1]
         s = v * t
-        # print(f"Line {i}: v = {v}, s = {s}, t = {t}, steering = {data_steering[i-1]}")
  
         x = x + s * math.cos(math.radians(data_steering[i-1]))
         y = y + s * math.sin(math.radians(data_steering[i-1]))
