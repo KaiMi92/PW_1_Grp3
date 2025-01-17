@@ -69,6 +69,8 @@ __3. Wir organisieren uns über das Teams-Kanban__
 |Fahrmodus5  |[Video5](...)|
 |Fahrmodus6  |[Video6](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6.mp4?csf=1&web=1&e=lfPfzi)|
 
+---
+
 </details>
 
 
@@ -82,6 +84,8 @@ __3. Wir organisieren uns über das Teams-Kanban__
 <br>
 
 ![Zusammenarbeit](https://i.ibb.co/xCVJbFc/Zusammenarbeit-Gruppe3.png)
+
+---
 
 </details>
 
@@ -105,6 +109,8 @@ __2. Strecken mit dunklen Strichen beispielsweise Fliesen führen zu Problemen d
 ![Bildbeschreibung](https://i.ibb.co/Pr2Rfcx/Fliesenfahrstrecke-Frank.jpg)
 
 [Fahrmodi6 auf Fliesen](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6_Fliesen_geht_nicht.mp4?csf=1&web=1&e=uv3Nol)
+
+---
 
 </details>
 
