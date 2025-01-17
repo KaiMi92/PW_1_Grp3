@@ -66,10 +66,21 @@ __3. Wir organisieren uns über das Teams-Kanban__
 </details>
 
 
+<details close>
 
-#### Arbeitsweise
+<summary>
 
-#### Erkenntnisse
+#### Arbeitsweise </summary>
+<br>
+
+</details>
+
+<details close>
+
+<summary>
+
+#### Erkenntnisse </summary>
+<br>
 
 __1. Stabile Heligkeitsverhältnisse könnten durch eine dauerhafte und konstante Beleuchtung erreicht werden. Hier einmal eine Lösungsvorschläg like Macgyver ;)__
 
@@ -83,6 +94,7 @@ __2. Strecken mit dunklen Strichen beispielsweise Fliesen führen zu Problemen d
 
 [Fahrmodi6 auf Fliesen](https://volkswagengroup.sharepoint.com/:v:/r/sites/C2C_Gruppe3/Shared%20Documents/Projektphase1/Videos/20250116_Fahrmodus6_Fliesen_geht_nicht.mp4?csf=1&web=1&e=uv3Nol)
 
+</details>
 
 
 
