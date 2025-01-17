@@ -104,18 +104,6 @@ __DashAPP der Gruppe3__
 <details close>
 
 <summary>
-
-#### Erkenntnisse
---- 
-</summary>
-<br>
-
-
-</details>
-
-<details close>
-
-<summary>
 <h2>Besonderheiten in Projektphase 1 - Gruppe 3 / Gen 8</h2>
 
 </summary>
