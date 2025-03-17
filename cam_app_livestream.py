@@ -35,30 +35,12 @@ def video_feed():
 
 # Reine Optik
 app.layout = html.Div(children=[
-    html.H1("Hallo Projektphase 2"),
+    html.H1("Livestream"),
     dbc.Row([
-        dbc.Col( html.Div([html.Img(src="/video_feed", id="videofeed", style={'height':'200px'})])), 
-        dbc.Col([html.H3("Hier wird der Slider Text stehen", id="slider-text"),]),
-        dbc.Col([
-            dbc.Row([dcc.RangeSlider(id="h-slider", min=0, max=180, value=[20, 50])]),
-            dbc.Row([dcc.RangeSlider(id="s-slider", min=0, max=180, value=[20, 50])]),
-            dbc.Row([dcc.RangeSlider(id="v-slider", min=0, max=180, value=[20, 50])]),
-        
+        dbc.Col( html.Div([html.Img(src="/video_feed", id="videofeed", style={'height':'500px'})])),
+       
         ])
     ])
-    
-   
-])
-
-
-# Verbindung Interaktiver Elemente (Slider, Dropdown, usw.) mit Optik über Callbacks
-@app.callback(
-    # id zum identifizieren, property um zu sagen was genau verändert werden soll (Wert, Farbe, Text)
-    Output("slider-text", "children"),
-    Input("h-slider", "value")
-    )
-def update_slider_text(h_slider):
-    return f"Untere Grenze {h_slider[0]}, obere Grenze {h_slider[1]}"
 
 if __name__ == "__main__":
     app.run_server(host="0.0.0.0", debug=False, port=8050)
