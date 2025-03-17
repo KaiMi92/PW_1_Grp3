@@ -178,7 +178,7 @@ class BaseCar:
         
         set_angle = self._fw.turn(angle)
         self._steering_angle = set_angle        
-        time.sleep(0.1)
+        # time.sleep(0.1)
 
     ''' getter-method of speed'''
     @property
