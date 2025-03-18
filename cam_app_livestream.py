@@ -11,7 +11,7 @@ server = Flask(__name__)
 
 print("Start Init...")
 app = Dash(__name__, external_stylesheets=external_stylesheets, server=server)
-cam = Camera()
+cam = Camera() # (height=200, width=320)
 proc = Processor()
 print("End Init")
 
@@ -20,9 +20,9 @@ def generate_stream(camera_instance):
     while True:
         frame = camera_instance.get_frame()
         filtered = proc.filter_color(frame)
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        canny = cv2.Canny(gray, 100, 200)
-        stacked = np.hstack([gray, canny, filtered])
+        # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        # canny = cv2.Canny(gray, 100, 200)
+        stacked = np.hstack([frame, filtered]) # canny, filtered])
         _, x = cv2.imencode(".jpeg", stacked)
         x_bytes = x.tobytes()
 

@@ -16,6 +16,7 @@ class Processor():
         lower = np.array([self.lower_hue, self.lower_saturation, self.lower_value])
         upper = np.array([self.upper_hue, self.upper_saturation, self.upper_value])
         filtered = cv2.inRange(hsv, lower, upper)
+        filtered = cv2.cvtColor(filtered, cv2.COLOR_GRAY2BGR)
         return filtered
 
 
