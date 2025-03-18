@@ -15,14 +15,24 @@ cam = Camera() # (height=200, width=320)
 proc = Processor()
 print("End Init")
 
+def calculate_steering_angle(lines):
+    # hier bitte jeder seine berechnung
+    # steering_angle : int
+    # steering angle of the car in degrees.
+    # 90 degrees means straight forward
+    # max. left steering angle is 135
+    # max. right steering angle is 45
+    return 90 
 
 def generate_stream(camera_instance):
     while True:
         frame = camera_instance.get_frame()
-        filtered = proc.filter_color(frame)
+        line_filter, lines = proc.line_filter(frame)
+        steering_angle = calculate_steering_angle(lines)   # einzeichnen im bild?
+        # filtered = proc.filter_color(frame)
         # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         # canny = cv2.Canny(gray, 100, 200)
-        stacked = np.hstack([frame, filtered]) # canny, filtered])
+        stacked = np.hstack([line_filter]) # canny, filtered])
         _, x = cv2.imencode(".jpeg", stacked)
         x_bytes = x.tobytes()
 
@@ -44,9 +54,9 @@ app.layout = html.Div(children=[
     html.P("Hue"),
     dcc.RangeSlider(id="range-slider-h1", min=0, max=180, value=[proc.lower_hue,proc.upper_hue]),
     html.P("Saturation"),
-    dcc.RangeSlider(id="range-slider-s1", min=0, max=180, value=[proc.lower_saturation, proc.upper_saturation]),
+    dcc.RangeSlider(id="range-slider-s1", min=0, max=255, value=[proc.lower_saturation, proc.upper_saturation]),
     html.P("Value"),
-    dcc.RangeSlider(id="range-slider-v1", min=0, max=180, value=[proc.lower_value, proc.upper_value]),
+    dcc.RangeSlider(id="range-slider-v1", min=0, max=255, value=[proc.lower_value, proc.upper_value]),
     dbc.Row([
         dbc.Col( html.Div([html.Img(src="/video_feed", id="videofeed", style={'height':'500px'})])),       
         ]),
