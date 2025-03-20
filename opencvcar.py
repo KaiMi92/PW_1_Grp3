@@ -17,7 +17,7 @@ methodDictionary = {1: calc_steering_angle_1.calculate_steering_angle,
                     5: calc_steering_angle_5.calculate_steering_angle}
 
 # Setzen der Konstantwerte für Geschwindigkeit und Lenkwinkel Geradeaus, maximal Links und maximal rechts
-SPEED = 35
+SPEED = 20
 STRAIGHT_FORWARD = 90
 MAX_TURN_LEFT = 45
 MAX_TURN_RIGHT = 135
@@ -41,14 +41,7 @@ class OpenCvCar(CamCar):
 
     def start_driving(self):
           # start driving (and steering)
-        try:  
-            self.drive(speed = SPEED, steering_angle = STRAIGHT_FORWARD)      
-        except Exception as e:
-            print(f"An exception occurred: {e}")
-            self.stop()
-        finally:
-            print("Everything ok!")
-            self.stop()
+        self.drive(speed = SPEED, steering_angle = STRAIGHT_FORWARD)      
 
     def stop_driving(self):
         self.stop()
