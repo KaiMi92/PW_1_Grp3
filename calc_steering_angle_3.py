@@ -1,3 +1,5 @@
+import time
+
 #from line_chart import *
 # RS-Werte (30 - 110), (106 - 150), (26 - 86)
 def calculate_steering_angle(image, lines):
@@ -32,6 +34,7 @@ def calculate_steering_angle(image, lines):
             #print("Maximum Lenkwinkel von 135 Grad erreicht")
     #print(x)
     steering_angle = x
+    time.sleep(0.1)
     return steering_angle
 
 #calculate_steering_angle()
