@@ -1,4 +1,4 @@
-from dash import Dash, html, dcc, Input, Output
+from dash import Dash, html, dcc, Input, Output, ctx
 import dash_bootstrap_components as dbc
 from flask import Flask, Response
 from software.basisklassen_cam import Camera
@@ -125,7 +125,10 @@ app.layout = html.Div(children=[
                     html.Hr(),
                     html.P("Simulation"),
                     dcc.Slider(min=0, max=1, step=1, value = proc.simulation, id='simulation-slider'),
-                    html.Hr()
+                    html.Hr(),
+                    html.Button('Start Car', id='b-start', n_clicks=0),
+                    html.Button('Stop Car', id='b-stop', n_clicks=0),
+                    html.Div(id='mode-container')
                 ]
             )
         ]),
@@ -183,7 +186,19 @@ def update_method(sim_slider):
     else:
         proc.simulation = False
         return "Simulation: NO"
-
+    
+@app.callback(Output("mode-container", "children"), Input("b-stop", "n_clicks"), Input("b-start", "n_clicks"), prevent_initial_callbacks=True)
+def run_drive_modes(btnstop, bdm1):
+    msg_dm = "Car not started yet"
+    if "b-stop" == ctx.triggered_id:
+        msg_dm = "Car Stops"
+        #BaseCar.finished = True
+    elif "b-start" == ctx.triggered_id:
+        msg_dm = "Car Starts" 
+        #BaseCar.finished = False
+        #script_path = 'driving_mode_1.py'
+        #exec(open(script_path).read())  
+    return msg_dm
 
 if __name__ == "__main__":
     app.run_server(host="0.0.0.0", debug=False, port=8050)
