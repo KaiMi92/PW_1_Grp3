@@ -17,20 +17,20 @@ def calculate_steering_angle(image, lines):
             runs += 1
             sum += slope
             average = sum/runs
-        print(average)
+        #print(average)
 
     x = 90
     if average > 0 and average <3:
         x = x - (average * 70)
         if x < 45:
             x = 45
-            print("Maximum Lenkwinkel von 45 Grad erreicht")
+            #print("Maximum Lenkwinkel von 45 Grad erreicht")
     elif average < 0 and average > -3:
         x = x + (abs(average) * 70)
         if x > 135:
             x = 135
-            print("Maximum Lenkwinkel von 135 Grad erreicht")
-    print(x)
+            #print("Maximum Lenkwinkel von 135 Grad erreicht")
+    #print(x)
     steering_angle = x
     return steering_angle
 
