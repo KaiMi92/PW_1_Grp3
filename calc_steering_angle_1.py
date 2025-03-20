@@ -6,7 +6,9 @@ import math
 # def calculate_steering_angle(image, lines):
 #     return 45
 def calculate_steering_angle(image, lines):
-    winkel_liste = []
+    winkel_liste = [0]
+    steering_angle = 90
+    fahrwinkel_median = 0
 
     if lines is not None:
         for line in lines:
