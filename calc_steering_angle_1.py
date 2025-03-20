@@ -19,12 +19,13 @@ def calculate_steering_angle(image, lines):
             slope = (y2 - y1) / (x2 - x1)
             angle_rad = np.arctan(slope)
             angle_deg = np.degrees(angle_rad) 
+            winkel_liste.append(angle_deg)
         else:
             slope = float('inf') 
 
         #print(f"Linie von ({x1},{y1}) nach ({x2},{y2}) hat eine Steigung von {slope}, Winkel {angle_deg}")
               
-        winkel_liste.append(angle_deg)
+        
         
         winkel_liste.sort()
 
