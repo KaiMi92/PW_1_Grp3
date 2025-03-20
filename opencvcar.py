@@ -17,7 +17,7 @@ methodDictionary = {1: calc_steering_angle_1.calculate_steering_angle,
                     5: calc_steering_angle_5.calculate_steering_angle}
 
 # Setzen der Konstantwerte für Geschwindigkeit und Lenkwinkel Geradeaus, maximal Links und maximal rechts
-SPEED = 10
+SPEED = 35
 STRAIGHT_FORWARD = 90
 MAX_TURN_LEFT = 45
 MAX_TURN_RIGHT = 135
@@ -64,9 +64,11 @@ class OpenCvCar(CamCar):
             # steering_angle = calc_steering_angle.calculate_steering_angle(line_filter, lines)   # einzeichnen im bild?
 
             method = methodDictionary[self._proc.calc_angle_method]
-            self.steering_angle = method(line_filter, lines)   # einzeichnen im bild?
+            angle = method(line_filter, lines)
+            if self.speed > 0:
+                self.steering_angle = angle
 
-            self.draw_steering_angle(line_filter, self.steering_angle)
+            self.draw_steering_angle(line_filter, angle)
             self.draw_fps(line_filter)
 
             # filtered = proc.filter_color(frame)
