@@ -26,7 +26,7 @@ class CamCar(BaseCar):
 
     def get_img(self):
         i = self._cam.get_frame()
-        # self.save_img(i)
+        self.save_img(i)
         return i
 
     def release(self) -> None:
