@@ -2,6 +2,7 @@ from dash import Dash, html, dcc, Input, Output, ctx
 import dash_bootstrap_components as dbc
 from flask import Flask, Response
 from opencvcar import OpenCvCar
+import os
 
 external_stylesheets = [dbc.themes.BOOTSTRAP]
 server = Flask(__name__)
@@ -10,9 +11,14 @@ app = Dash(__name__, external_stylesheets=external_stylesheets, server=server)
 open_cv_car = OpenCvCar()
 proc = open_cv_car.proc        
 
+cmd = "v4l2-ctl -d 0 --set-ctrl=saturation=400"
+res = os.system(cmd)
+print(f'{cmd} -> ', res)
+
 @server.route("/video_feed")
 def video_feed():
    return Response(open_cv_car.generate_stream(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
 
 
 # Reine Optik
@@ -23,7 +29,7 @@ app.layout = html.Div(children=[
     dbc.Row(dbc.Col(html.P("Simulation:", id="output-simulation"))),
     dbc.Row(
         [
-            dbc.Col( html.Div([html.Img(src="/video_feed", id="videofeed", style={'height':'500px'})])),
+            dbc.Col( html.Div([html.Img(src="/video_feed", id="videofeed", style={'width':'800px'})])),
             dbc.Col(
                 [
                     html.Hr(),
