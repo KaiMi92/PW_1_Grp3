@@ -33,17 +33,9 @@ class CamCar(BaseCar):
         """Releases camera and allows other processes to access it_"""
         self._cam.release()
 
-    def save_img(self, img):
+    def save_img(self, img, suffix):
         curr_time = datetime.now()
         timestr = curr_time.strftime('%Y-%m-%d_%H-%M-%S.%f')
         #timestr = time.strftime("%Y%m%d-%H%M%S%f")
-        filename = './img/car_img_' + timestr + '.jpg'
+        filename = './img/car_img_' + timestr + '_' + str(suffix) + '.jpg'
         cv2.imwrite(filename, img)
-        
-
-
- 
-
-    
-
-    
