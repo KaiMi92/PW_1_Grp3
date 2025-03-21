@@ -30,6 +30,21 @@ def calculate_steering_angle(image, lines):
         winkel_liste.sort()
 
         fahrwinkel_median = np.median(winkel_liste)
-        steering_angle = (90-(fahrwinkel_median/2))
+
+        if 0 <= fahrwinkel_median <= 15:
+            steering_angle = 45
+            print("Max-Links genommen")
+
+        elif -15<= fahrwinkel_median < 0:
+            steering_angle = 135
+            print("Max-Rechts")
+        else:
+            steering_angle = (90-(fahrwinkel_median/2))
+       
+
+        
+        print(f"Lenkwinkel= {steering_angle}")
+        print(f"MedianWinkel= {fahrwinkel_median}")
+        print(f"Winkel-Liste {winkel_liste}")
    
     return steering_angle
