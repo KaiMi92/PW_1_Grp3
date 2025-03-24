@@ -34,7 +34,7 @@ def calculate_steering_angle(image, lines):
             #print("Maximum Lenkwinkel von 135 Grad erreicht")
     #print(x)
     steering_angle = x
-    time.sleep(0.1)
+    #time.sleep(0.1)
     return steering_angle
 
 #calculate_steering_angle()
