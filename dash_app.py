@@ -38,10 +38,10 @@ app.layout = html.Div(style={'backgroundColor': '#000000'}, children=[
                 dcc.RangeSlider(id="range-slider-v1", min=0, max=255, value=[proc.lower_value, proc.upper_value], marks={i: str(i) for i in range(0, 256, 25)}, step=1, updatemode='drag', tooltip={"placement": "bottom", "always_visible": True}),
                 html.Hr(style={'borderColor': 'white'}),
                 html.P("Steering angle calculation method", style={'color': 'white'}),
-                dcc.Slider(min=1, max=5, step=1, value=proc.calc_angle_method, id='calc-angle-slider', marks={i: str(i) for i in range(1, 6)}, tooltip={"placement": "bottom", "always_visible": True}),
+                dcc.Slider(min=1, max=3, step=1, value=proc.calc_angle_method, id='calc-angle-slider', marks={i: str(i) for i in range(1, 4)}, tooltip={"placement": "bottom", "always_visible": True}),
                 html.Hr(style={'borderColor': 'white'}),
-                html.P("Simulation", style={'color': 'white'}),
-                dcc.Slider(min=0, max=1, step=1, value=proc.simulation, id='simulation-slider', marks={0: 'No', 1: 'Yes'}, tooltip={"placement": "bottom", "always_visible": True}),
+                html.P("Use Average", style={'color': 'white'}),
+                dcc.Slider(min=0, max=1, step=1, value=proc.use_average, id='simulation-slider', marks={0: 'No', 1: 'Yes'}, tooltip={"placement": "bottom", "always_visible": True}),
                 html.Hr(style={'borderColor': 'white'}),
                 dbc.Button('Start Car', id='b-start', n_clicks=0, color="success", className="me-2", style={'fontSize': '20px'}),
                 dbc.Button('Stop Car', id='b-stop', n_clicks=0, color="danger", style={'fontSize': '20px'}),
@@ -98,10 +98,10 @@ def update_method(method_slider):
 )
 def update_method(sim_slider):
     if sim_slider:
-        proc.simulation = True
+        proc.use_average = True
         return "Simulation: YES"
     else:
-        proc.simulation = False
+        proc.use_average = False
         return "Simulation: NO"
     
 @app.callback(
