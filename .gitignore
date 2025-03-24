@@ -179,4 +179,6 @@ software/__pycache__/basisklassen.cpython-37.pyc
 __pycache__/basecar.cpython-37.pyc
 
 img/
+images/
+img_backup/
 driving_data/
