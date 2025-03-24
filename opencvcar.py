@@ -69,7 +69,7 @@ class OpenCvCar(CamCar):
                 print(f"Driving backward")
                 # curve is too tight
                 if self.speed != 0:
-                    duration = 0.5
+                    duration = 0.4
                     current_steering_angle = self.steering_angle
                     if (current_steering_angle > STRAIGHT_FORWARD):
                         self.speed = 0
@@ -107,12 +107,6 @@ class OpenCvCar(CamCar):
 
             self.draw_steering_angle(line_filter, angle)
             self.draw_fps(line_filter)
-
-            angle = method(line_filter, lines)
-            if self.speed > 0:
-                self.steering_angle = angle
-            # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            self.draw_steering_angle(line_filter, angle)
             stacked = np.hstack([line_filter]) # canny, filtered])
             _, x = cv2.imencode(".jpeg", stacked)
             x_bytes = x.tobytes()

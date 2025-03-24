@@ -34,7 +34,10 @@ def calculate_angle_alpha(image, x1, y1, x2, y2, x3, y3):
     print(f"Hypotenuse c = {c}")
 
     # Berechne den Winkel Alpha in Grad
-    alpha = math.degrees(math.atan(b / a))
+    if a != 0:
+        alpha = math.degrees(math.atan(b / a))
+    else:
+        alpha = 90
 
     # Der Winkel ist per Berechnung immer positiv
     # Wenn das Fahrzeug aber nach rechts fahren soll,
@@ -65,6 +68,12 @@ def intersection_point(line1, line2):
         y = m1 * x + b1
     else:
         x = 0
+        y = 0
+    
+    if math.isnan(x):
+        x = 0
+    
+    if math.isnan(y):
         y = 0
     
     return int(x), int(y)
