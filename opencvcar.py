@@ -52,6 +52,35 @@ class OpenCvCar(CamCar):
     def stop_driving(self):
         self.stop()
 
+    
+    def drive_backward(self):
+        print(f"Driving backward")
+
+        duration = 0.4
+        current_steering_angle = self.steering_angle
+        if (current_steering_angle > STRAIGHT_FORWARD):
+            self.speed = 0
+            time.sleep(duration)
+            self.steering_angle = MAX_TURN_LEFT
+            time.sleep(duration)
+            self.drive(speed = -SPEED, steering_angle = MAX_TURN_LEFT)
+            time.sleep(duration)
+            self.drive(speed = SPEED, steering_angle = MAX_TURN_RIGHT)
+        elif (current_steering_angle < STRAIGHT_FORWARD):
+            self.speed = 0
+            time.sleep(duration)
+            self.steering_angle = MAX_TURN_RIGHT
+            time.sleep(duration)
+            self.drive(speed = -SPEED, steering_angle = MAX_TURN_RIGHT)
+            time.sleep(duration)
+            self.drive(speed = SPEED, steering_angle = MAX_TURN_LEFT)
+        else:
+            self.drive(speed = -SPEED, steering_angle = STRAIGHT_FORWARD)
+            time.sleep(duration)
+            self.drive(speed = SPEED, steering_angle = STRAIGHT_FORWARD)
+        
+        time.sleep(duration)
+
     def generate_stream(self):
         while True:
             print("============================================")
@@ -62,38 +91,21 @@ class OpenCvCar(CamCar):
             line_filter, lines = self._proc.line_filter(frame.copy())
             # steering_angle = calc_steering_angle.calculate_steering_angle(line_filter, lines)   # einzeichnen im bild?
 
-            method = methodDictionary[self._proc.calc_angle_method]
-            angle = method(line_filter, lines)
+            if self._proc.use_average:
+                angle_avg = 0
+                for i in range (1, 4):
+                    method = methodDictionary[i]
+                    angle_avg = angle_avg + abs(method(line_filter, lines))
+
+                angle = (angle_avg) / 3
+            else:
+                method = methodDictionary[self._proc.calc_angle_method]
+                angle = method(line_filter, lines)
 
             if angle < 0:
-                print(f"Driving backward")
                 # curve is too tight
                 if self.speed != 0:
-                    duration = 0.4
-                    current_steering_angle = self.steering_angle
-                    if (current_steering_angle > STRAIGHT_FORWARD):
-                        self.speed = 0
-                        time.sleep(duration)
-                        self.steering_angle = MAX_TURN_LEFT
-                        time.sleep(duration)
-                        self.drive(speed = -SPEED, steering_angle = MAX_TURN_LEFT)
-                        time.sleep(duration)
-                        self.drive(speed = SPEED, steering_angle = MAX_TURN_RIGHT)
-                    elif (current_steering_angle < STRAIGHT_FORWARD):
-                        self.speed = 0
-                        time.sleep(duration)
-                        self.steering_angle = MAX_TURN_RIGHT
-                        time.sleep(duration)
-                        self.drive(speed = -SPEED, steering_angle = MAX_TURN_RIGHT)
-                        time.sleep(duration)
-                        self.drive(speed = SPEED, steering_angle = MAX_TURN_LEFT)
-                    else:
-                        self.drive(speed = -SPEED, steering_angle = STRAIGHT_FORWARD)
-                        time.sleep(duration)
-                        self.drive(speed = SPEED, steering_angle = STRAIGHT_FORWARD)
-                    
-                    time.sleep(duration)
-
+                    self.drive_backward()
             else:
                 if self.speed != 0:
                     print(f"Use steering_angle = {angle}")
@@ -107,7 +119,12 @@ class OpenCvCar(CamCar):
 
             self.draw_steering_angle(line_filter, angle)
             self.draw_fps(line_filter)
-            stacked = np.hstack([line_filter]) # canny, filtered])
+
+            # Zeilen 150 bis 350 in Frame durch Line_filter ersetzen und anzeigen
+            frame[150:350,:,:] = line_filter
+            self.draw_frame(frame)
+
+            stacked = np.hstack([frame]) # canny, filtered])
             _, x = cv2.imencode(".jpeg", stacked)
             x_bytes = x.tobytes()
 
@@ -136,7 +153,10 @@ class OpenCvCar(CamCar):
         linestyle = 1
         img_text = cv2.putText(image, text, position,font, fontscale, color, thickness, linestyle)
 
-    
+    def draw_frame(self, image):
+        height, width, channels = image.shape
+        cv2.line(image, (0, 150), (width, 150), (255, 255, 255), 3)
+        cv2.line(image, (0, 350), (width, 350), (255, 255, 255), 3)
 
     def draw_steering_angle(self, image, steering_angle):
         height, width, channels = image.shape
@@ -153,8 +173,8 @@ class OpenCvCar(CamCar):
         y2 = 0
         try:
             cv2.line(image, (x1, y1), (x2, y2), (0, 0, 255), 3)
-            cv2.line(image, (x1, y1), (middle + int(x45), y2), (255, 255, 255), 2)
-            cv2.line(image, (x1, y1), (middle + int(x135), y2), (255, 255, 255), 2)
+            cv2.line(image, (x1, y1), (middle + int(x45), y2), (255, 255, 255), 1)
+            cv2.line(image, (x1, y1), (middle + int(x135), y2), (255, 255, 255), 1)
         except Exception as e:
             print(f"An exception occurred: {e}")
         # print(f'steering_angle = {steering_angle}, angle = {angle}, x = {x}, P1({x1}|{y1}), P2({x2}|{y2}) ')
