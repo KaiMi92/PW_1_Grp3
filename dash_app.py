@@ -11,7 +11,7 @@ app = Dash(__name__, external_stylesheets=external_stylesheets, server=server)
 open_cv_car = OpenCvCar()
 proc = open_cv_car.proc        
 
-cmd = "v4l2-ctl -d 0 --set-ctrl=saturation=400"
+cmd = "v4l2-ctl -d 0 --set-ctrl=saturation=50"
 res = os.system(cmd)
 print(f'{cmd} -> ', res)
 
@@ -22,39 +22,36 @@ def video_feed():
 
 
 # Reine Optik
-app.layout = html.Div(children=[
-    dbc.Row(dbc.Col(html.H1("Livestream"))),
-    dbc.Row(dbc.Col(html.P("Status:", id="test-output"))),
-    dbc.Row(dbc.Col(html.P("Calculation Method:", id="test-output2"))),
-    dbc.Row(dbc.Col(html.P("Simulation:", id="output-simulation"))),
-    dbc.Row(
-        [
-            dbc.Col( html.Div([html.Img(src="/video_feed", id="videofeed", style={'width':'800px'})])),
-            dbc.Col(
-                [
-                    html.Hr(),
-                    html.P("Hue"),
-                    dcc.RangeSlider(id="range-slider-h1", min=0, max=180, value=[proc.lower_hue,proc.upper_hue]),
-                    html.P("Saturation"),
-                    dcc.RangeSlider(id="range-slider-s1", min=0, max=255, value=[proc.lower_saturation, proc.upper_saturation]),
-                    html.P("Value"),
-                    dcc.RangeSlider(id="range-slider-v1", min=0, max=255, value=[proc.lower_value, proc.upper_value]),
-                    html.Hr(),
-                    html.P("Steering angle calcualtion method"),
-                    dcc.Slider(min=1, max=5, step=1, value = proc.calc_angle_method, id='calc-angle-slider'),
-                    html.Hr(),
-                    html.P("Simulation"),
-                    dcc.Slider(min=0, max=1, step=1, value = proc.simulation, id='simulation-slider'),
-                    html.Hr(),
-                    html.Button('Start Car', id='b-start', n_clicks=0),
-                    html.Button('Stop Car', id='b-stop', n_clicks=0),
-                    html.Div(id='mode-container')
-                ]
-            )
+app.layout = html.Div(style={'backgroundColor': '#000000'}, children=[
+    dbc.Container([
+        dbc.Row(dbc.Col(html.H1("Livestream", className="text-center mt-4", style={'color': 'white'}))),
+        dbc.Row(dbc.Col(html.P("Status:", id="test-output", className="text-center", style={'color': 'white'}))),
+        dbc.Row(dbc.Col(html.P("Calculation Method:", id="test-output2", className="text-center", style={'color': 'white'}))),
+        dbc.Row(dbc.Col(html.P("Simulation:", id="output-simulation", className="text-center", style={'color': 'white'}))),
+        dbc.Row([
+            dbc.Col([
+                html.P("Hue", style={'color': 'white'}),
+                dcc.RangeSlider(id="range-slider-h1", min=0, max=180, value=[proc.lower_hue, proc.upper_hue], marks={i: str(i) for i in range(0, 181, 20)}, step=1, updatemode='drag', tooltip={"placement": "bottom", "always_visible": True}),
+                html.P("Saturation", style={'color': 'white'}),
+                dcc.RangeSlider(id="range-slider-s1", min=0, max=255, value=[proc.lower_saturation, proc.upper_saturation], marks={i: str(i) for i in range(0, 256, 25)}, step=1, updatemode='drag', tooltip={"placement": "bottom", "always_visible": True}),
+                html.P("Value", style={'color': 'white'}),
+                dcc.RangeSlider(id="range-slider-v1", min=0, max=255, value=[proc.lower_value, proc.upper_value], marks={i: str(i) for i in range(0, 256, 25)}, step=1, updatemode='drag', tooltip={"placement": "bottom", "always_visible": True}),
+                html.Hr(style={'borderColor': 'white'}),
+                html.P("Steering angle calculation method", style={'color': 'white'}),
+                dcc.Slider(min=1, max=5, step=1, value=proc.calc_angle_method, id='calc-angle-slider', marks={i: str(i) for i in range(1, 6)}, tooltip={"placement": "bottom", "always_visible": True}),
+                html.Hr(style={'borderColor': 'white'}),
+                html.P("Simulation", style={'color': 'white'}),
+                dcc.Slider(min=0, max=1, step=1, value=proc.simulation, id='simulation-slider', marks={0: 'No', 1: 'Yes'}, tooltip={"placement": "bottom", "always_visible": True}),
+                html.Hr(style={'borderColor': 'white'}),
+                dbc.Button('Start Car', id='b-start', n_clicks=0, color="success", className="me-2", style={'fontSize': '20px'}),
+                dbc.Button('Stop Car', id='b-stop', n_clicks=0, color="danger", style={'fontSize': '20px'}),
+                html.Div(id='mode-container', style={'color': 'white', 'fontSize': '20px'})
+            ], width=6),
+            dbc.Col(html.Div([html.Img(src="/video_feed", id="videofeed", style={'width':'800px'})]), width=6)
         ]),
-    dbc.Row(dbc.Col(html.A("Help on HSV-Color-Modell", href='https://de.wikipedia.org/wiki/HSV-Farbraum', target="_blank")))
+        dbc.Row(dbc.Col(html.A("Help on HSV-Color-Modell", href='https://de.wikipedia.org/wiki/HSV-Farbraum', target="_blank", className="text-center mt-4", style={'color': 'white'})))
     ])
-
+])
 # callback hat immer einen Output und einen Input
 # beim Starten des Autos muss hier etwas getrickst werden
 @app.callback(
