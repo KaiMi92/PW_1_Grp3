@@ -9,18 +9,24 @@ import calc_steering_angle_2
 import calc_steering_angle_3
 import calc_steering_angle_4
 import calc_steering_angle_5
+import calc_steering_angle_6
+import calc_steering_angle_7
+
 
 methodDictionary = {1: calc_steering_angle_1.calculate_steering_angle, 
                     2: calc_steering_angle_2.calculate_steering_angle,
                     3: calc_steering_angle_3.calculate_steering_angle,
                     4: calc_steering_angle_4.calculate_steering_angle,
-                    5: calc_steering_angle_5.calculate_steering_angle}
+                    5: calc_steering_angle_5.calculate_steering_angle,
+                    6: calc_steering_angle_6.calculate_steering_angle,
+                    7: calc_steering_angle_7.calculate_steering_angle}
 
 # Setzen der Konstantwerte für Geschwindigkeit und Lenkwinkel Geradeaus, maximal Links und maximal rechts
 SPEED = 25
 STRAIGHT_FORWARD = 90
 MAX_TURN_LEFT = 45
 MAX_TURN_RIGHT = 135
+IMAGE_SIZE = (128, 128)
 
 class OpenCvCar(CamCar):
 
@@ -91,7 +97,22 @@ class OpenCvCar(CamCar):
             line_filter, lines = self._proc.line_filter(frame.copy())
             # steering_angle = calc_steering_angle.calculate_steering_angle(line_filter, lines)   # einzeichnen im bild?
 
-            if self._proc.use_average:
+
+            if self._proc.calc_angle_method == 5:
+                # use neural network
+                print("use neural network")
+
+                img_crop = frame[150:350,:,:]
+                img_crop = cv2.resize(img_crop, IMAGE_SIZE)
+                img_crop = img_crop / 255.0
+                
+                method = methodDictionary[self._proc.calc_angle_method]
+
+                img_crop = np.float32(img_crop)
+                angle = method(img_crop, None)
+
+            if self._proc.calc_angle_method == 4:
+                # use avarage of calc methods 1 to 3
                 angle_avg = 0
                 for i in range (1, 4):
                     method = methodDictionary[i]
@@ -131,7 +152,7 @@ class OpenCvCar(CamCar):
             x_string = (b'--frame\r\n'
                     b'Content-Type: image/jpeg\r\n\r\n' + x_bytes + b'\r\n\r\n')
             
-            time.sleep(0.01)
+            # time.sleep(0.01)
             yield x_string        
 
         

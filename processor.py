@@ -11,8 +11,7 @@ class Processor():
         self.upper_saturation = 255
         self.upper_value = 255
 
-        self.calc_angle_method = 2
-        self.use_average = False
+        self.calc_angle_method = 1
 
     def filter_color(self, image):
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -29,7 +28,7 @@ class Processor():
         # Parkettfugen wurden als Linien erkannt
         # daher erst MedianBlur, um Fugen zu verwischen
         # img_crop = cv2.medianBlur(img_crop,7)
-        img_blur = cv2.blur(img_crop,(5, 5))
+        img_blur = cv2.blur(img_crop,(9, 9))
 
         img_hsv = cv2.cvtColor(img_blur, cv2.COLOR_BGR2HSV)
         lower_blue = np.array([self.lower_hue, self.lower_saturation, self.lower_value])

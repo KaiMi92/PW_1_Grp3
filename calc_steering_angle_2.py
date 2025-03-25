@@ -10,6 +10,12 @@ def distance_point_to_line(x1, y1, x2, y2, x0, y0):
     distance = numerator / denominator
     return distance
 
+def y_distance_to_car(x1, y1, x2, y2, x0, y0):
+    return min((y0 - y1), (y0 - y2))
+
+def x_distance_to_car(x1, y1, x2, y2, x0, y0):
+    return abs(x0-x2)
+
 def calc_slope(x1, y1, x2, y2):
     if (x2 - x1) != 0:
         slope = (y2 - y1) / (x2 - x1)
@@ -141,8 +147,10 @@ def calculate_steering_angle(image, lines):
     height, width, channels = image.shape
     slope_of_nearest_neg_line = 1000.0
     slope_of_nearest_pos_line = 1000.0
-    dist_of_nearest_neg_line = 1000.0
-    dist_of_nearest_pos_line = 1000.0
+    y_dist_of_nearest_neg_line = 1000.0
+    y_dist_of_nearest_pos_line = 1000.0
+    x_dist_of_nearest_neg_line = 1000.0
+    x_dist_of_nearest_pos_line = 1000.0
     nearest_neg_line = None
     nearest_pos_line = None
     curve_is_too_tight_factor = 1
@@ -157,29 +165,50 @@ def calculate_steering_angle(image, lines):
         for line in lines:
             x1, y1, x2, y2 = line[0]
             m = calc_slope(x1, y1, x2, y2)
-            distance_to_car = distance_point_to_line(x1, y1, x2, y2, xs, ys)
+            y_distance_to_car_tmp = y_distance_to_car(x1, y1, x2, y2, xs, ys)
+            x_distance_to_car_tmp = x_distance_to_car(x1, y1, x2, y2, xs, ys)
             # print(f"Line P1({x1}|{y1}), P2({x2}|{y2}) - m={m}, distance = {distance_to_car} ")
 
             if m <= 0.0:
                 # check for lines with negative slope
-                if distance_to_car < dist_of_nearest_neg_line:
-                    dist_of_nearest_neg_line = distance_to_car
+                if y_distance_to_car_tmp < y_dist_of_nearest_neg_line:
+                    y_dist_of_nearest_neg_line = y_distance_to_car_tmp
+                    x_dist_of_nearest_neg_line = x_distance_to_car_tmp
                     slope_of_nearest_neg_line = m
                     nearest_neg_line = line[0]
             else:
                 # check for lines with positive slope
-                if distance_to_car < dist_of_nearest_pos_line:
-                    dist_of_nearest_pos_line = distance_to_car
+                if y_distance_to_car_tmp < y_dist_of_nearest_pos_line:
+                    y_dist_of_nearest_pos_line = y_distance_to_car_tmp
+                    x_dist_of_nearest_pos_line = x_distance_to_car_tmp
                     slope_of_nearest_pos_line = m
                     nearest_pos_line = line[0]
 
 
+    print(f"y-Distances: Left = {y_dist_of_nearest_neg_line}, Right = {y_dist_of_nearest_pos_line}")
+
+    # remove lines that are far away
+    if y_dist_of_nearest_neg_line - y_dist_of_nearest_pos_line > 75:
+        print("y-remove left line!")
+        nearest_neg_line = None
+    elif y_dist_of_nearest_pos_line - y_dist_of_nearest_neg_line > 75:
+        print("y-remove right line!")
+        nearest_pos_line = None
+
+    print(f"x-Distances: Left = {x_dist_of_nearest_neg_line}, Right = {x_dist_of_nearest_pos_line}")
+    # remove lines that are far away
+    if x_dist_of_nearest_neg_line - x_dist_of_nearest_pos_line > 75:
+        print("x-remove left line!")
+        nearest_neg_line = None
+    elif x_dist_of_nearest_pos_line - x_dist_of_nearest_neg_line > 75:
+        print("x-remove right line!")
+        nearest_pos_line = None
 
     if nearest_neg_line is not None:
-        draw_line(image, nearest_neg_line, (0,0,200), 3)
+        draw_line(image, nearest_neg_line, (0,0,200), 2)
 
     if nearest_pos_line is not None:
-        draw_line(image, nearest_pos_line, (0,0,200), 3)
+        draw_line(image, nearest_pos_line, (0,0,200), 2)
 
     # check tight curves
     if curve_is_too_tight(xs, ys, nearest_neg_line, nearest_pos_line, slope_of_nearest_neg_line, slope_of_nearest_pos_line):
@@ -222,9 +251,25 @@ def calculate_steering_angle(image, lines):
         xs_dist_right = abs(xs_dist_right - xs)
 
         rel = xs_dist_left / (xs_dist_left + xs_dist_right)
-        rel = xs_dist_left / (xs_dist_left + xs_dist_right)
 
-        steering_angle = 90 * (1 - rel) + 45
+        lower_limit = 0.2
+        upper_limit = 0.8
+        limit_diff = upper_limit - lower_limit
+
+        if rel < lower_limit:
+            steering_angle = 45
+        elif rel > upper_limit:
+            steering_angle = 135
+        else:
+            # lower_limit = Linker Ausschlag = 0
+            # upper_limit = Rechter Ausschlag = 90
+            rel_diff = rel * limit_diff
+            steering_angle = 90 * rel_diff / limit_diff
+            steering_angle = steering_angle + 45
+    
+            # steering_angle = 90 * (1 - rel) + 45
+            print(f"xs_dist_left = {xs_dist_left}, xs_dist_right = {xs_dist_right}, rel = {rel}, limit_diff = {limit_diff}, rel_diff = {rel_diff}, steering_angle = {steering_angle}")
+        
         print(f"xs_dist_left = {xs_dist_left}, xs_dist_right = {xs_dist_right}, steering_angle = {steering_angle}")
 
     return curve_is_too_tight_factor * steering_angle
