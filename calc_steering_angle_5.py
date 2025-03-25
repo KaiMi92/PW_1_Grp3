@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 
 IMAGE_SIZE = (128, 128)
-mc = ModelContainer("TFLite_Modell.tflite")
+mc = ModelContainer("TFLite_Modell_Frank.tflite")
 
 def calculate_steering_angle(image, lines):
     img_crop = cv2.resize(image, IMAGE_SIZE)
