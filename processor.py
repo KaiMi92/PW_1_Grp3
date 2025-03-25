@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 
 class Processor():
+    AVG_METHOD = 4
+    
     def __init__(self):
         self.lower_hue = 95
         self.lower_saturation = 80

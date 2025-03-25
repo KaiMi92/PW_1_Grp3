@@ -90,31 +90,17 @@ class OpenCvCar(CamCar):
     def generate_stream(self):
         while True:
             print("============================================")
-            # print(f"Verwende Methode {self._proc.calc_angle_method}")
+            print(f"Verwende Methode {self._proc.calc_angle_method}")
 
             # frame = camera_instance.get_frame()
             frame = self.get_img()
             line_filter, lines = self._proc.line_filter(frame.copy())
             # steering_angle = calc_steering_angle.calculate_steering_angle(line_filter, lines)   # einzeichnen im bild?
 
-
-            if self._proc.calc_angle_method == 5:
-                # use neural network
-                print("use neural network")
-
-                img_crop = frame[150:350,:,:]
-                img_crop = cv2.resize(img_crop, IMAGE_SIZE)
-                img_crop = img_crop / 255.0
-                
-                method = methodDictionary[self._proc.calc_angle_method]
-
-                img_crop = np.float32(img_crop)
-                angle = method(img_crop, None)
-
-            if self._proc.calc_angle_method == 4:
+            if self._proc.calc_angle_method == self._proc.AVG_METHOD:
                 # use avarage of calc methods 1 to 3
                 angle_avg = 0
-                for i in range (1, 4):
+                for i in range (1, self._proc.AVG_METHOD):
                     method = methodDictionary[i]
                     angle_avg = angle_avg + abs(method(line_filter, lines))
 
