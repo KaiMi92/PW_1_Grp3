@@ -4,19 +4,20 @@ from processor import Processor
 from camcar import CamCar
 import math
 import time
+import calc_steering_angle_0
 import calc_steering_angle_1
 import calc_steering_angle_2
 import calc_steering_angle_3
-import calc_steering_angle_4
 import calc_steering_angle_5
 import calc_steering_angle_6
 import calc_steering_angle_7
 
 
-methodDictionary = {1: calc_steering_angle_1.calculate_steering_angle, 
+methodDictionary = {0: calc_steering_angle_0.calculate_steering_angle, 
+                    1: calc_steering_angle_1.calculate_steering_angle, 
                     2: calc_steering_angle_2.calculate_steering_angle,
                     3: calc_steering_angle_3.calculate_steering_angle,
-                    4: calc_steering_angle_4.calculate_steering_angle,
+                    4: None, # used for avg calculation
                     5: calc_steering_angle_5.calculate_steering_angle,
                     6: calc_steering_angle_6.calculate_steering_angle,
                     7: calc_steering_angle_7.calculate_steering_angle}

@@ -55,6 +55,7 @@ app.layout = html.Div(style={'backgroundColor': '#292929'}, children=[
                     # style={'color': 'white', "padding": "10px", "max-width": "800px", "margin": "auto"},
                     labelStyle={"display": "flex", "align-items": "center"},
                     options=[
+                        {"label": html.Div([' Method 0 - by Copilot'], style={'color': 'LightBlue'}), "value": 0},
                         {"label": html.Div([' Method 1'], style={'color': 'LightBlue'}), "value": 1},
                         {"label": html.Div([' Method 2'], style={'color': 'LightBlue'}), "value": 2},
                         {"label": html.Div([' Method 3'], style={'color': 'LightBlue'}), "value": 3},
