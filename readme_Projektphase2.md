@@ -1,4 +1,17 @@
-# Beschreibung wie die Lenkwinkel errechnet wurden (Frank)
+<details close>
+
+<summary>
+
+### Beschreibung wie die Lenkwinkel errechnet wurden (Frank)
+---
+</summary>
+
+<br>
+
+__what ever it takes!__
+---
+</details>
+
 # Welche Probleme gab es bei den Umsetzungen (Frank)
 ## Lichtverhältnisse
 ## unterschiedliche Böden
