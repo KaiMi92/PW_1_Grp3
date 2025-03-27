@@ -9,10 +9,22 @@
 <br>
 
 __what ever it takes!__
+
 ---
+
 </details>
 
+<details close>
+
+<summary>
+
 # Welche Probleme gab es bei den Umsetzungen (Frank)
+
+---
+
+</summary>
+
+<br>
 ## Lichtverhältnisse
 ## unterschiedliche Böden
 ## Berechnungen der Lenkwinkel aus den drei Methoden
@@ -25,13 +37,78 @@ __what ever it takes!__
 ## Git Fetch Git Pull, das gleichzeitige Arbeiten an Dateien diesmal besser weil stärker auf die Reiehnfolge geachtet und mehr zusammen programmiert
 ## Schrumpfende Gruppe externe Einflüsse 
 ## Erkenntnis ggf. im Front-End manuaelle Fahrt mit Bildspeicherung und dem dazugehörigen Lenkwinkel
+
+---
+
+</details>
+
+<details close>
+
+<summary>
+
 # Wie sind die NN umgestezt worden (Frank)
+
+---
+
+</summary>
+
+<br>
+
 ## Bild-Vervielfachungen
 ## Weißes Pixel
 ## wie sich ggf. Frames unterscheiden
 ## MAE val_loss haben
+
+---
+
+</details>
+
+<details close>
+
+<summary>
+
 # Beschreibung des HTML-Frontends (Tonspur, Life-Umschalten) (Frank-Screenshoot)
+
+---
+
+</summary>
+
+<br>
+---
+
+</details>
+
+<details close>
+
+<summary>
+
 # Ggf. Video von Fahrten (Frank ggf. Sebastian mit entschärfter Todeskurve)
+
+---
+
+</summary>
+
+<br>
+
+---
+
+</details>
+
+<details close>
+
+<summary>
+
 # Ggf. MLFlow (Tonspuel, Life-vorstellung) (Sebastian)
+
+---
+
+</summary>
+
+<br>
+
 ## Installationsbedingungen mit Virtueller Umgebung
 ## Was kann man da durch die Lernprogramme alles sehen/ erkennen
+
+---
+
+</details>
