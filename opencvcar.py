@@ -95,20 +95,26 @@ class OpenCvCar(CamCar):
 
             # frame = camera_instance.get_frame()
             frame = self.get_img()
-            line_filter, lines = self._proc.line_filter(frame.copy())
+            method = methodDictionary[self._proc.calc_angle_method]
             # steering_angle = calc_steering_angle.calculate_steering_angle(line_filter, lines)   # einzeichnen im bild?
 
-            if self._proc.calc_angle_method == self._proc.AVG_METHOD:
-                # use avarage of calc methods 1 to 3
-                angle_avg = 0
-                for i in range (1, self._proc.AVG_METHOD):
-                    method = methodDictionary[i]
-                    angle_avg = angle_avg + abs(method(line_filter, lines))
-
-                angle = (angle_avg) / 3
+            if self._proc.calc_angle_method in self._proc.NN_METHODS:
+                line_filter = frame
+                angle = method(frame, lines)
             else:
-                method = methodDictionary[self._proc.calc_angle_method]
-                angle = method(line_filter, lines)
+                line_filter, lines = self._proc.line_filter(frame.copy())
+            
+                if self._proc.calc_angle_method == self._proc.AVG_METHOD:
+                    # use avarage of calc methods 1 to 3
+                    angle_avg = 0
+                    for i in range (1, self._proc.AVG_METHOD):
+                        method = methodDictionary[i]
+                        angle_avg = angle_avg + abs(method(line_filter, lines))
+
+                    angle = (angle_avg) / 3
+                else:
+                    method = methodDictionary[self._proc.calc_angle_method]
+                    angle = method(line_filter, lines)
 
             if angle < 0:
                 # curve is too tight
@@ -129,7 +135,8 @@ class OpenCvCar(CamCar):
             self.draw_fps(line_filter)
 
             # Zeilen 150 bis 350 in Frame durch Line_filter ersetzen und anzeigen
-            frame[150:350,:,:] = line_filter
+            if self._proc.calc_angle_method not in self._proc.NN_METHODS:
+                frame[150:350,:,:] = line_filter
             self.draw_frame(frame)
 
             stacked = np.hstack([frame]) # canny, filtered])

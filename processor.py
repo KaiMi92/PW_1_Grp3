@@ -3,6 +3,7 @@ import numpy as np
 
 class Processor():
     AVG_METHOD = 4
+    NN_METHODS = (5, 6, 7)
     
     def __init__(self):
         self.lower_hue = 95

@@ -3,9 +3,12 @@ import numpy as np
 import cv2
 
 IMAGE_SIZE = (128, 128)
-mc = ModelContainer("TFLite_Modell_Sebastian.tflite")
+model_name = "industrious-foal-67.tflite"
+mc = ModelContainer(model_name)
 
 def calculate_steering_angle(image, lines):
+    print("Use model " + model_name)
+
     img_crop = image[150:350,:,:]
     img_crop = cv2.resize(img_crop, IMAGE_SIZE)
     img_crop = img_crop / 255.0
