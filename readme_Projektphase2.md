@@ -89,7 +89,7 @@ _Diese Funktion berechnet den Lenkwinkel des Autos.Dazu wird die Steigung der ge
 _am Rand scheinbar ein Bug aus einer früheren OPENCV-Version_
 
 
-![Weißer Pixel-Rand](https://ibb.co/whbpkyRB)
+![Weißer Pixel-Rand](https://i.ibb.co/pjs472xb/Wei-er-Pixel.png)
 
 ## Lichtverhältnisse
 
