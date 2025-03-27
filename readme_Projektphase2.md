@@ -1,5 +1,5 @@
-# Beschreibung wie die Lenkwinkel errechnet wurden
-# Welche Probleme gab es bei den Umsetzungen
+# Beschreibung wie die Lenkwinkel errechnet wurden (Frank)
+# Welche Probleme gab es bei den Umsetzungen (Frank)
 ## Lichtverhältnisse
 ## unterschiedliche Böden
 ## Berechnungen der Lenkwinkel aus den drei Methoden
@@ -12,13 +12,13 @@
 ## Git Fetch Git Pull, das gleichzeitige Arbeiten an Dateien diesmal besser weil stärker auf die Reiehnfolge geachtet und mehr zusammen programmiert
 ## Schrumpfende Gruppe externe Einflüsse 
 ## Erkenntnis ggf. im Front-End manuaelle Fahrt mit Bildspeicherung und dem dazugehörigen Lenkwinkel
-# Wie sind die NN umgestezt worden
+# Wie sind die NN umgestezt worden (Frank)
 ## Bild-Vervielfachungen
 ## Weißes Pixel
 ## wie sich ggf. Frames unterscheiden
 ## MAE val_loss haben
-# Beschreibung des HTML-Frontends (Tonspur, Life-Umschalten)
-# Ggf. Video von Fahrten
-# Ggf. MLFlow (Tonspuel, Life-vorstellung)
+# Beschreibung des HTML-Frontends (Tonspur, Life-Umschalten) (Frank-Screenshoot)
+# Ggf. Video von Fahrten (Frank ggf. Sebastian mit entschärfter Todeskurve)
+# Ggf. MLFlow (Tonspuel, Life-vorstellung) (Sebastian)
 ## Installationsbedingungen mit Virtueller Umgebung
 ## Was kann man da durch die Lernprogramme alles sehen/ erkennen
