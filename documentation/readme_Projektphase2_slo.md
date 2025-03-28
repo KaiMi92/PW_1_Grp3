@@ -141,63 +141,6 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 
 </details>
 
-<details close>
-<summary>
-
-##   Nutzung von MLFlow
-
-</summary>
-
-* MLflow ist eine Machine Learning Plattform Komponente
-* MLflow begleitet den kompletten Machine Learning Prozess eines Data Science Projektes
-* Ziel ist die Dokumentation, Reproduzierbarkeit und die Vereinfachung des Deployments
-
-<img src="pics/2025-03-27 17_17_32-MLflow_Ueberblick.png" alt="isolated" width="400"/>
- 
-<img src="pics/2025-03-27 17_20_52-MLflow_compare1.png" alt="isolated" width="400"/>
-
-<img src="pics/2025-03-27 17_24_42-MLflow_ContourPlot.png" alt="isolated" width="400"/>
-
-</details>
-
-<details open>
-<summary>
-
-## Installation von MLFlow
-
-</summary>
-
-* Massive Probleme beim Starten des lokalen MLflow-Servers
-* Installation unter WinPython scheiterte
-* Inbetriebnahme einer virtuellen Python-Umgebung
-
-```python
-python -m venv .venv
-.venv\scripts\activate   # Aktivierung der virtuellen Umgebung
-.venv\scripts\deactivate # Deaktivierung der virtuellen Umgebung
-```
-
-* danach Installation der benötigten Python-Bibliotheken
-
-```python
-pip install numpy==1.26
-pip install opencv-python
-pip install tensorflow==2.8
-pip install protobuf==3.20 # evtl. unnötig
-pip install mlflow
-```
-* alle weiteren Bibliotheken sind von den o.g. abhängig und werden somit automatisch installiert
-
-* danach war der Import der MLflow-Bibliotheken und der Start des lokalen Servers erfolgreich
-
-```python
-mlflow server --host 127.0.0.2 --port 8080
-```
-
-
-</details>
-
-
 </details>
 
 
@@ -299,6 +242,65 @@ model = Sequential([
 | val_mae | 1.661 |
 
 <img src="pics/output_aged-snail-344.png" width="800"/>
+
+</details>
+
+
+
+<details close>
+
+<summary>
+
+##   Nutzung von MLFlow
+
+</summary>
+
+* MLflow ist eine Machine Learning Plattform Komponente
+* MLflow begleitet den kompletten Machine Learning Prozess eines Data Science Projektes
+* Ziel ist die Dokumentation, Reproduzierbarkeit und die Vereinfachung des Deployments
+
+<img src="pics/2025-03-27 17_17_32-MLflow_Ueberblick.png" alt="isolated" width="400"/>
+ 
+<img src="pics/2025-03-27 17_20_52-MLflow_compare1.png" alt="isolated" width="400"/>
+
+<img src="pics/2025-03-27 17_24_42-MLflow_ContourPlot.png" alt="isolated" width="400"/>
+
+</details>
+
+<details open>
+
+<summary>
+
+## Installation von MLFlow
+
+</summary>
+
+* Massive Probleme beim Starten des lokalen MLflow-Servers
+* Installation unter WinPython scheiterte
+* Inbetriebnahme einer virtuellen Python-Umgebung
+
+```python
+python -m venv .venv
+.venv\scripts\activate   # Aktivierung der virtuellen Umgebung
+.venv\scripts\deactivate # Deaktivierung der virtuellen Umgebung
+```
+
+* danach Installation der benötigten Python-Bibliotheken
+
+```python
+pip install numpy==1.26
+pip install opencv-python
+pip install tensorflow==2.8
+pip install protobuf==3.20 # evtl. unnötig
+pip install mlflow
+```
+* alle weiteren Bibliotheken sind von den o.g. abhängig und werden somit automatisch installiert
+
+* danach war der Import der MLflow-Bibliotheken und der Start des lokalen Servers erfolgreich
+
+```python
+mlflow server --host 127.0.0.2 --port 8080
+```
 
 </details>
 
