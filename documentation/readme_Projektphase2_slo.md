@@ -141,174 +141,6 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 
 </details>
 
-</details>
-
-
-<details close>
-
-<summary>
-
-# Umsetzung der Neuronalen Netze
-
-</summary>
-
-## Datenlage
-
-* 200 bis 300 Aufnahmen von der Raspi-Kamera
-* Manuelle Prüfung bzw. Korrektur des Lenkwinkels der Aufnahmen
-* zusätzliche Spiegelung der Bilder: `img[:,::-1,:]`
-* teilweise Cropping: `imgage[150:350,:,:]`
-* verschiedene Bildgrößen (128, 128), (160, 160) bzw. (200, 200)
-* Data Augmentation, vor allem bzgl. der Helligkeit
-    * Weißes-Pixel-Problem
-    * ```python
-        datagen = ImageDataGenerator(
-            shear_range=0.0,
-            zoom_range=[1.0, 1.0],
-            width_shift_range=[0, 0],
-            height_shift_range=[0, 0],
-            horizontal_flip=False,
-            fill_mode='nearest',
-            brightness_range=[0.2, 2.0]
-        )
-        ```
-
-In Summe liegen somit 500 bis 2000 Bilder vor, um das neuronale Netz zu trainieren.
-
-<img src="pics/2025-03-27 18_26_43-Histogramm.png" width="800"/>
-
-
-## Architektur
-
-Nach einigen Durchläufen hat sich diesen Netz als bestes herausgestellt:
-
-
-```python
-# nervous-rat-924 ff
-model = Sequential([
-    Input(shape=(images[0].shape)),
-    Conv2D(32, (3, 3), activation='relu'),
-    MaxPooling2D(pool_size=(2, 2)),
-    Conv2D(64, (3, 3), activation='relu'),
-    MaxPooling2D(pool_size=(2, 2)),
-    Conv2D(128, (3, 3), activation='relu'),
-    Flatten(),
-    Dense(128, activation='relu'),
-    Dense(1)
-])
-```
-
-## Parameter des besten Netzes "aged-snail-344"
-
-| Parameter | Wert |
-| --- | ----------- |
-| Bilder Cam | 200 |
-| gespiegelte Bilder | 200 |
-| augmentierte Bilder | 2000 |
-| Cropping | ja |
-| Epochen | 100 |
-| Lernrate | 0,01 |
-| Bildgröße | (200, 200) |
-| Lernrate | 0,01 |
-| batch_size | 64 |
-| Berechnungsdauer | 59.3min |
-
-| Metrik | Wert |
-| --- | ----------- |
-| lr | 0.00001 |
-| loss | 1.277 |
-| mae | 0.748 |
-| val_loss | 9.203 |
-| val_mae | 1.661 |
-
-<img src="pics/output_aged-snail-344.png" width="800"/>
-
----
-
-</summary>
-
-</details>
-
-<!--- ################################ -->
-<!--- ################################ -->
-<!--- ################################ -->
-
-<details open>
-
-<summary>
-
-# Welche Probleme gab es bei den Umsetzungen (Frank)
-
----
-
-</summary>
-
-## Lichtverhältnisse
-## unterschiedliche Böden
-## Berechnungen der Lenkwinkel aus den drei Methoden
-### Median von Frank stark abhängig von der erkannten Anzahl der Linien rechts und links bei einer Fahrbahn besser
-### zu wenig blaues Klebeband (wünsche)
-### zweites paar Akkus (wünsche)
-## Bild richtig übergeben OpenCV (mit Linien gelernt aber ohne) 
-## Verständnis zu den Modellen viel kopiert aber nicht vollständig durchdrungen (wunsch ggf. 2Tage )
-## WinSCP für das Kopieren der Bilder hilfreich
-## Git Fetch Git Pull, das gleichzeitige Arbeiten an Dateien diesmal besser weil stärker auf die Reiehnfolge geachtet und mehr zusammen programmiert
-## Schrumpfende Gruppe externe Einflüsse 
-## Erkenntnis ggf. im Front-End manuaelle Fahrt mit Bildspeicherung und dem dazugehörigen Lenkwinkel
-
----
-
-</details>
-
-<details open>
-
-<summary>
-
-# Wie sind die NN umgestezt worden (Frank)
-
-</summary>
-
-## Bild-Vervielfachungen
-## Weißes Pixel
-## wie sich ggf. Frames unterscheiden
-## MAE val_loss haben
-
----
-
-</details>
-
-<details open>
-
-<summary>
-
-# Beschreibung des HTML-Frontends (Tonspur, Life-Umschalten) (Frank-Screenshoot)
-
----
-
-</summary>
-
-<br>
----
-
-</details>
-yvxcy
-
-<details open>
-
-<summary>
-
-# Ggf. Video von Fahrten (Frank ggf. Sebastian mit entschärfter Todeskurve)
-
----
-
-</summary>
-
-<br>
-
----
-
-</details>
-
 <details close>
 <summary>
 
@@ -366,6 +198,178 @@ mlflow server --host 127.0.0.2 --port 8080
 
 
 </details>
+
+
+</details>
+
+
+<details close>
+
+<summary>
+
+# Umsetzung der Neuronalen Netze
+
+</summary>
+
+<details close>
+
+<summary>
+
+## Datenlage
+
+</summary>
+
+* 200 bis 300 Aufnahmen von der Raspi-Kamera
+* Manuelle Prüfung bzw. Korrektur des Lenkwinkels der Aufnahmen
+* zusätzliche Spiegelung der Bilder: `img[:,::-1,:]`
+* teilweise Cropping: `imgage[150:350,:,:]`
+* verschiedene Bildgrößen (128, 128), (160, 160) bzw. (200, 200)
+* Data Augmentation, vor allem bzgl. der Helligkeit
+    * Weißes-Pixel-Problem
+    * ```python
+        datagen = ImageDataGenerator(
+            shear_range=0.0,
+            zoom_range=[1.0, 1.0],
+            width_shift_range=[0, 0],
+            height_shift_range=[0, 0],
+            horizontal_flip=False,
+            fill_mode='nearest',
+            brightness_range=[0.2, 2.0]
+        )
+        ```
+
+In Summe liegen somit 500 bis 2000 Bilder vor, um das neuronale Netz zu trainieren.
+
+<img src="pics/2025-03-27 18_26_43-Histogramm.png" width="800"/>
+
+</details>
+
+<details close>
+
+<summary>
+
+## Architektur
+
+</summary>
+
+Nach einigen Durchläufen hat sich diesen Netz als bestes herausgestellt:
+
+
+```python
+# nervous-rat-924 ff
+model = Sequential([
+    Input(shape=(images[0].shape)),
+    Conv2D(32, (3, 3), activation='relu'),
+    MaxPooling2D(pool_size=(2, 2)),
+    Conv2D(64, (3, 3), activation='relu'),
+    MaxPooling2D(pool_size=(2, 2)),
+    Conv2D(128, (3, 3), activation='relu'),
+    Flatten(),
+    Dense(128, activation='relu'),
+    Dense(1)
+])
+```
+</details>
+
+<details close>
+
+<summary>
+
+## Parameter des besten Netzes "aged-snail-344"
+
+</summary>
+
+| Parameter | Wert |
+| --- | ----------- |
+| Bilder Cam | 200 |
+| gespiegelte Bilder | 200 |
+| augmentierte Bilder | 2000 |
+| Cropping | ja |
+| Epochen | 100 |
+| Lernrate | 0,01 |
+| Bildgröße | (200, 200) |
+| Lernrate | 0,01 |
+| batch_size | 64 |
+| Berechnungsdauer | 59.3min |
+
+| Metrik | Wert |
+| --- | ----------- |
+| lr | 0.00001 |
+| loss | 1.277 |
+| mae | 0.748 |
+| val_loss | 9.203 |
+| val_mae | 1.661 |
+
+<img src="pics/output_aged-snail-344.png" width="800"/>
+
+</details>
+
+</details>
+
+<!--- ################################ -->
+<!--- ################################ -->
+<!--- ################################ -->
+
+<details open>
+
+<summary>
+
+# Welche Probleme gab es bei den Umsetzungen (Frank)
+
+---
+
+</summary>
+
+## Lichtverhältnisse
+## unterschiedliche Böden
+## Berechnungen der Lenkwinkel aus den drei Methoden
+### Median von Frank stark abhängig von der erkannten Anzahl der Linien rechts und links bei einer Fahrbahn besser
+### zu wenig blaues Klebeband (wünsche)
+### zweites paar Akkus (wünsche)
+## Bild richtig übergeben OpenCV (mit Linien gelernt aber ohne) 
+## Verständnis zu den Modellen viel kopiert aber nicht vollständig durchdrungen (wunsch ggf. 2Tage )
+## WinSCP für das Kopieren der Bilder hilfreich
+## Git Fetch Git Pull, das gleichzeitige Arbeiten an Dateien diesmal besser weil stärker auf die Reiehnfolge geachtet und mehr zusammen programmiert
+## Schrumpfende Gruppe externe Einflüsse 
+## Erkenntnis ggf. im Front-End manuaelle Fahrt mit Bildspeicherung und dem dazugehörigen Lenkwinkel
+
+---
+
+</details>
+
+<details open>
+
+<summary>
+
+# Beschreibung des HTML-Frontends (Tonspur, Life-Umschalten) (Frank-Screenshoot)
+
+---
+
+</summary>
+
+<br>
+---
+
+</details>
+yvxcy
+
+<details open>
+
+<summary>
+
+# Ggf. Video von Fahrten (Frank ggf. Sebastian mit entschärfter Todeskurve)
+
+---
+
+</summary>
+
+<br>
+
+---
+
+</details>
+
+
 
 <details open>
 
