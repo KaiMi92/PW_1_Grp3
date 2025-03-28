@@ -636,14 +636,19 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 
 <summary>
 
-## der Wissens- und Fähigkeitenstand in der Gruppe ist heterogen, damit muss man umgehen bei der Arbeitsweise.
+## Heterogene Gruppe
 ---
 </summary>
 
+- Wissens- und Fähigkeitenstand und Erwartungen in der Gruppe ist unterschiedlich
+    - damit muss man umgehen bei der Arbeitsweise
 - Wir haben viele Themen gemeisam in Rotation bearbeitet und programmiert. 
 - Einer präsentiert die Erfahrenen leiten an
 - Regelmäßiges Feedback bei der Beabreitungen u.a. durch Fragen sehr hilfreich
 - Abkapselbare Themen wie die Lenkung mit Bilderkennung und NN sind in eigenständig vorgenommen worden
+- hätten gerne noch mehr ausprobiert
+    - Neuronales Netz, dass anhand der Linien den Lenkwinkel erkennt
+
 
 </details>
 
@@ -664,6 +669,23 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 - auch wenn es noch nicht fährt, hat die Fehlersuche viel Verständis gebracht
 
 </details>
+
+<details close>
+
+<summary>
+
+## Schade, dass es vorbei ist
+---
+</summary>
+
+* Endlich wieder Programmieren, Lernen und fasziniert sein!
+* Hoffentlich Anwendung bei der Arbeit (*)
+* Implementierung in unserer Gruppe fast ohne KI-Unterstützung
+    * ... aber Github-Copilot in VSCode ist der Wahnsinn und hört offenbar zu
+* RIESIGEN Dank an das Trainer- und Organisationsteam!
+
+</details>
+
 </details>
 
 </details>
