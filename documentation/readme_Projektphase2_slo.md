@@ -1,4 +1,4 @@
-<details open>
+<details close>
 
 <summary>
 
@@ -6,7 +6,13 @@
 
 </summary>
 
+<details close>
+
+<summary>
+
 ## Umsetzungsschritte
+
+</summary>
 
 * Implementierung der Klasse ```CamCar``` zur Nutzung der Kamera
 * Visualiserung des Kamerabildes über Dash
@@ -14,7 +20,15 @@
     * Fahrspurverfolgung durch bildverarbeitende Methoden mit OpenCV
 * Umsetzung einer Lenkwinkel-Berechnung
 
+</details>
+
+<details close>
+
+<summary>
+
 ## Erkennung der blauen Fahrspur-Begrenzung
+
+</summary>
 
 ```python
 # Bild beschneiden
@@ -40,7 +54,16 @@ edges = cv2.Canny(mask, 50, 150, apertureSize=3)
 lines = cv2.HoughLinesP(edges, 1, np.pi / 180, threshold=30, minLineLength=30, maxLineGap=20)
 ```
 
+</details>
+
+<details close>
+
+<summary>
+
 ## Verschiedene Modelle der Lenkwinkel-Berechnung
+
+</summary>
+
 
 * Ziel: Alle Gruppenmitglieder sollen eigenes Modell implementieren können
 * Umschaltung in der Dash-App zur Laufzeit während der Fahrt
@@ -62,9 +85,15 @@ angle = method(line_filter, lines)
 
 * zusätzlich wurde eine Lenkwinkel-Berechnung umgesetzt, die den Durchschnittswinkel aller implementierten Modelle nutzt und auch eine von CoPilot generierte Berechnung
 
-<br/>
+</details>
+
+<details close>
+
+<summary>
 
 ## Algorithmus zur Lenkwinkelberechnung - Sebastian
+
+</summary>
 
 Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 
@@ -79,8 +108,15 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
     * Bestimmung der Schnittpunkte beider Linien mit der Grundlinie
     * Bestimmung des Lenkwinkels über Dreisatz anhand des Abstands des Mittelpunktes der Schnittpunkte zum Fahrzeugstand
 
+</details>
+
+<details close>
+
+<summary>
 
 ## Algorithmus zur Lenkwinkelberechnung - Copilot
+
+</summary>
 
 * Detecting Lane Lines
     * Hough transform to detect line segments in the region of interest.
@@ -103,17 +139,18 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 * Adjust the Steering Angle
     * to fit within the range of 45 to 135 degrees, with 90 degrees being straight forward
 
+</details>
 
-
----
 </details>
 
 
-<details open>
+<details close>
 
 <summary>
 
 # Umsetzung der Neuronalen Netze
+
+</summary>
 
 ## Datenlage
 
@@ -124,17 +161,17 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 * verschiedene Bildgrößen (128, 128), (160, 160) bzw. (200, 200)
 * Data Augmentation, vor allem bzgl. der Helligkeit
     * Weißes-Pixel-Problem
-    * ```
+    * ```python
         datagen = ImageDataGenerator(
-        shear_range=0.0,
-        zoom_range=[1.0, 1.0],
-        width_shift_range=[0, 0],
-        height_shift_range=[0, 0],
-        horizontal_flip=False,
-        fill_mode='nearest',
-        brightness_range=[0.2, 2.0]
-    )
-    ```
+            shear_range=0.0,
+            zoom_range=[1.0, 1.0],
+            width_shift_range=[0, 0],
+            height_shift_range=[0, 0],
+            horizontal_flip=False,
+            fill_mode='nearest',
+            brightness_range=[0.2, 2.0]
+        )
+        ```
 
 In Summe liegen somit 500 bis 2000 Bilder vor, um das neuronale Netz zu trainieren.
 
