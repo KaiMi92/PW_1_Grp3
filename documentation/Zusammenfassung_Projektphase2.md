@@ -1,3 +1,13 @@
+<center>
+
+# Zusammenfassung Camp2Code Gen8 - Projektphase 2 - Gruppe 3
+
+</center>
+
+<center><img src="pics/nervous-rat-924.jpg" width="200"/></center>
+
+---
+
 <!--- ################################ -->
 <!--- ################################ -->
 <!--- ################################ -->
@@ -10,9 +20,9 @@
 
 </summary>
 
-<img src="pics/2025-03-27 18_26_43-Histogramm.png" width="800"/>
+<img src="pics/HTML_FrontEnd_mit_Linien.png" width="800"/>
 
-<img src="pics/2025-03-27 18_26_43-Histogramm.png" width="800"/>
+<img src="pics/HTML_FrontEnd_ohne_Linien.png" width="800"/>
 
 
 </details>
@@ -477,6 +487,13 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 
 </summary>
 
+<video width="800" height="600" controls>
+  <source src="20250326_081429_NN2.mp4" type="video/mp4">
+</video>
+
+<video width="800" height="600" controls>
+  <source src="20250326_081208_NN3.mp4" type="video/mp4">
+</video>
 
 </details>
 
