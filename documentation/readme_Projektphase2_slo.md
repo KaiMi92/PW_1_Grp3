@@ -144,7 +144,7 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 <details close>
 <summary>
 
-# Nutzung von MLFlow
+##   Nutzung von MLFlow
 
 </summary>
 
@@ -153,11 +153,9 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 * Ziel ist die Dokumentation, Reproduzierbarkeit und die Vereinfachung des Deployments
 
 <img src="pics/2025-03-27 17_17_32-MLflow_Ueberblick.png" alt="isolated" width="400"/>
-
  
 <img src="pics/2025-03-27 17_20_52-MLflow_compare1.png" alt="isolated" width="400"/>
 
- 
 <img src="pics/2025-03-27 17_24_42-MLflow_ContourPlot.png" alt="isolated" width="400"/>
 
 </details>
@@ -165,7 +163,7 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 <details open>
 <summary>
 
-# Installation von MLFlow
+## Installation von MLFlow
 
 </summary>
 
