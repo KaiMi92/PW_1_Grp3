@@ -50,7 +50,7 @@
 <summary>
 
 ## Umsetzungsschritte
----
+
 </summary>
 
 * Implementierung der Klasse ```CamCar``` zur Nutzung der Kamera
@@ -66,7 +66,7 @@
 <summary>
 
 ## Erkennung der blauen Fahrspur-Begrenzung
----
+
 </summary>
 
 ```python
@@ -100,7 +100,7 @@ lines = cv2.HoughLinesP(edges, 1, np.pi / 180, threshold=30, minLineLength=30, m
 <summary>
 
 ## Verschiedene Modelle der Lenkwinkel-Berechnung
----
+
 </summary>
 
 
@@ -154,7 +154,7 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 <summary>
 
 ## Algorithmus zur Lenkwinkelberechnung - Frank
----
+
 </summary>
 
 <br>
@@ -218,7 +218,7 @@ __Berechnung des Lenkwinkels mit Abhängigkeit der Erkannten Linien und dessen M
 }
 ```
 
----
+
 
 </details>
 
@@ -227,7 +227,7 @@ __Berechnung des Lenkwinkels mit Abhängigkeit der Erkannten Linien und dessen M
 <summary>
 
 ## Algorithmus zur Lenkwinkelberechnung - Kai
----
+
 </summary>
 
 __Generelle Information__ 
@@ -288,7 +288,7 @@ def calculate_steering_angle(image, lines):
 <summary>
 
 ## Algorithmus zur Lenkwinkelberechnung - Copilot
----
+
 </summary>
 
 * Detecting Lane Lines
@@ -333,7 +333,7 @@ def calculate_steering_angle(image, lines):
 <summary>
 
 ## Datenlage
----
+
 </summary>
 
 * 200 bis 300 Aufnahmen von der Raspi-Kamera
@@ -366,7 +366,7 @@ In Summe liegen somit 500 bis 2000 Bilder vor, um das neuronale Netz zu trainier
 <summary>
 
 ## Architektur
----
+
 </summary>
 
 Nach einigen Durchläufen hat sich diesen Netz als bestes herausgestellt:
@@ -393,7 +393,7 @@ model = Sequential([
 <summary>
 
 ## Parameter des besten Netzes "aged-snail-344"
----
+
 </summary>
 
 | Parameter | Wert |
@@ -428,7 +428,7 @@ model = Sequential([
 <summary>
 
 ##   Nutzung von MLFlow
----
+
 </summary>
 
 * MLflow ist eine Machine Learning Plattform Komponente
@@ -448,7 +448,7 @@ model = Sequential([
 <summary>
 
 ## Installation von MLFlow
----
+
 </summary>
 
 * Massive Probleme beim Starten des lokalen MLflow-Servers
@@ -499,7 +499,7 @@ mlflow server --host 127.0.0.2 --port 8080
 <summary>
 
 ## Weißes Pixel 
----
+
 </summary>
 
 ### am Rand scheinbar ein Bug aus einer früheren OPENCV-Version
@@ -515,7 +515,7 @@ mlflow server --host 127.0.0.2 --port 8080
 <summary>
 
 ## Lichtverhältnisse
----
+
 
 </summary>
 
@@ -534,7 +534,7 @@ __Lösungsmöglichkeiten__
 <summary>
 
 ## unterschiedliche Böden
----
+
 </summary>
 
 _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflektieren, Kanten, Spalten, Muster haben und viele weitere Aspekte die eine Bilderkennung beeinflussen._
@@ -550,7 +550,7 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 <summary>
 
 ## Bild richtig übergeben OpenCV und NN 
----
+
 </summary>
 
 ![Stilleposte](https://www.mimikama.org/wp-content/uploads/2016/01/stille_post.png)
@@ -566,7 +566,7 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 <summary>
 
 ## Wenn man sich was wünschen könnte
----
+
 </summary>
 
 * gerne Etwas mehr blaues Klebeband
@@ -587,7 +587,7 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 <summary>
 
 ## Schrumpfende Gruppe externe Einflüsse 
----
+
 </summary>
 
 | ![Einfluss von Böden variieren](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyfxm1V3H-TdTK1NHs0CzR-dIUHYKDHnMZxw&s) | ![Einfluss von Böden variieren](https://i.makeagif.com/media/4-20-2023/Ywu5r7.gif) |
@@ -637,7 +637,7 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 <summary>
 
 ## Heterogene Gruppe
----
+
 </summary>
 
 - Wissens- und Fähigkeitenstand und Erwartungen in der Gruppe ist unterschiedlich
@@ -675,7 +675,7 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 <summary>
 
 ## Schade, dass es vorbei ist
----
+
 </summary>
 
 * Endlich wieder Programmieren, Lernen und fasziniert sein!
