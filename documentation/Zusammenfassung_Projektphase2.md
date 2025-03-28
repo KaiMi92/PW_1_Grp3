@@ -1,10 +1,35 @@
+<!--- ################################ -->
+<!--- ################################ -->
+<!--- ################################ -->
+
 <details close>
 
 <summary>
 
-# Berechnung des Lenkwinkels
+# Dash-Frontend
 
 </summary>
+
+<img src="pics/2025-03-27 18_26_43-Histogramm.png" width="800"/>
+
+<img src="pics/2025-03-27 18_26_43-Histogramm.png" width="800"/>
+
+
+</details>
+
+<details close>
+
+<summary>
+
+# Lenkwinkel
+
+</summary>
+
+
+<!--- ################################ -->
+<!--- ################################ -->
+<!--- ################################ -->
+
 
 <details close>
 
@@ -114,6 +139,82 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 
 <summary>
 
+## Algorithmus zur Lenkwinkelberechnung - Frank
+---
+</summary>
+
+<br>
+
+__1.Berechnungen der Lenkwinkel aus den drei Methoden__
+
+- Median von Frank stark abhängig von der erkannten Anzahl der Linien rechts und links bei einer Fahrbahn besser
+
+```python
+{
+  def calculate_steering_angle(image, lines):
+    winkel_liste = []
+    steering_angle = 90
+    fahrwinkel_median = 0
+    print(lines)
+    if lines is not None:
+        for line in lines:
+            x1, y1, x2, y2 = line[0]
+        
+#         # Berechnung der Steigung
+            if (x2 - x1) != 0:
+                slope = (y2 - y1) / (x2 - x1)
+                angle_rad = np.arctan(slope)
+                angle_deg = np.degrees(angle_rad) 
+                winkel_liste.append(angle_deg)
+            else:
+                slope = float('inf') 
+
+            #print(f"Linie von ({x1},{y1}) nach ({x2},{y2}) hat eine Steigung von {slope}, Winkel {angle_deg}")
+              
+        
+        if winkel_liste :
+            winkel_liste.sort()
+
+            fahrwinkel_median = np.median(winkel_liste)
+
+            if 0 <= fahrwinkel_median <= 15:
+                steering_angle = 45
+                print("Max-Links genommen")
+
+            elif -15<= fahrwinkel_median < 0:
+                steering_angle = 135
+                print("Max-Rechts")
+            else:
+                steering_angle = (90-(fahrwinkel_median/2))
+        
+
+            
+            print(f"Lenkwinkel= {steering_angle}")
+            print(f"MedianWinkel= {fahrwinkel_median}")
+            print(f"Winkel-Liste {winkel_liste}")
+        
+    return steering_angle
+}
+```
+- Abstand von Punkt und Geraden von Sebastian mit Rückwärtsgang wenn es doch zu eng wird :)
+
+[geringster Abstand zur Navigation](https://www.gutefrage.net/frage/wie-berechne-ich-abstand-von-punkt-und-gerade-allgemein2d)
+
+- 3. Methode mit dem mittleren Steigungswert aller Linien von Kai
+
+__Generelle Information__ 
+_Diese Funktion berechnet den Lenkwinkel des Autos.Dazu wird die Steigung der gesamten Linien berechnet, die durch die Hough-Transformation gefunden wurden.Der Durchschnitt der Steigungen wird dann in einen Lenkwinkel umgerechnet.Der Lenkwinkel wird dann zurückgegeben._
+
+---
+
+</details>
+
+
+
+<details close>
+
+<summary>
+
 ## Algorithmus zur Lenkwinkelberechnung - Copilot
 
 </summary>
@@ -143,12 +244,15 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 
 </details>
 
+<!--- ################################ -->
+<!--- ################################ -->
+<!--- ################################ -->
 
 <details close>
 
 <summary>
 
-# Umsetzung der Neuronalen Netze
+# Neuronale Netze
 
 </summary>
 
@@ -267,7 +371,7 @@ model = Sequential([
 
 </details>
 
-<details open>
+<details close>
 
 <summary>
 
@@ -310,72 +414,81 @@ mlflow server --host 127.0.0.2 --port 8080
 <!--- ################################ -->
 <!--- ################################ -->
 
-<details open>
+<details close>
 
 <summary>
 
-# Welche Probleme gab es bei den Umsetzungen (Frank)
-
----
+# Herausforderungen
 
 </summary>
+
+## Weißes Pixel 
+
+_am Rand scheinbar ein Bug aus einer früheren OPENCV-Version_
+
+
+![Weißer Pixel-Rand](https://i.ibb.co/pjs472xb/Wei-er-Pixel.png)
 
 ## Lichtverhältnisse
+
+_die Lichtverhältnisse haben die Kantenerkennung stark beeinflusst und daher mussten die Filter bei unterschiedlichen Lichtverhältnissen angepasst werden._
+
+__Lösungsmöglichkeiten__
+- Einlesen der Linien bei unterschiedlichen Lichtverhältnissen mit einem Konfig-Programm
+- Schieberegler bei denen die Filter vom Anwender gesetzt werden können, um eine optimalere Kantenerkennung zu ermöglichen
+
+![Einfluss von Lichtervhätlnissen](https://fotografische.de/wp-content/uploads/lichtverhaeltnisse.jpg)
+
 ## unterschiedliche Böden
-## Berechnungen der Lenkwinkel aus den drei Methoden
-### Median von Frank stark abhängig von der erkannten Anzahl der Linien rechts und links bei einer Fahrbahn besser
+
+_Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflektieren, Kanten, Spalten, Muster haben und viele weitere Aspekte die eine Bilderkennung beeinflussen._
+
+![Einfluss von Böden variieren](https://www.holzland.de/media/i/MP_Bodengestaltung_1200x350-10429-0.jpg)
+
+
+
 ### zu wenig blaues Klebeband (wünsche)
+
 ### zweites paar Akkus (wünsche)
+
 ## Bild richtig übergeben OpenCV (mit Linien gelernt aber ohne) 
+
 ## Verständnis zu den Modellen viel kopiert aber nicht vollständig durchdrungen (wunsch ggf. 2Tage )
-## WinSCP für das Kopieren der Bilder hilfreich
+
 ## Git Fetch Git Pull, das gleichzeitige Arbeiten an Dateien diesmal besser weil stärker auf die Reiehnfolge geachtet und mehr zusammen programmiert
+
 ## Schrumpfende Gruppe externe Einflüsse 
-## Erkenntnis ggf. im Front-End manuaelle Fahrt mit Bildspeicherung und dem dazugehörigen Lenkwinkel
 
----
+## Erkenntnis ggf. im Front-End manuelle Fahrt mit Bildspeicherung und dem dazugehörigen Lenkwinkel
+
 
 </details>
 
-<details open>
+
+<!--- ################################ -->
+<!--- ################################ -->
+<!--- ################################ -->
+
+<details close>
 
 <summary>
 
-# Beschreibung des HTML-Frontends (Tonspur, Life-Umschalten) (Frank-Screenshoot)
-
----
+# Videos
 
 </summary>
 
-<br>
----
-
-</details>
-yvxcy
-
-<details open>
-
-<summary>
-
-# Ggf. Video von Fahrten (Frank ggf. Sebastian mit entschärfter Todeskurve)
-
----
-
-</summary>
-
-<br>
-
----
 
 </details>
 
+<!--- ################################ -->
+<!--- ################################ -->
+<!--- ################################ -->
 
-
-<details open>
+<details close>
 
 <summary>
 
-# Weiteres
+# Erkenntnis und Weiteres
 
 </summary>
 
