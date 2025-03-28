@@ -4,7 +4,11 @@
 
 </center>
 
-<center><img src="pics/nervous-rat-924.png" width="200"/></center>
+<center>
+
+<img src="pics/nervous-rat-924.png" width="200"/>
+
+</center>
 
 ---
 
