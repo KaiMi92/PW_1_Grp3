@@ -11,7 +11,7 @@ import calc_steering_angle_3
 import calc_steering_angle_5
 import calc_steering_angle_6
 import calc_steering_angle_7
-
+from image_size import IMAGE_SIZE
 
 methodDictionary = {0: calc_steering_angle_0.calculate_steering_angle, 
                     1: calc_steering_angle_1.calculate_steering_angle, 
@@ -27,7 +27,6 @@ SPEED = 25
 STRAIGHT_FORWARD = 90
 MAX_TURN_LEFT = 45
 MAX_TURN_RIGHT = 135
-IMAGE_SIZE = (128, 128)
 
 class OpenCvCar(CamCar):
 
