@@ -543,7 +543,7 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 
 </details>
 
-</details>
+
 
 <details close>
 
@@ -569,17 +569,16 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 ---
 </summary>
 
-### gerne Etwas mehr blaues Klebeband
----
+* gerne Etwas mehr blaues Klebeband
 
-### zweites paar Akkus 
----
 
-### Verständnis zu den Modellen viel kopiert aber nicht vollständig durchdrungen (wunsch ggf. 2Tage )
----
+* zweites paar Akkus 
 
-### 1 Woche alle gemeinsam in physischer Präsenz
----
+* Verständnis zu den Modellen viel kopiert aber nicht vollständig durchdrungen (wunsch ggf. 2Tage )
+
+
+* 1 Woche alle gemeinsam in physischer Präsenz
+
 
 </details>
 
@@ -629,7 +628,7 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 
 <summary>
 
-# Erkenntnis und Weiteres
+# Erkenntnisse und Weiteres
 
 </summary>
 
@@ -655,8 +654,13 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 ## RC-Fahrzeug fährt mit NN nicht
 
 </summary>
+
 - einige Fehler bei der Bild Übergabe konnten gelösst werden
-- die NN sind teilweise gut erlent she MLFlow
+
+- die NN sind teilweise gut erlernt worden siehe MLFlow
+
+- ein gutes Modell wird nicht nur am val_loss entschieden!
+
 - auch wenn es noch nicht fährt, hat die Fehlersuche viel Verständis gebracht
 
 </details>
