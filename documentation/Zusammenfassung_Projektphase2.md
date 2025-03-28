@@ -50,7 +50,7 @@
 <summary>
 
 ## Umsetzungsschritte
-
+---
 </summary>
 
 * Implementierung der Klasse ```CamCar``` zur Nutzung der Kamera
@@ -66,7 +66,7 @@
 <summary>
 
 ## Erkennung der blauen Fahrspur-Begrenzung
-
+---
 </summary>
 
 ```python
@@ -100,7 +100,7 @@ lines = cv2.HoughLinesP(edges, 1, np.pi / 180, threshold=30, minLineLength=30, m
 <summary>
 
 ## Verschiedene Modelle der Lenkwinkel-Berechnung
-
+---
 </summary>
 
 
@@ -131,7 +131,7 @@ angle = method(line_filter, lines)
 <summary>
 
 ## Algorithmus zur Lenkwinkelberechnung - Sebastian
-
+---
 </summary>
 
 Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
@@ -159,9 +159,16 @@ Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
 
 <br>
 
-__1.Berechnungen der Lenkwinkel aus den drei Methoden__
+__Berechnung des Lenkwinkels mit Abhängigkeit der Erkannten Linien und dessen Median__
 
 - Median von Frank stark abhängig von der erkannten Anzahl der Linien rechts und links bei einer Fahrbahn besser
+- hier sind nach dem in dem Bild mit edge die Linien eingezeichnet worden. 
+- diese Linien werden erkannt mit Start- und Endpubnkt.
+- die Steigungen der Linien werden mit Winkel in Grad in einer Liste gespeichert.
+- Aus der Liste wird der Median genommen und als Fahrwinkel durch eine IF-Schleife geschickt.
+- Ist der Median zwischen 0 und 15 Grad wird ein Lenkwinkel von 45 Grad eingeschlagen.
+- Ist der Median zwischen -15 und 0 Grad wird ein Lenkwinkel von 135 Grad eingeschlagen.
+- Bei Werte vom Winkel-Median zwischen den beiden Extremen wird der zu übergebene Fahrwinkel berechnet.
 
 ```python
 {
@@ -210,27 +217,78 @@ __1.Berechnungen der Lenkwinkel aus den drei Methoden__
     return steering_angle
 }
 ```
-- Abstand von Punkt und Geraden von Sebastian mit Rückwärtsgang wenn es doch zu eng wird :)
-
-[geringster Abstand zur Navigation](https://www.gutefrage.net/frage/wie-berechne-ich-abstand-von-punkt-und-gerade-allgemein2d)
-
-- 3. Methode mit dem mittleren Steigungswert aller Linien von Kai
-
-__Generelle Information__ 
-_Diese Funktion berechnet den Lenkwinkel des Autos.Dazu wird die Steigung der gesamten Linien berechnet, die durch die Hough-Transformation gefunden wurden.Der Durchschnitt der Steigungen wird dann in einen Lenkwinkel umgerechnet.Der Lenkwinkel wird dann zurückgegeben._
 
 ---
 
 </details>
 
+<details close>
 
+<summary>
+
+## Algorithmus zur Lenkwinkelberechnung - Kai
+---
+</summary>
+
+__Generelle Information__ 
+Diese Funktion berechnet den Lenkwinkel des Autos.Dazu wird die Steigung der gesamten Linien berechnet, die durch die Hough-Transformation gefunden wurden.Der Durchschnitt der Steigungen wird dann in einen Lenkwinkel umgerechnet.Der Lenkwinkel wird dann zurückgegeben.
+
+```python
+{
+def calculate_steering_angle(image, lines):
+    sum = 0
+    runs = 0
+    average = 0
+    if lines is not None:
+        for line in lines:
+            x1, y1, x2, y2 = line[0]
+            
+            """ 
+            Berechnung der Steigung 
+            """
+            if (x2 - x1) != 0:
+                slope = (y2 - y1) / (x2 - x1)
+            else:
+                continue
+
+            """
+            Berechnung des Durchschnitts der Steigungen
+            """
+
+            runs += 1
+            sum += slope
+            average = sum/runs
+
+    """""
+    Umrechnung der Steigung in einen Lenkwinkel
+    Der Lenkwinkel wird auf einen Wert zwischen 45 und 135 begrenzt"
+    """
+
+    x = 90
+    if average > 0 and average <3:
+        x = x - (average * 70)
+        if x < 45:
+            x = 45
+
+    elif average < 0 and average > -3:
+        x = x + (abs(average) * 70)
+        if x > 135:
+            x = 135
+
+    steering_angle = x
+
+    return steering_angle
+}
+```
+
+</details>
 
 <details close>
 
 <summary>
 
 ## Algorithmus zur Lenkwinkelberechnung - Copilot
-
+---
 </summary>
 
 * Detecting Lane Lines
@@ -275,7 +333,7 @@ _Diese Funktion berechnet den Lenkwinkel des Autos.Dazu wird die Steigung der ge
 <summary>
 
 ## Datenlage
-
+---
 </summary>
 
 * 200 bis 300 Aufnahmen von der Raspi-Kamera
@@ -308,7 +366,7 @@ In Summe liegen somit 500 bis 2000 Bilder vor, um das neuronale Netz zu trainier
 <summary>
 
 ## Architektur
-
+---
 </summary>
 
 Nach einigen Durchläufen hat sich diesen Netz als bestes herausgestellt:
@@ -335,7 +393,7 @@ model = Sequential([
 <summary>
 
 ## Parameter des besten Netzes "aged-snail-344"
-
+---
 </summary>
 
 | Parameter | Wert |
@@ -370,7 +428,7 @@ model = Sequential([
 <summary>
 
 ##   Nutzung von MLFlow
-
+---
 </summary>
 
 * MLflow ist eine Machine Learning Plattform Komponente
@@ -390,7 +448,7 @@ model = Sequential([
 <summary>
 
 ## Installation von MLFlow
-
+---
 </summary>
 
 * Massive Probleme beim Starten des lokalen MLflow-Servers
@@ -436,45 +494,107 @@ mlflow server --host 127.0.0.2 --port 8080
 
 </summary>
 
+<details close>
+
+<summary>
+
 ## Weißes Pixel 
+---
+</summary>
 
-_am Rand scheinbar ein Bug aus einer früheren OPENCV-Version_
+### am Rand scheinbar ein Bug aus einer früheren OPENCV-Version
 
+- bei der Bild Bearbeitung/Vervielfältigung könnte es größeren Einfluss haben
 
-![Weißer Pixel-Rand](https://i.ibb.co/pjs472xb/Wei-er-Pixel.png)
+<img src="pics/Weißer_Pixel.png" width="400"/>
+
+</details>
+
+<details close>
+
+<summary>
 
 ## Lichtverhältnisse
+---
 
-_die Lichtverhältnisse haben die Kantenerkennung stark beeinflusst und daher mussten die Filter bei unterschiedlichen Lichtverhältnissen angepasst werden._
+</summary>
+
+
+### die Lichtverhältnisse haben die Kantenerkennung stark beeinflusst und daher mussten die Filter bei unterschiedlichen Lichtverhältnissen angepasst werden.
 
 __Lösungsmöglichkeiten__
 - Einlesen der Linien bei unterschiedlichen Lichtverhältnissen mit einem Konfig-Programm
 - Schieberegler bei denen die Filter vom Anwender gesetzt werden können, um eine optimalere Kantenerkennung zu ermöglichen
 
 ![Einfluss von Lichtervhätlnissen](https://fotografische.de/wp-content/uploads/lichtverhaeltnisse.jpg)
+</details>
+
+<details close>
+
+<summary>
 
 ## unterschiedliche Böden
+---
+</summary>
 
 _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflektieren, Kanten, Spalten, Muster haben und viele weitere Aspekte die eine Bilderkennung beeinflussen._
 
 ![Einfluss von Böden variieren](https://www.holzland.de/media/i/MP_Bodengestaltung_1200x350-10429-0.jpg)
 
+</details>
 
+</details>
 
-### zu wenig blaues Klebeband (wünsche)
+<details close>
 
-### zweites paar Akkus (wünsche)
+<summary>
 
-## Bild richtig übergeben OpenCV (mit Linien gelernt aber ohne) 
+## Bild richtig übergeben OpenCV und NN 
+---
+</summary>
 
-## Verständnis zu den Modellen viel kopiert aber nicht vollständig durchdrungen (wunsch ggf. 2Tage )
+![Stilleposte](https://www.mimikama.org/wp-content/uploads/2016/01/stille_post.png)
 
-## Git Fetch Git Pull, das gleichzeitige Arbeiten an Dateien diesmal besser weil stärker auf die Reiehnfolge geachtet und mehr zusammen programmiert
+- Es wurde zwar mehrfach darauf hingewiesen aber dennoch hat sich der Fehlerteufel eingeschlichen :)
+- das NN ist mit Bildern ohne Linien angelernt worden
+- bei der Fahrt ist aber ein Bild mit Linien übergeben worden
+
+</details>
+
+<details close>
+
+<summary>
+
+## Wenn man sich was wünschen könnte
+---
+</summary>
+
+### gerne Etwas mehr blaues Klebeband
+---
+
+### zweites paar Akkus 
+---
+
+### Verständnis zu den Modellen viel kopiert aber nicht vollständig durchdrungen (wunsch ggf. 2Tage )
+---
+
+### 1 Woche alle gemeinsam in physischer Präsenz
+---
+
+</details>
+
+<details close>
+
+<summary>
 
 ## Schrumpfende Gruppe externe Einflüsse 
+---
+</summary>
 
-## Erkenntnis ggf. im Front-End manuelle Fahrt mit Bildspeicherung und dem dazugehörigen Lenkwinkel
+| ![Einfluss von Böden variieren](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyfxm1V3H-TdTK1NHs0CzR-dIUHYKDHnMZxw&s) | ![Einfluss von Böden variieren](https://i.makeagif.com/media/4-20-2023/Ywu5r7.gif) |
+| -------------- | --------------- |
 
+</details>
 
 </details>
 
@@ -513,9 +633,33 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 
 </summary>
 
+<details close>
 
-## Was kann man da durch die Lernprogramme alles sehen/ erkennen
+<summary>
 
+## der Wissens- und Fähigkeitenstand in der Gruppe ist heterogen, damit muss man umgehen bei der Arbeitsweise.
 ---
+</summary>
+
+- Wir haben viele Themen gemeisam in Rotation bearbeitet und programmiert. 
+- Einer präsentiert die Erfahrenen leiten an
+- Regelmäßiges Feedback bei der Beabreitungen u.a. durch Fragen sehr hilfreich
+- Abkapselbare Themen wie die Lenkung mit Bilderkennung und NN sind in eigenständig vorgenommen worden
+
+</details>
+
+<details close>
+
+<summary>
+
+## RC-Fahrzeug fährt mit NN nicht
+
+</summary>
+- einige Fehler bei der Bild Übergabe konnten gelösst werden
+- die NN sind teilweise gut erlent she MLFlow
+- auch wenn es noch nicht fährt, hat die Fehlersuche viel Verständis gebracht
+
+</details>
+</details>
 
 </details>
