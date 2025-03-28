@@ -492,11 +492,11 @@ _Jeder Boden hat seine Besonderheit, die das Licht unterschiedlich stark reflekt
 </summary>
 
 <video width="800" height="600" controls>
-  <source src="20250326_081429_NN2.mp4" type="video/mp4">
+  <source src="pics/20250326_081429_NN2.mp4" type="video/mp4">
 </video>
 
 <video width="800" height="600" controls>
-  <source src="20250326_081208_NN3.mp4" type="video/mp4">
+  <source src="pics/20250326_081208_NN3.mp4" type="video/mp4">
 </video>
 
 </details>
