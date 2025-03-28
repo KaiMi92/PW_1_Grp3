@@ -131,7 +131,7 @@ angle = method(line_filter, lines)
 <summary>
 
 ## Algorithmus zur Lenkwinkelberechnung - Sebastian
----
+
 </summary>
 
 Mehrere Versuche scheiterten in der Praxis, am Ende folgende Umsetzung:
